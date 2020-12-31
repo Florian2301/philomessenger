@@ -1,0 +1,18 @@
+#git {
+    color: lightgray;
+    font-size: 1.5rem;
+    text-decoration: underline;
+  }
+
+.about {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+#about {
+    margin-top: 1.5rem;
+}
+
+#about-update {
+    font-size: 1.2rem;
+}

@@ -1,0 +1,65 @@
+#saveDraft {
+    margin-top: 1.5rem
+}
+
+Form {
+    margin-left: 2.5rem;
+    width: 80%
+}
+
+#save-title {
+    margin-right: 4.3rem;
+}
+
+#save-name {
+    margin-right: 3rem
+}
+
+#save-date {
+    margin-right: 4.5rem;
+}
+
+#save-tags {
+    margin-right: 4.5rem;;
+}
+
+#save-input-name {
+    max-width: 10rem
+}
+
+#save-input-date {
+    max-width: 10rem
+}
+
+#remove-name-link {
+    font-size: 1.2rem;
+    color: dodgerblue;
+    margin-right: 1rem;
+}
+
+#remove-name-link:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.save-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+#save-btn {
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    margin-right: 1.5rem;
+    background-color: silver;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+#save-btn-reset {
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  background-color: silver;
+  font-size: 1.2rem;
+  font-weight: bold;
+}

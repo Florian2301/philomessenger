@@ -1,0 +1,56 @@
+#publish-chat-panel {
+  margin-top: 1.5rem;
+}
+
+.publish-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+#publish-btn {
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  background-color: silver;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#publish-btn-reset {
+border-radius: 0.5rem;
+margin-bottom: 1.5rem;
+background-color: silver;
+font-size: 1.2rem;
+font-weight: bold;
+}
+
+Form {
+  margin-left: 2.5rem;
+  width: 80%
+}
+
+#publish-number {
+  margin-right: 1.5rem;
+}
+
+#publish-title {
+  margin-right: 4.5rem;
+}
+
+#publish-date {
+  margin-right: 4.2rem;
+}
+
+#publish-tags {
+  margin-right: 4.7rem;;
+}
+
+#publish-input-number {
+  max-width: 5rem
+}
+
+#publish-input-date {
+  max-width: 10rem
+}
+

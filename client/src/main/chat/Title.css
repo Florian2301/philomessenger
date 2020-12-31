@@ -1,0 +1,34 @@
+#title-header {
+    margin-top: 2rem;
+    width: 50rem;
+  }
+  
+  #span-title {
+    color: darkgray;
+    font-size: 1.5rem;
+  }
+
+  #span-props-title {
+    font-size: 1.5rem;
+  }
+
+  #span-number {
+    color: darkgray;
+    font-size: 1.5rem;
+  }
+
+  #span-props-number {
+    margin-right: 1rem;
+    font-size: 1.5rem;
+  }
+
+  #span-date {
+    color: darkgray;
+    position: relative;
+    margin-left: 5rem;
+    font-size: 1.5rem;
+  }
+
+  #span-props-date {
+    font-size: 1.2rem;
+  }

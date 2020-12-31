@@ -1,0 +1,92 @@
+.message {
+  border-color: black;
+  border-width: thin;
+  border-style: solid;
+  border-radius: 1rem;
+  color: black;
+  position: relative
+}
+
+.message-header {
+  border-color: black;
+  border-width: thin;
+  border-bottom-style: dotted;
+  padding: 0rem 0.6rem 0rem 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  height: 3rem
+}
+
+#message-name {
+  margin-top: 0.3rem;
+  position: relative;
+  font-weight: bold;
+}
+
+#message-number {
+  margin-top: 0.5rem;
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#message-edit {
+  color:black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  position: relative;
+  justify-content: center;
+  margin-top: 0.5rem;
+  text-decoration: underline;
+}
+
+#message-edit:hover {
+  cursor: pointer;
+}
+
+.message-text {
+  padding: 0rem 0.6rem 0.2rem 0.6rem;
+}
+
+/* index of name of phil-array is its color */
+#color-0 {
+  background-color: aqua;
+  position: relative;
+  right: 0.5rem;
+  margin: 0.7rem;
+}
+
+#color-1 {
+  background-color: pink;
+  position: relative;
+  left: -3.5rem;
+  margin: 0.7rem;
+}
+
+#color-2 {
+  background-color: palegreen;
+  position: relative;
+  left: -3.5rem;
+  margin: 0.7rem;
+}
+
+#color-3 {
+  background-color: lavender;
+  position: relative;
+  left: -3.5rem;
+  margin: 0.7rem;
+}
+
+#color-4 {
+  background-color: lightyellow;
+  position: relative;
+  left: -3.5rem;
+  margin: 0.7rem;
+}
+
+#color-5 {
+  background-color: lightsalmon;
+  position: relative;
+  left: -3.5rem;
+  margin: 0.7rem;
+}

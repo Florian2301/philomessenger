@@ -1,0 +1,51 @@
+.flexContainer-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* background */
+#header {
+  width: 100vw; /* vw= viewpoints width - immer 100% an Bildschirmgröße */
+  border-collapse: collapse;
+  border: none;
+  background-image: linear-gradient(
+    100deg,
+    rgba(0, 180, 200, 1) 1%,
+    rgba(51, 56, 57, 1) 50%
+  );
+}
+
+/* The Messenger */
+#h1-header {
+  font-size: 6rem;
+  font-weight: bold;
+  font-family: Luminari;
+  position: relative;
+  text-decoration: none;
+  background:-webkit-linear-gradient(80deg, darkgray 20%, lightgray);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+/* underline */
+#span-1::after {
+  background: linear-gradient(to right, darkgray 65%, lightgray 100%);  
+  content: "";
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  height: 0.3rem;
+  width: 78%;
+}
+
+#span-2::after {
+  background: linear-gradient(to right, lightgray 1%, lightgray 150%);  
+  content: "";
+  position: absolute;
+  bottom: 1rem;
+  left: 34rem;
+  height: 0.3rem;
+  width: 13%;
+}
+
+

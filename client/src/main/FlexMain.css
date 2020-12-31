@@ -1,0 +1,140 @@
+/* Main view */
+.flexContainer-main {
+  display: flex;
+  justify-content: space-between;
+  max-height: 100%
+}
+
+#item-1 {
+  width: 20vw
+}
+
+#item-2 {
+  width: 25vw;
+}
+
+#item-3 {
+  width: 25vw
+}
+
+/* History Container */
+#uncontrolled-tab-history {
+  background-color: rgb(53, 53, 53);
+  color: lightgray;
+}
+
+#uncontrolled-tab-history:hover {
+  background: midnightblue;
+}
+
+#uncontrolled-tab-userchats {
+  background-color: rgb(53, 53, 53);
+  color: lightgray;
+}
+
+#uncontrolled-tab-userchats:hover {
+  background: midnightblue;
+}
+
+/* Edit-Container */
+.container-fluid {
+  border-width: thick;
+  border-style: groove;
+  border-color: #999999;
+  border-radius: 0.6rem;
+  background-color: rgb(53, 53, 53);
+  margin: 5rem 0.5rem 0rem 0rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+/* Abstände der Edit-Panels */
+#panel-addTitle {
+  margin-top: 1.5rem;
+}
+
+#panel-addPhil {
+  margin-top: 1.5rem;
+}
+
+#panel-reset {
+  margin-top: 1.5rem;
+}
+
+#panel-save {
+  margin-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+#panel-drafts {
+  margin-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+#edit-addTitle {
+  margin: 1rem;
+}
+
+#edit-addPhil {
+  margin: 1rem;
+}
+
+/* Farbe der Reiter der Navigation */
+#uncontrolled-tab-start {
+  background-color: rgb(53, 53, 53);
+  color: lightgray;
+}
+
+#uncontrolled-tab-start:hover {
+  background: midnightblue;
+}
+
+#uncontrolled-tab-edit {
+  background-color: rgb(53, 53, 53);
+  color: lightgray;
+}
+
+#uncontrolled-tab-edit:hover {
+  background: midnightblue;
+}
+
+#uncontrolled-tab-login {
+  background-color: rgb(53, 53, 53);
+  color: lightgray;
+}
+
+#uncontrolled-tab-login:hover {
+  background: midnightblue;
+}
+
+#uncontrolled-tab-about {
+  background-color: rgb(53, 53, 53);
+  color: lightgray;
+}
+
+#uncontrolled-tab-about:hover {
+  background: midnightblue;
+}
+
+/* Tablet und Mobile */
+#uncontrolled-tab-chat {
+  background-color: rgb(53, 53, 53);
+  color: lightgray;
+}
+
+#uncontrolled-tab-chat:hover {
+  background: midnightblue;
+}
+
+/* Mobile */
+
+#uncontrolled-tab-publish {
+  background-color: rgb(53, 53, 53);
+  color: lightgray;
+}
+
+#uncontrolled-tab-drafts {
+  background-color: rgb(53, 53, 53);
+  color: lightgray;
+}

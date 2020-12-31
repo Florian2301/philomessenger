@@ -1,0 +1,19 @@
+.panel {
+  border-color: #999999;
+  border-width: thin;
+  border-style: solid;
+}
+
+.panel-title {
+  border-color: #999999;
+  border-bottom-width: thin;
+  border-bottom-style: solid;
+  padding: 0.5rem;
+  color: darkgray;
+}
+
+.panel-content {
+  border-color: #999999;
+  border-width: thin;
+  border-style: none;
+}

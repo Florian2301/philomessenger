@@ -1,0 +1,57 @@
+.publish-table-chats {
+    border-collapse: collapse;
+    background-color: rgb(53, 53, 53);
+    margin-top: 1.5rem;
+    border-style: none;
+    margin-bottom: 1rem;
+  }
+  
+  .publish-data-rows-chats {
+    display: grid;
+    grid-template-columns: 1fr 10rem 8rem ;
+  }
+  
+  .publish-chats-column-1 {
+    padding-left: 1.5rem;
+    text-align: left;
+  }
+  
+  .publish-chats-column-1:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .publish-chats-column-2 {
+    font-size: 1.2rem;
+    text-align: right;
+  }
+  
+  .publish-chats-column-2:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .publish-chats-column-3 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  
+  .publish-chats-column-3:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .flexContainer-chatlist-publish {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    margin: 1rem;
+  }
+  
+  .publish-chat {
+    color: black;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 0.5rem;
+      background-color: silver; 
+    }

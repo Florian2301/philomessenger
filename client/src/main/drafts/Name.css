@@ -1,0 +1,29 @@
+#start {
+    margin-top: 1.5rem
+}
+
+Form {
+    margin-left: 2.5rem;
+    width: 80%
+}
+
+#startname {
+    margin-top: 1.5rem;
+}
+
+#start-name {
+    margin-right: 2.5rem;
+}
+#start-input {
+    max-width: 15rem
+}
+
+#addname {
+    font-size: 1.2rem;
+    text-align: right;
+    font-style: italic;
+}
+
+#addname-name {
+    text-decoration: underline;
+}

@@ -1,0 +1,53 @@
+.chatbox {
+  margin-top: 1rem;;
+  height: 70vh;
+  width: 100%;
+  border-width: thick;
+  border-style: groove;
+  border-color: #999999;
+  background: rgb(53, 53, 53);
+  overflow: auto;
+  border-radius: 0.6rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* component Textarea */
+.textarea-chat {
+  height: 10rem;
+  width: 90%;
+  background-color: lightgray;
+  margin-left: 1rem;
+}
+
+#writer {
+  margin-left: 1rem;
+}
+
+.chatmessages {
+  top: 0;
+}
+
+.flexContainer-chat {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+#link-clear {
+  margin: 1rem;
+}
+
+#link-clear:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: dodgerblue;
+}
+
+.button-chat-Phil {
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  background-color: silver;
+}

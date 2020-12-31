@@ -1,0 +1,50 @@
+/* responsive */
+#responsive-container {
+    border-width: thick;
+    border-style: groove;
+    border-color: #999999;
+    border-radius: 0.6rem;
+    background-color: rgb(53, 53, 53);
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    width: 100%;
+  }
+  
+/* Tabletchatbox */
+#flexTablet {
+  display: flex;
+  max-height: 100%
+}
+
+
+/* MobileChatbox */
+#dropdown { 
+  color: black;
+  background-color: darkgray;
+  border: none;
+  position: relative;
+  float: inline-end;
+}
+
+/* MobileStart */
+.menu { 
+  text-decoration: underline;
+  color: dodgerblue;
+  cursor: pointer;
+}
+
+#start-panel {
+  margin-top: 1.5rem;
+}
+
+.start-para {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.start-para-tablet {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: dodgerblue;
+}
