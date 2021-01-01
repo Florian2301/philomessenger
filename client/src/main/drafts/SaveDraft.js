@@ -18,7 +18,7 @@ export function SaveDraft(props) {
     const [error, setError] = useState('')
     const [update, setUpdate] = useState(false)
     const [reset, setReset] = useState(false) 
-    
+    const [message, setMessage] = useState("")
     
     
     function handleSubmit(e) {
@@ -42,27 +42,43 @@ export function SaveDraft(props) {
 
             if(!update) {           // if draft will be updated
                 if(admin) {
+                    setMessage("save draft...")
                     props.saveDraft(userId, user, title, date, tags, description, buttons, messages)
                     setTimeout(() => {
                         props.getDrafts()
                     }, 500)
+                    setTimeout(() => {
+                        setMessage("")
+                    }, 2000)
                 } else {
+                    setMessage("save draft...")
                     props.saveUserDraft(userId, user, title, date, tags, description, buttons, messages)
                     setTimeout(() => {
                         props.getUserDrafts(userId)
                     }, 500)
+                    setTimeout(() => {
+                        setMessage("")
+                    }, 2000)
                 }
             } else {                // else create a new draft
                 if(admin) {
+                    setMessage("update draft...")
                     props.updateDraft(draftId, title, date, tags, description, buttons, messages)
                     setTimeout(() => {
                         props.getDrafts()
                     }, 500)
+                    setTimeout(() => {
+                        setMessage("")
+                    }, 2000)
                 } else {
+                    setMessage("update draft...")
                     props.updateUserDraft(draftId, title, date, tags, description, buttons, messages)
                     setTimeout(() => {
                         props.getUserDrafts(userId)
                     }, 500)
+                    setTimeout(() => {
+                        setMessage("")
+                    }, 2000)
                 }
             }
             setUpdate(false)
@@ -125,6 +141,9 @@ export function SaveDraft(props) {
                         <Form.Control id="save-input-description" type="text" as="textarea" ref={descriptionRef} placeholder="Give a brief summary or description of your chat" defaultValue={props.draft.description}/>
                      </Col>
                 </Form.Group>
+                <div id="message-actions">
+                    {message? message : null}
+                </div>
                 <div className="save-actions">
                     <Button button={true} label="Save as new draft" id="save-btn" type="submit"></Button>
                     <Button button={true} label="Update draft" id="save-btn" type="submit" handleClick={() => setUpdate(true)}></Button>
