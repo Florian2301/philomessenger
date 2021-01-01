@@ -54,7 +54,7 @@ export const deleteTitle = (id) => dispatch => {
     .delete(`/api/title/${id}`)
     .then(res =>
       dispatch({
-        type: 'CLEAR_DISPLAY'
+        type: 'DELETE_ADMIN_TITLE', id
       })
     )
     .catch(function (error) {
@@ -142,7 +142,7 @@ export const deleteUserTitle = (id) => dispatch => {
     .delete(`/api/usertitle/${id}`)
     .then(res =>
       dispatch({
-        type: 'CLEAR_DISPLAY'
+        type: 'DELETE_USER_TITLE', id
       })
     )
     .catch(function (error) {
