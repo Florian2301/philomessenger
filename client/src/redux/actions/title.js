@@ -151,7 +151,6 @@ export const deleteUserTitle = (id) => dispatch => {
 
 // update date of one title by id/chatnumber (user)
 export const updateUserTitle = (id, chatnumber, title, date, tags, description) => dispatch => {
-  console.log("axios", id, chatnumber, title)
   axios
     .patch(`/api/usertitle/${id}`, {chatnumber, title, date, tags, description})
     .then(res =>
