@@ -41,7 +41,7 @@ if (user) {
     return (
       <Container fluid id="responsive-container">
         <Tabs defaultActiveKey={"start"} id="uncontrolled" style={{borderBottom: 0}}>
-            <Tab eventKey="start" title="Start">
+            <Tab eventKey="start" title="Info">
               <TabletStart />
             </Tab>
             <Tab eventKey="chat" title="Chat">
