@@ -95,7 +95,7 @@ class FlexMain extends Component {
                   <Authorization />
               </Tab>
               }
-              <Tab eventKey="start" title="Start">
+              <Tab eventKey="start" title="Info">
                 <Start />
               </Tab>
               <Tab eventKey="about" title="About">
