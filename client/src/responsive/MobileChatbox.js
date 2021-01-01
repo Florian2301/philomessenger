@@ -50,7 +50,7 @@ handleSelect = (key) => {
       <Container id="responsive-container"  >
 
         <Tabs  id="uncontrolled" style={{borderBottom: 0}} activeKey={this.props.user.key} onSelect={this.handleSelect}>
-        <Tab eventKey="start" title="Start">
+        <Tab eventKey="start" title="Menu">
             <MobileStart />
           </Tab>
           {this.props.user.key === "chat"?
