@@ -5,7 +5,7 @@ const router = express.Router()
 const Chat = require('../../models/Chat')
 
 
-// Getting one or all Chats
+// Get all or only one userchat by id or chatnumber
 router.get('/', async (req, res) => {
     const number = req.query.chatnumber
     const chatId = req.query.chatId
