@@ -19,7 +19,7 @@ export function Publish(props) {
     const [error, setError] = useState('')
     const [update, setUpdate] = useState(false)
     const [reset, setReset] = useState(false) 
-    
+    const [message, setMessage] = useState("")
     
     
     function handleSubmit(e) {
@@ -46,31 +46,47 @@ export function Publish(props) {
             
             if(!update) {
                 if(admin) {
+                    setMessage("publish chat...")
                     props.saveTitle(userId, user, chatnumber, title, date, tags, description)
                     props.saveChat(userId, user, chatnumber, title, date, tags, description, buttons, messages)
                     setTimeout(() => {
                         props.getAllChats()
                     }, 500)
+                    setTimeout(() => {
+                        setMessage("")
+                    }, 2000)
                 } else {
+                    setMessage("publish chat...")
                     props.saveUserTitle(userId, user, chatnumber, title, date, tags, description)
                     props.saveUserChat(userId, user, chatnumber, title, date, tags, description, buttons, messages)
                     setTimeout(() => {
                         props.getAllUserChatsById(userId)
                     }, 500)
+                    setTimeout(() => {
+                        setMessage("")
+                    }, 2000)
                 }
             } else {
                 if(admin) {
+                    setMessage("update chat...")
                     props.updateTitle(titleId, chatnumber, title, date, tags, description)
                     props.updateChatDetails(chatId, chatnumber, title, date, tags, description)
                     setTimeout(() => {
                         props.getChatById(chatId)
                     }, 500)
+                    setTimeout(() => {
+                        setMessage("")
+                    }, 2000)
                 } else {
+                    setMessage("update chat...")
                     props.updateUserTitle(titleId, chatnumber, title, date, tags, description)
                     props.updateUserChat(chatId, chatnumber, title, date, tags, description)
                     setTimeout(() => {
                         props.getOneUserChatById(chatId)
                     }, 500)
+                    setTimeout(() => {
+                        setMessage("")
+                    }, 2000)
                 }
             }
             setUpdate(false)
@@ -124,6 +140,9 @@ export function Publish(props) {
                         <Form.Control id="publish-input-description" type="text" as="textarea" ref={descriptionRef} placeholder="Give a brief summary or description of your chat" defaultValue={props.chat.description}/>
                      </Col>
                 </Form.Group>
+                <div id="message-publish-actions">
+                    {message? message : null}
+                </div>
                 <div className="publish-actions">
                     <Button button={true} label="Publish chat" id="publish-btn" type="submit"></Button>
                     <Button button={true} label="Update chat" id="publish-btn" type="submit" handleClick={() => setUpdate(true)}></Button>
