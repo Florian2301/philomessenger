@@ -42,7 +42,11 @@ function title(state = initialState, action) {
               title: "",
               date: "",
               tags: [],
-              description: ""} 
+              description: ""}
+    case "DELETE_USER_CHAT":
+      return {...state, userTitle: state.userTitle.filter(title => title._id !== action.id)}
+    case "DELETE_ADMIN_CHAT":
+      return {...state, adminTitle: state.adminTitle.filter(title => title._id !== action.id)}
     default:
      return state
   }
