@@ -3,7 +3,7 @@ import Textarea from '../../elements/Textarea'
 import Button from '../../elements/Button'
 import Message from './Message'
 import { connect } from 'react-redux'
-import { addMessages } from '../../redux/actions/draft'
+import { addMessages, updateDraft, updateUserDraft } from '../../redux/actions/draft'
 import { clearDisplay } from '../../redux/actions/user'
 import './Chat.css'
 import { v4 as uuidv4 } from 'uuid';
@@ -71,7 +71,20 @@ class Chat extends Component {
       this.props.addMessages(storeMessName)
     }
   }
-
+  
+  // save new messages and buttons to draft
+  saveMessageAndButton = () => {
+    const admin = this.props.user.admin
+    const draftId = this.props.draft.draftId
+    const title = this.props.draft.title
+    const date = this.props.draft.date
+    const tags = this.props.draft.tags
+    const description = this.props.draft.description
+    const buttons = this.props.draft.buttons
+    const messages = this.props.draft.messages
+    admin? this.props.updateDraft(draftId, title, date, tags, description, buttons, messages) 
+    : this.props.updateUserDraft(draftId, title, date, tags, description, buttons, messages)
+  }
   
   clear = () => {
     this.props.clearDisplay()
@@ -143,6 +156,7 @@ class Chat extends Component {
           })}
         </div>
           <div>
+            {this.props.draft.draftEditmode? <p id="link-clear" onClick={this.saveMessageAndButton}>save</p> : <p id="link-clear"></p>}
             <p id="link-clear" onClick={this.clear}>clear</p>
           </div>
         </section>
@@ -162,7 +176,9 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = {
   clearDisplay: clearDisplay,
-  addMessages: addMessages
+  addMessages: addMessages,
+  updateDraft: updateDraft,
+  updateUserDraft: updateUserDraft
 }
 
 let ChatContainer = connect(mapStateToProps, mapDispatchToProps)(Chat)
