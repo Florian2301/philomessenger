@@ -127,9 +127,9 @@ export const getAllUserChatsById = (userId) => dispatch => {
 }
 
 // show one chat of user by chatnumber (Userchats)
-export const getOneUserChat = (chatnumber) => dispatch => {
+export const getOneUserChat = (chatnumber, userId) => dispatch => {
   axios
-    .get('/api/userchats/', {params: {chatnumber: chatnumber}})
+    .get('/api/userchats/', {params: {chatnumber: chatnumber, userId: userId}})
     .then(res => dispatch({
       type: 'GET_CHAT', payload: res.data
     }))
