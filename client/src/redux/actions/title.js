@@ -143,8 +143,7 @@ export const deleteUserTitle = (id) => dispatch => {
     .then(res =>
       dispatch({
         type: 'DELETE_USER_TITLE', id
-      })
-    )
+      }))
     .catch(function (error) {
       console.log(error);
     })
@@ -156,8 +155,8 @@ export const updateUserTitle = (id, chatnumber, title, date, tags, description) 
   axios
     .patch(`/api/usertitle/${id}`, {chatnumber, title, date, tags, description})
     .then(res =>
-      dispatch({ type: 'GET_TITLE', payload: res.data })
-    )
+      dispatch({ type: 'GET_TITLE', payload: res.data 
+    }))
     .catch(function (error) {
       console.log(error.message);
     })
