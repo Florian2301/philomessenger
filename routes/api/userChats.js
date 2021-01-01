@@ -10,9 +10,10 @@ const Userchat = require('../../models/Userchat')
 router.get('/', async (req, res) => {
     const number = req.query.chatnumber
     const chatId = req.query.chatId
+    const userId = req.query.userId
     if(number) {
         try {
-            const userchat = await Userchat.findOne({chatnumber: number})
+            const userchat = await Userchat.findOne({userId: userId, chatnumber: number})
             res.json(userchat)
         } catch (err) {
             res.status(500).json({ message: err.message })
