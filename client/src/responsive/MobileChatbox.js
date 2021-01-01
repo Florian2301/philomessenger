@@ -64,16 +64,24 @@ handleSelect = (key) => {
                 <DraftList />
                 <ChatList />
             </Tab>
-          : 
-          null}
+          : null}
+          {(this.props.user.key === "publish") && !this.state.loggedIn?
+            <Tab eventKey="publish" title="Publish">
+              <p className="mobile-notlogged">- you must be logged in to see the content -</p>
+            </Tab> 
+          : null}
           {(this.props.user.key === "drafts") && this.state.loggedIn?
             <Tab eventKey="drafts" title="Drafts">
                 <Name />
                 <SaveDraft />
                 <Drafts />
             </Tab>
-          : 
-          null}
+          : null}
+          {(this.props.user.key === "drafts") && !this.state.loggedIn?
+            <Tab eventKey="drafts" title="Drafts">
+              <p className="mobile-notlogged">- you must be logged in to see the content -</p>
+            </Tab> 
+          : null}
           {this.props.user.key === "history"?
           <Tab eventKey="history" title="History">
               <History/>
