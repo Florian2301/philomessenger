@@ -66,7 +66,6 @@ export function Publish(props) {
                         props.getChatById(chatId)
                     }, 500)
                 } else {
-                    console.log("publish", titleId, chatnumber, title, date, tags, description)
                     props.updateUserTitle(titleId, chatnumber, title, date, tags, description)
                     props.updateUserChat(chatId, chatnumber, title, date, tags, description)
                     setTimeout(() => {
