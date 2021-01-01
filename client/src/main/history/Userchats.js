@@ -15,7 +15,7 @@ class Userchats extends Component {
     this.props.getAllUserTitle()
   }
 
-  displayChat = (id, chatnumber) => {
+  displayChat = (id, chatnumber, userId) => {
     this.props.clearDisplay()
     this.props.getUserTitle(id)
     this.props.getOneUserChat(chatnumber, userId)
