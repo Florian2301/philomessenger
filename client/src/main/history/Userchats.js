@@ -42,14 +42,14 @@ class Userchats extends Component {
                 Date
               </div>
           </div>
-          {userTitle? userTitle.map(({_id, user, chatnumber, title, date}) => {
+          {userTitle? userTitle.map(({_id, userId, user, chatnumber, title, date}) => {
                 return (
                   <div key={uuidv4()} className="data-rows-userchats">
                     <div className="userchats-column-1">{user}</div>
                     <div className="userchats-column-2">{chatnumber}</div>
-                    <div className="userchats-column-3" onClick={() => this.displayChat(_id, chatnumber)}>{title}</div>
+                    <div className="userchats-column-3" onClick={() => this.displayChat(_id, chatnumber, userId)}>{title}</div>
                     <div className="userchats-column-4">
-                      {chatnumber === this.props.chat.chatnumber && user === this.props.chat.user? 
+                      {chatnumber === this.props.chat.chatnumber && userId === this.props.chat.userId? 
                         <PDFDownloadLink
                           document={
                             <PDF title={title} data={this.props.chat.messages} />
