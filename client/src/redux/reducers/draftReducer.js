@@ -20,7 +20,6 @@ function drafts(state = initialState, action) {
     case "REMOVE_NAME":
       return {...state, buttons: state.buttons.filter(button => button.name !== action.name.name)}
     case "GET_DRAFT":
-      console.log("action draft", action.payload)
       return {...state,
               draftId: action.payload._id,
               userId: action.payload.userId,
