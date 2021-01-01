@@ -13,7 +13,7 @@ export default function About (props) {
             
             <br></br>
                 
-            <a id="git" href="https://github.com/Flokrates2301/philomessenger">See code on Github</a>
+            <a id="git" href="https://github.com/Florian2301/philomessenger">See code on Github</a>
             <p id="about-update">Last update: 2020-12-30</p>
             
             <br></br>
