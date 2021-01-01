@@ -171,6 +171,7 @@ let mapStateToProps = (state) => {
   return {
     chat: state.chat,
     draft: state.draft,
+    user: state.user
   }
 }
 
