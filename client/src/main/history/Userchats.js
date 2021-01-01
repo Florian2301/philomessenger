@@ -18,7 +18,7 @@ class Userchats extends Component {
   displayChat = (id, chatnumber) => {
     this.props.clearDisplay()
     this.props.getUserTitle(id)
-    this.props.getOneUserChat(chatnumber)
+    this.props.getOneUserChat(chatnumber, userId)
     this.props.setKey("chat")             // for navigation of mobile version
   }
 
