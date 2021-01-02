@@ -57,9 +57,9 @@ function chats(state = initialState, action) {
               messages: [], 
               chatEditmode: false }
     case "DELETE_USER_CHAT":
-      return {...state, userChats: state.userChats.filter(chat => chat._id !== action.chatId)}
+      return {...state, userChats: state.userChats.filter(chat => chat._id !== action.id)}
     case "DELETE_ADMIN_CHAT":
-      return {...state, adminChats: state.adminChats.filter(chat => chat._id !== action.chatId)}
+      return {...state, adminChats: state.adminChats.filter(chat => chat._id !== action.id)}
     default:
      return state
   }
