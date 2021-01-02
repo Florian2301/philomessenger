@@ -17,16 +17,16 @@ import './App.css'
  * @param {*} param0 
  */
 const Desktop = ({ children }) => {
-  const isDesktop = useMediaQuery({ minWidth: 1256 })
+  const isDesktop = useMediaQuery({ minWidth: 1401 })
   return isDesktop ? children : null
 }
 
 const Tablet = ({ children }) => {
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1255 })
+  const isTablet = useMediaQuery({ minWidth: 982, maxWidth: 1400 })
   return isTablet ? children : null
 }
 const Mobile = ({ children }) => {
-  const isMobile = useMediaQuery({ maxWidth: 767 })
+  const isMobile = useMediaQuery({ maxWidth: 981 })
   return isMobile ? children : null
 }
 
