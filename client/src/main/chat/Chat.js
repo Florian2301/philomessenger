@@ -156,8 +156,14 @@ class Chat extends Component {
           })}
         </div>
           <div>
-            {this.props.draft.draftEditmode? <p id="link-clear" onClick={this.saveMessageAndButton}>save</p> : <p id="link-clear"></p>}
-            <p id="link-clear" onClick={this.clear}>clear</p>
+            <div>
+              {this.props.draft.draftEditmode? <p id="link-clear" onClick={this.saveMessageAndButton}>
+                {this.state.save? <Spinner animation="border" role="status" ></Spinner> : "save"}</p> 
+              : <p id="link-clear"></p>} 
+            </div>
+            <div>
+              <p id="link-clear" onClick={this.clear}>clear</p>
+            </div> 
           </div>
         </section>
       </div>
