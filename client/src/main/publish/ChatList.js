@@ -6,8 +6,8 @@ import Panel from '../../elements/Panel'
 import { v4 as uuidv4 } from 'uuid';
 import { getAllChats, getAllUserChats, getAllUserChatsById, getChatById, getOneUserChat, getOneUserChatById, deleteChat, deleteUserChat } from '../../redux/actions/chat'
 import { saveDraft, saveUserDraft } from '../../redux/actions/draft'
-import { getAllTitle, getAllUserTitleById, deleteTitle, deleteUserTitle, getUserTitle, getTitle } from '../../redux/actions/title'
-import {  clearDisplay } from '../../redux/actions/user'
+import { getAllTitle, getAllUserTitleById, deleteTitle, deleteUserTitle } from '../../redux/actions/title'
+import { clearDisplay } from '../../redux/actions/user'
 
 
 
@@ -21,26 +21,10 @@ export function Chats (props) {
       admin? props.getAllTitle() : props.getAllUserTitleById(id)
     }
 
-    function getOneChat(id, chatnumber) {
+    function getOneChat(id) {
         props.clearDisplay()
         const admin = props.user.admin
-        let titleId = ""
         admin? props.getChatById(id) : props.getOneUserChatById(id) // get one chat
-        if(admin) {                                                 // get one title
-            props.title.adminTitle.map((title) => {
-              if(title.chatnumber === chatnumber) {
-                  titleId = title._id
-              } return titleId
-            })
-            props.getTitle(titleId)
-        } else {
-            props.title.userCollection.map((title) => {
-              if(title.chatnumber === chatnumber) {
-                titleId = title._id
-              } return titleId
-            })
-            props.getUserTitle(titleId)
-        }
         setDraft(id)  // if chat is clicked, a link for saving as draft displays                                                
     }
 
@@ -60,9 +44,8 @@ export function Chats (props) {
     }
 
     // delete one title + chat
-    function deleteChat(id, chatnumber) {
+    function deleteChat(id, userId, chatnumber) {
       const admin = props.user.admin
-      const userId = props.user.userId
       let titleId = ""
       if (admin) {
           props.deleteChat(id)
@@ -73,7 +56,6 @@ export function Chats (props) {
           })
           props.deleteTitle(titleId)
           setTimeout(() => {
-            props.getAllTitle()
             props.getAllChats()
           }, 500)
       } else {
@@ -85,10 +67,9 @@ export function Chats (props) {
         })
         props.deleteUserTitle(titleId)
         setTimeout(() => {
-          props.getALlUserTitle(userId)
           props.getAllUserChatsById(userId)
         }, 500)
-      } 
+      }
     }
 
 
@@ -109,7 +90,7 @@ export function Chats (props) {
             {!props.user.admin? props.chat.userCollection.map(({_id, title, chatnumber}) => {
               return (
                 <div key={uuidv4()} className="publish-data-rows-chats">
-                  <div className="publish-chats-column-1" onClick={() => getOneChat(_id, chatnumber)}>{chatnumber + " " + title}</div>
+                  <div className="publish-chats-column-1" onClick={() => getOneChat(_id)}>{chatnumber + " " + title}</div>
                   <div className="publish-chats-column-2" onClick={() => saveAsDraft(_id)}>{draft === _id? "Save as draft" : null}</div> 
                   <div className="publish-chats-column-3" onClick={deleteUserChat(_id, chatnumber)}>delete</div>    
                 </div>
@@ -118,7 +99,7 @@ export function Chats (props) {
               props.chat.adminChats.map(({_id, title, chatnumber}) => {
                 return (
                   <div key={uuidv4()} className="publish-data-rows-chats">
-                    <div className="publish-chats-column-1" onClick={() => getOneChat(_id, chatnumber)}>{chatnumber + " " + title}</div>
+                    <div className="publish-chats-column-1" onClick={() => getOneChat(_id)}>{chatnumber + " " + title}</div>
                     <div className="publish-chats-column-2" onClick={() => saveAsDraft(_id)}>{draft === _id? "Save as draft" : null}</div>
                     <div className="publish-chats-column-3" onClick={() => deleteChat(_id, chatnumber)}>delete</div>    
                   </div>
@@ -157,8 +138,6 @@ let mapStateToProps = (state) => {
     deleteUserTitle: deleteUserTitle,
     getAllUserChatsById: getAllUserChatsById,
     getOneUserChatById: getOneUserChatById,
-    getTitle: getTitle,
-    getUserTitle: getUserTitle,
   }
   
   let ChatList = connect(mapStateToProps, mapDispatchToProps)(Chats)
