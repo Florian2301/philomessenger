@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Form, Alert, Col, Row } from 'react-bootstrap'
-import { v4 as uuidv4 } from 'uuid';
+import Spinner from 'react-bootstrap/Spinner'
+import { v4 as uuidv4 } from 'uuid'
 import Panel from '../../elements/Panel'
 import Button from '../../elements/Button'
 import './SaveDraft.css'
@@ -18,7 +19,7 @@ export function SaveDraft(props) {
     const [error, setError] = useState('')
     const [update, setUpdate] = useState(false)
     const [reset, setReset] = useState(false) 
-    const [message, setMessage] = useState("")
+    const [spinner, setSpinner] = useState(false)
     
     
     function handleSubmit(e) {
@@ -42,43 +43,35 @@ export function SaveDraft(props) {
 
             if(!update) {           // if draft will be updated
                 if(admin) {
-                    setMessage("save draft...")
+                    setSpinner(true)
                     props.saveDraft(userId, user, title, date, tags, description, buttons, messages)
                     setTimeout(() => {
                         props.getDrafts()
+                        setSpinner(false)
                     }, 500)
-                    setTimeout(() => {
-                        setMessage("")
-                    }, 2000)
                 } else {
-                    setMessage("save draft...")
+                    setSpinner(true)
                     props.saveUserDraft(userId, user, title, date, tags, description, buttons, messages)
                     setTimeout(() => {
                         props.getUserDrafts(userId)
+                        setSpinner(false)
                     }, 500)
-                    setTimeout(() => {
-                        setMessage("")
-                    }, 2000)
                 }
             } else {                // else create a new draft
                 if(admin) {
-                    setMessage("update draft...")
+                    setSpinner(true)
                     props.updateDraft(draftId, title, date, tags, description, buttons, messages)
                     setTimeout(() => {
                         props.getDrafts()
+                        setSpinner(false)
                     }, 500)
-                    setTimeout(() => {
-                        setMessage("")
-                    }, 2000)
                 } else {
-                    setMessage("update draft...")
+                    setSpinner(true)
                     props.updateUserDraft(draftId, title, date, tags, description, buttons, messages)
                     setTimeout(() => {
                         props.getUserDrafts(userId)
+                        setSpinner(false)
                     }, 500)
-                    setTimeout(() => {
-                        setMessage("")
-                    }, 2000)
                 }
             }
             setUpdate(false)
@@ -142,7 +135,7 @@ export function SaveDraft(props) {
                      </Col>
                 </Form.Group>
                 <div id="message-actions">
-                    {message? message : null}
+                    {spinner? <Spinner animation="border" role="status" ></Spinner> : null}
                 </div>
                 <div className="save-actions">
                     <Button button={true} label="Save as new draft" id="save-btn" type="submit"></Button>
