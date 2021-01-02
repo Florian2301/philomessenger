@@ -98,12 +98,12 @@ router.put('/:id', getChat, async (req, res) => {
         } 
         return message.text
     })
-try {
-    const updatedChat = await res.userchat.save()
-    res.json(updatedChat)
-} catch (err) {
-    res.status(400).json({ message: err.message})
-}
+    try {
+        const updatedChat = await res.userchat.save()
+        res.json(updatedChat)
+    } catch (err) {
+        res.status(400).json({ message: err.message})
+    }
 })
 
 
