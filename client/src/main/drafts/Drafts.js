@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import './Drafts.css'
 import Button from '../../elements/Button'
 import Panel from '../../elements/Panel'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
+import Spinner from 'react-bootstrap/Spinner'
 import PDF from '../../elements/PDF'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { getDrafts, getOneDraft, deleteDraft, getUserDrafts, getOneUserDraft, deleteUserDraft } from '../../redux/actions/draft'
@@ -12,6 +13,7 @@ import {  clearDisplay, setKey } from '../../redux/actions/user'
 
 
 export function Name (props) {
+    const [spinner, setSpinner] = useState(false)
     
     function showAllDrafts() {
       const admin = props.user.admin
@@ -20,10 +22,14 @@ export function Name (props) {
     }
 
     function showDraft(id) {
+        setSpinner(true)
         props.clearDisplay()            // if draft will be displayed, window will be cleaned first
         const admin = props.user.admin
         admin? props.getOneDraft(id) : props.getOneUserDraft(id)
-        props.setKey("chat")
+        props.setKey("chat")            // for mobile navigation
+        setTimeout(() => {
+        setSpinner(false)
+      }, 500)     
     }
 
     function deleteDraft(id) {
@@ -47,13 +53,14 @@ export function Name (props) {
     return (
       <Panel title="Your saved drafts" id="panel-drafts">
         <section className="flexContainer-draftlist">
-        <Button
+        {!spinner? <Button
               button="true"
               className="save-draft"
               id="draft"
               label="Show drafts"
               handleClick={showAllDrafts}
           ></Button>
+        : <Spinner animation="border" role="status" ></Spinner>}
         </section>
         <div className="table-drafts" >
             {!props.user.admin? props.draft.userDrafts.map(({_id, title, messages}) => {
