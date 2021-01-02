@@ -6,7 +6,8 @@ import { connect } from 'react-redux'
 import { addMessages, updateDraft, updateUserDraft } from '../../redux/actions/draft'
 import { clearDisplay } from '../../redux/actions/user'
 import './Chat.css'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
+import Spinner from 'react-bootstrap/Spinner'
 
 const KEY_ENTER = 13
 const KEY_ESC = 27
@@ -74,6 +75,8 @@ class Chat extends Component {
   
   // save new messages and buttons to draft
   saveMessageAndButton = () => {
+    this.setState({ save: true})
+    setTimeout(() => { this.setState({ save: false}) }, 500)
     const admin = this.props.user.admin
     const draftId = this.props.draft.draftId
     const title = this.props.draft.title
