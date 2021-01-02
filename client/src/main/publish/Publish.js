@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Form, Alert, Col, Row } from 'react-bootstrap'
+import Spinner from 'react-bootstrap/Spinner'
 import Panel from '../../elements/Panel'
 import Button from '../../elements/Button'
 import './Publish.css'
@@ -19,7 +20,7 @@ export function Publish(props) {
     const [error, setError] = useState('')
     const [update, setUpdate] = useState(false)
     const [reset, setReset] = useState(false) 
-    const [message, setMessage] = useState("")
+    const [spinner, setSpinner] = useState(false)
     
     
     function handleSubmit(e) {
@@ -46,47 +47,39 @@ export function Publish(props) {
             
             if(!update) {
                 if(admin) {
-                    setMessage("publish chat...")
+                    setSpinner(true)
                     props.saveTitle(userId, user, chatnumber, title, date, tags, description)
                     props.saveChat(userId, user, chatnumber, title, date, tags, description, buttons, messages)
                     setTimeout(() => {
                         props.getAllChats()
+                        setSpinner(false)
                     }, 500)
-                    setTimeout(() => {
-                        setMessage("")
-                    }, 2000)
                 } else {
-                    setMessage("publish chat...")
+                    setSpinner(true)
                     props.saveUserTitle(userId, user, chatnumber, title, date, tags, description)
                     props.saveUserChat(userId, user, chatnumber, title, date, tags, description, buttons, messages)
                     setTimeout(() => {
                         props.getAllUserChatsById(userId)
+                        setSpinner(false)
                     }, 500)
-                    setTimeout(() => {
-                        setMessage("")
-                    }, 2000)
                 }
             } else {
                 if(admin) {
-                    setMessage("update chat...")
+                    setSpinner(true)
                     props.updateTitle(titleId, chatnumber, title, date, tags, description)
                     props.updateChatDetails(chatId, chatnumber, title, date, tags, description)
                     setTimeout(() => {
                         props.getChatById(chatId)
+                        setSpinner(false)
                     }, 500)
-                    setTimeout(() => {
-                        setMessage("")
-                    }, 2000)
                 } else {
-                    setMessage("update chat...")
+                    setSpinner(true)
                     props.updateUserTitle(titleId, chatnumber, title, date, tags, description)
                     props.updateUserChat(chatId, chatnumber, title, date, tags, description)
                     setTimeout(() => {
                         props.getOneUserChatById(chatId)
+                        setSpinner(false)
                     }, 500)
-                    setTimeout(() => {
-                        setMessage("")
-                    }, 2000)
                 }
             }
             setUpdate(false)
@@ -141,7 +134,7 @@ export function Publish(props) {
                      </Col>
                 </Form.Group>
                 <div id="message-publish-actions">
-                    {message? message : null}
+                    {spinner? <Spinner animation="border" role="status" ></Spinner> : null}
                 </div>
                 <div className="publish-actions">
                     <Button button={true} label="Publish chat" id="publish-btn" type="submit"></Button>
