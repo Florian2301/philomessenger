@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import './DraftList.css'
 import Button from '../../elements/Button'
 import Panel from '../../elements/Panel'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
+import Spinner from 'react-bootstrap/Spinner'
 import { getDrafts, getOneDraft, deleteDraft, getUserDrafts, getOneUserDraft, deleteUserDraft, publishAdminDraft, publishUserDraft } from '../../redux/actions/draft'
 import {  clearDisplay, setKey } from '../../redux/actions/user'
 
 
 
 export function DraftList (props) {
+    const [spinner, setSpinner] = useState(false)
     
     function showAllDrafts() {
       const admin = props.user.admin
@@ -20,17 +22,25 @@ export function DraftList (props) {
 
     // show one draft
     function showDraft(id) {
+        setSpinner(true)
         props.clearDisplay()
         const admin = props.user.admin
         admin? props.getOneDraft(id) : props.getOneUserDraft(id)
         props.setKey("chat")  // for navigation of mobile version
+        setTimeout(() => {
+        setSpinner(false)
+      }, 500)           
     }
 
     // prepare draft for upload as draft, draft will be loaded in props.chat
     function prepareDraft(id) {
+      setSpinner(true)
       props.clearDisplay()
       const admin = props.user.admin
       admin? props.publishAdminDraft(id) : props.publishUserDraft(id)
+      setTimeout(() => {
+        setSpinner(false)
+      }, 500)           
   }
 
     function deleteDraft(id) {
@@ -54,13 +64,14 @@ export function DraftList (props) {
     return (
       <Panel title="Prepare drafts to publish" id="panel-drafts">
         <section className="flexContainer-draftlist-publish">
-        <Button
+        {!spinner? <Button
               button="true"
               className="publish-draft"
               id="draft"
               label="Get drafts"
               handleClick={showAllDrafts}
           ></Button>
+        : <Spinner animation="border" role="status" ></Spinner>}
         </section>
         <div className="publish-table-drafts" >
             {!props.user.admin? props.draft.userDrafts.map(({_id, title}) => {
