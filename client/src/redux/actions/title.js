@@ -24,18 +24,6 @@ export const getAllTitle = () => dispatch => {
     })
 }
 
-// get one title by chatnumber (admin)
-export const getTitleByChatnumber = (chatnumber) => dispatch => {
-  axios
-    .get('/api/title/', {params: {chatnumber: chatnumber}})
-    .then(res => dispatch({
-      type: 'GET_TITLE', payload: res.data
-    }))
-    .catch(function (error) {
-      console.log(error);
-    })
-}
-
 // get one title by id (admin)
 export const getTitle = (id) => dispatch => {
   axios
@@ -106,18 +94,6 @@ export const getAllUserTitleById = (userId) => dispatch => {
     .get('/api/usertitle')
     .then(res => dispatch({
       type: 'GET_SELECTED_TITLE', payload: res.data, userId
-    }))
-    .catch(function (error) {
-      console.log(error);
-    })
-}
-
-// get one title by chatnumber (user)
-export const getUserTitleByChatnumber = (chatnumber, userId) => dispatch => {
-  axios
-    .get('/api/usertitle/', {params: {chatnumber: chatnumber}})
-    .then(res => dispatch({
-      type: 'GET_TITLE', payload: res.data, userId
     }))
     .catch(function (error) {
       console.log(error);
