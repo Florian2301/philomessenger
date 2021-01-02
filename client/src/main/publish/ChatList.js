@@ -87,7 +87,7 @@ export function Chats (props) {
           ></Button>
         </section>
         <div className="publish-table-chats" >
-            {!props.user.admin? props.chat.userCollection.map(({_id, title, chatnumber}) => {
+            {!props.user.admin? props.chat.userCollection.map(({_id, userId, title, chatnumber}) => {
               return (
                 <div key={uuidv4()} className="publish-data-rows-chats">
                   <div className="publish-chats-column-1" onClick={() => getOneChat(_id)}>{chatnumber + " " + title}</div>
