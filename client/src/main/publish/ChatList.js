@@ -92,7 +92,7 @@ export function Chats (props) {
                 <div key={uuidv4()} className="publish-data-rows-chats">
                   <div className="publish-chats-column-1" onClick={() => getOneChat(_id)}>{chatnumber + " " + title}</div>
                   <div className="publish-chats-column-2" onClick={() => saveAsDraft(_id)}>{draft === _id? "Save as draft" : null}</div> 
-                  <div className="publish-chats-column-3" onClick={deleteUserChat(_id, chatnumber)}>delete</div>    
+                  <div className="publish-chats-column-3" onClick={() => deleteChat(_id, userId, chatnumber}>delete</div>    
                 </div>
               )})
               :
