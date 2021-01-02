@@ -75,12 +75,12 @@ export const updateChat = (id, messagenumber, text) => dispatch => {
 }
 
 // delete one chat by id (admin)
-export const deleteChat = (chatId) => dispatch => {
+export const deleteChat = (id) => dispatch => {
   axios
-    .delete(`/api/chats/${chatId}`)
+    .delete(`/api/chats/${id}`)
     .then(res =>
       dispatch({
-        type: 'DELETE_ADMIN_CHAT', chatId
+        type: 'DELETE_ADMIN_CHAT', id
       }))
     .catch(function (error) {
       console.log(error);
@@ -176,12 +176,12 @@ export const updateUserMessage = (id, messagenumber, text) => dispatch => {
 }
 
 // delete one chat by id (user)
-export const deleteUserChat = (chatId) => dispatch => {
+export const deleteUserChat = (id) => dispatch => {
   axios
-    .delete(`/api/userchats/${chatId}`)
+    .delete(`/api/userchats/${id}`)
     .then(res =>
       dispatch({
-        type: 'DELETE_USER_CHAT', chatId
+        type: 'DELETE_USER_CHAT', id
       }))
     .catch(function (error) {
       console.log(error);
