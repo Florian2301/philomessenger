@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import Spinner from 'react-bootstrap/Spinner'
 import { getAllChats, getAllUserChats, getAllUserChatsById, getChatById, getOneUserChat, getOneUserChatById, deleteChat, deleteUserChat } from '../../redux/actions/chat'
 import { saveDraft, saveUserDraft } from '../../redux/actions/draft'
-import { getAllTitle, getAllUserTitleById, deleteTitle, deleteUserTitle } from '../../redux/actions/title'
+import { getAllTitle, getAllUserTitleById, getTitle, getUserTitle, deleteTitle, deleteUserTitle } from '../../redux/actions/title'
 import { clearDisplay } from '../../redux/actions/user'
 
 
@@ -23,11 +23,27 @@ export function Chats (props) {
       admin? props.getAllTitle() : props.getAllUserTitleById(id)
     }
 
-    function getOneChat(id) {
+    function getOneChat(id, chatnumber) {
         setSpinner(true)
         props.clearDisplay()
+        let titleId = ""
         const admin = props.user.admin
         admin? props.getChatById(id) : props.getOneUserChatById(id) // get one chat
+        if(admin) {                                                 // get one title
+          props.title.adminTitle.map((title) => {
+            if(title.chatnumber === chatnumber) {
+                titleId = title._id
+            } return titleId
+          })
+          props.getTitle(titleId)
+        } else {
+          props.title.userCollection.map((title) => {
+            if(title.chatnumber === chatnumber) {
+              titleId = title._id
+            } return titleId
+          })
+          props.getUserTitle(titleId)
+        }
         setDraft(id)  // if chat is clicked, a link for saving as draft displays 
         setTimeout(() => {
           setSpinner(false)
@@ -101,7 +117,7 @@ export function Chats (props) {
             {!props.user.admin? props.chat.userCollection.map(({_id, userId, title, chatnumber}) => {
               return (
                 <div key={uuidv4()} className="publish-data-rows-chats">
-                  <div className="publish-chats-column-1" onClick={() => getOneChat(_id)}>{chatnumber + " " + title}</div>
+                  <div className="publish-chats-column-1" onClick={() => getOneChat(_id, chatnumber)}>{chatnumber + " " + title}</div>
                   <div className="publish-chats-column-2" onClick={() => saveAsDraft(_id)}>{draft === _id? "Save as draft" : null}</div> 
                   <div className="publish-chats-column-3" onClick={() => deleteChat(_id, userId, chatnumber)}>delete</div>    
                 </div>
@@ -110,7 +126,7 @@ export function Chats (props) {
               props.chat.adminChats.map(({_id, title, chatnumber}) => {
                 return (
                   <div key={uuidv4()} className="publish-data-rows-chats">
-                    <div className="publish-chats-column-1" onClick={() => getOneChat(_id)}>{chatnumber + " " + title}</div>
+                    <div className="publish-chats-column-1" onClick={() => getOneChat(_id, chatnumber)}>{chatnumber + " " + title}</div>
                     <div className="publish-chats-column-2" onClick={() => saveAsDraft(_id)}>{draft === _id? "Save as draft" : null}</div>
                     <div className="publish-chats-column-3" onClick={() => deleteChat(_id, chatnumber)}>delete</div>    
                   </div>
