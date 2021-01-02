@@ -23,7 +23,7 @@ export function Start(props) {
         setAddName(newName)                                     // short messages, name is added
         setTimeout(() => {
             setAddName("")
-        }, 5000)
+        }, 1000)
     }
 
     
@@ -35,7 +35,7 @@ export function Start(props) {
                     <Col>
                         <Form.Control id="start-input" type="name" ref={nameRef} placeholder="Add a name"/>
                     </Col>
-                    {addName && <p id="addname"><span id="addname-name">{addName}</span> added</p>}
+                    {addName && <p id="addname">{addName} added...</p>}
                 </Form.Group>
             </Form>
            
