@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import './ChatList.css'
 import Button from '../../elements/Button'
 import Panel from '../../elements/Panel'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
+import Spinner from 'react-bootstrap/Spinner'
 import { getAllChats, getAllUserChats, getAllUserChatsById, getChatById, getOneUserChat, getOneUserChatById, deleteChat, deleteUserChat } from '../../redux/actions/chat'
 import { saveDraft, saveUserDraft } from '../../redux/actions/draft'
 import { getAllTitle, getAllUserTitleById, deleteTitle, deleteUserTitle } from '../../redux/actions/title'
@@ -13,6 +14,7 @@ import { clearDisplay } from '../../redux/actions/user'
 
 export function Chats (props) {
     const [draft, setDraft] = useState("")
+    const [spinner, setSpinner] = useState(false)
     
     function getAllChats() {
       const admin = props.user.admin
@@ -22,14 +24,19 @@ export function Chats (props) {
     }
 
     function getOneChat(id) {
+        setSpinner(true)
         props.clearDisplay()
         const admin = props.user.admin
         admin? props.getChatById(id) : props.getOneUserChatById(id) // get one chat
-        setDraft(id)  // if chat is clicked, a link for saving as draft displays                                                
+        setDraft(id)  // if chat is clicked, a link for saving as draft displays 
+        setTimeout(() => {
+          setSpinner(false)
+        }, 500)          
     }
 
     // save chat as draft for further editing
-    function saveAsDraft() {                                          
+    function saveAsDraft() {
+      setSpinner(true) 
       const admin = props.user.admin
       const userId = props.user.userId
       const user = props.user.username
@@ -41,6 +48,9 @@ export function Chats (props) {
       const messages = props.chat.messages
       admin? props.saveDraft(userId, user, title, date, tags, description, buttons, messages) 
         : props.saveUserDraft(userId, user, title, date, tags, description, buttons, messages)
+      setTimeout(() => {
+        setSpinner(false)
+      }, 500)      
     }
 
     // delete one title + chat
@@ -78,13 +88,14 @@ export function Chats (props) {
     return (
       <Panel title="Your published chats" id="panel-drafts">
         <section className="flexContainer-chatlist-publish">
-        <Button
+        {!spinner? <Button
               button="true"
               className="publish-chat"
               id="draft"
               label="Get chats"
               handleClick={getAllChats}
           ></Button>
+        : <Spinner animation="border" role="status" ></Spinner>}
         </section>
         <div className="publish-table-chats" >
             {!props.user.admin? props.chat.userCollection.map(({_id, userId, title, chatnumber}) => {
