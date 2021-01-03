@@ -108,7 +108,7 @@ export function Chats (props) {
               button="true"
               className="publish-chat"
               id="draft"
-              label="Get chats"
+              label="Show chats"
               handleClick={getAllChats}
           ></Button>
         : <Spinner animation="border" role="status" ></Spinner>}
