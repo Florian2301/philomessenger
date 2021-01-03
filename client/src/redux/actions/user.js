@@ -84,18 +84,6 @@ export const updateUserModus = (id, modus) => dispatch => {
     })
 }
 
-// update authId from firebase authentification
-export const updateUserAuthId = (id, authId) => dispatch => {
-  axios
-    .patch(`/api/users/${id}`, {authId})
-    .then(res => 
-      dispatch({ type: 'UPDATE_USER' })
-    )
-    .catch(function (error) {
-      console.log(error.message);
-    })
-}
-
 // delete one user
 export const deleteUserDB = (id) => dispatch => {
   axios
