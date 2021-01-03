@@ -1,7 +1,6 @@
 let initialState = {
     userId: [],  
     username: [],
-    authId: [],
     modus: [], 
     email: [],
     date: [],
@@ -24,7 +23,6 @@ function users(state = initialState, action) {
         return {...state, 
                 userId: action.payload._id, 
                 username: action.payload.username,
-                authId: action.payload.authId,
                 modus: action.payload.modus, 
                 email: action.payload.email, 
                 admin: action.payload.admin,
@@ -44,7 +42,6 @@ function users(state = initialState, action) {
           return {...state,
                     userId: [],  
                     username: [],
-                    authId: [],
                     modus: [], 
                     email: [],
                     date: [],
