@@ -5,11 +5,11 @@ const Schema = mongoose.Schema
 const UsersSchema = new Schema({
     username: {
         type: String,
-        required: true
+        required: false
     },
     email: {
         type: String,
-        required: true
+        required: false
     },
     admin: {
         type: Boolean,
