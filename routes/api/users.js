@@ -49,6 +49,9 @@ router.patch('/:id', getUser, async (req, res) => {
     if (req.body.userId !== res.user.userId) {
         res.user.userId = req.body.userId
     }
+    if (req.body.email !== res.user.email) {
+        res.user.email = req.body.email
+    }
     if (req.body.chats !== res.user.chats) {
         res.user.chats.push(req.body.chats)
     }
