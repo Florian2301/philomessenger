@@ -72,6 +72,30 @@ export const updateUserDB = (id, userName, userId, email, chats) => dispatch => 
     })
 }
 
+// update User Modus (Desktop, Tablet, Mobile)
+export const updateUserModus = (id, modus) => dispatch => {
+  axios
+    .patch(`/api/users/${id}`, {modus})
+    .then(res => 
+      dispatch({ type: 'UPDATE_USER' })
+    )
+    .catch(function (error) {
+      console.log(error.message);
+    })
+}
+
+// update authId from firebase authentification
+export const updateUserAuthId = (id, authId) => dispatch => {
+  axios
+    .patch(`/api/users/${id}`, {authId})
+    .then(res => 
+      dispatch({ type: 'UPDATE_USER' })
+    )
+    .catch(function (error) {
+      console.log(error.message);
+    })
+}
+
 // delete one user
 export const deleteUserDB = (id) => dispatch => {
   axios
