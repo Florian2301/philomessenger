@@ -5,7 +5,7 @@ import Panel from '../../elements/Panel'
 import Button from '../../elements/Button'
 import './Publish.css'
 import { connect } from 'react-redux'
-import { saveTitle, updateTitle, saveUserTitle, updateUserTitle } from '../../redux/actions/title'
+import { saveTitle, updateTitle, saveUserTitle, updateUserTitle, getAllUserTitle, getAllTitle } from '../../redux/actions/title'
 import { getChatById, getOneUserChatById, saveChat, updateChatDetails, getAllChats, saveUserChat, getAllUserChatsById, updateUserChat } from '../../redux/actions/chat'
 import { clearDisplay } from '../../redux/actions/user'
 
@@ -82,6 +82,8 @@ export function Publish(props) {
                     }, 500)
                 }
             }
+            props.getAllTitle()
+            props.getAllUserTitle()
             setUpdate(false)
             setReset(false)
             setError("")
@@ -166,7 +168,9 @@ const mapActionsToProps = {
     getChatById: getChatById,
     getOneUserChatById: getOneUserChatById,
     saveUserTitle: saveUserTitle,
-    updateUserTitle: updateUserTitle
+    updateUserTitle: updateUserTitle,
+    getAllUserTitle: getAllUserTitle,
+    getAllTitle: getAllTitle
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Publish)
