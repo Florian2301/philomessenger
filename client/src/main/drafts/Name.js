@@ -28,7 +28,7 @@ export function Start(props) {
 
     
     return (
-        <Panel id="start" title="Add a name and start writing your Chat">
+        <Panel id="start" title="Add names to your chat">
             <Form onSubmit={handleSubmit}>
                 <Form.Group id="startname" as={Row}>
                     <Form.Label id="start-name">Name:*</Form.Label>
