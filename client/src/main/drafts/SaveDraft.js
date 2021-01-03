@@ -93,7 +93,7 @@ export function SaveDraft(props) {
 
     
     return (
-        <Panel id="saveDraft" title="Save your chat as draft">
+        <Panel id="saveDraft" title="Start a new chat">
             <div className="text-center mb-4">
                 {error && <Alert variant="danger">{error}</Alert>}
             </div>
@@ -138,8 +138,8 @@ export function SaveDraft(props) {
                     {spinner? <Spinner animation="border" role="status" ></Spinner> : null}
                 </div>
                 <div className="save-actions">
-                    <Button button={true} label="Save as new draft" id="save-btn" type="submit"></Button>
-                    <Button button={true} label="Update draft" id="save-btn" type="submit" handleClick={() => setUpdate(true)}></Button>
+                    <Button button={true} label="Start a new chat" id="save-btn" type="submit"></Button>
+                    <Button button={true} label="Save changes" id="save-btn" type="submit" handleClick={() => setUpdate(true)}></Button>
                     <Button button={true} label="Clear" id="save-btn-reset" type="submit" handleClick={() => setReset(true)}></Button>
                 </div>    
 
