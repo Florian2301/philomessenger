@@ -7,9 +7,9 @@ const UsersSchema = new Schema({
         type: String,
         required: true
     },
-    authId: {
+    email: {
         type: String,
-        required: false
+        required: true
     },
     admin: {
         type: Boolean,
