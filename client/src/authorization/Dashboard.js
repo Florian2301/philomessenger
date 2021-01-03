@@ -8,6 +8,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import { connect } from 'react-redux'
 import { deleteUserDraft } from '../redux/actions/draft'
+import { deleteUserTitle , getAllUserTitle} from '../redux/actions/title'
 import { deleteUserChat, getAllUserChats } from '../redux/actions/chat'
 import { getUser, clearDisplay, logout } from '../redux/actions/user'
 
@@ -46,14 +47,21 @@ export function Dashboard(props) {
                 }
                 return currentId
             })
-            props.chat.userChats.map(({_id, userId}) => {
+            props.chat.userCollection.map(({_id, userId}) => {
                 if (currentId === userId) {
                     props.deleteUserChat(_id)                   // delete chats "testuser"
                 }
                 return currentId
             })
+            props.title.userTitle.map(({_id, userId}) => {
+                if (currentId === userId) {
+                    props.deleteUserTitle(_id)                   // delete title "testuser"
+                }
+                return currentId
+            })
             setTimeout(() => {
                 props.getAllUserChats()
+                props.getAllUserTitle()
             }, 500 )
         }
     }
@@ -122,7 +130,8 @@ export function Dashboard(props) {
 const mapStateToProps = state => ({
     user: state.user,
     chat: state.chat,
-    draft: state.draft
+    draft: state.draft,
+    title: state.title
 })
 
 const mapActionsToProps = {
@@ -132,7 +141,8 @@ const mapActionsToProps = {
     deleteUserChat: deleteUserChat,
     deleteUserDraft: deleteUserDraft,
     logout: logout,
-    
+    deleteUserTitle: deleteUserTitle,
+    getAllUserTitle: getAllUserTitle
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Dashboard)
