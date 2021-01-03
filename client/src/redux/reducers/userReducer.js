@@ -1,6 +1,8 @@
 let initialState = {
     userId: [],  
     username: [],
+    authId: [],
+    modus: [], 
     email: [],
     date: [],
     allUsers: [],
@@ -21,7 +23,9 @@ function users(state = initialState, action) {
       case "GET_USER":
         return {...state, 
                 userId: action.payload._id, 
-                username: action.payload.username, 
+                username: action.payload.username,
+                authId: action.payload.authId,
+                modus: action.payload.modus, 
                 email: action.payload.email, 
                 admin: action.payload.admin,
                 date: action.payload.date,
@@ -40,6 +44,8 @@ function users(state = initialState, action) {
           return {...state,
                     userId: [],  
                     username: [],
+                    authId: [],
+                    modus: [], 
                     email: [],
                     date: [],
                     allUsers: [],
