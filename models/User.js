@@ -7,13 +7,17 @@ const UsersSchema = new Schema({
         type: String,
         required: true
     },
+    userId: {
+        type: String,
+        required: false
+    },
     admin: {
         type: Boolean,
         default: false
     },
-    email: {
+    modus: {
         type: String,
-        required: true
+        required: false
     },
     date: {
         type: Date,
