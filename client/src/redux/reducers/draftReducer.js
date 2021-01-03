@@ -16,7 +16,7 @@ let initialState = {
 function drafts(state = initialState, action) {
   switch (action.type) {
     case "START_CHAT": 
-      return {...state, buttons: action.names, draftEditmode: true}
+      return {...state, buttons: action.names}
     case "REMOVE_NAME":
       return {...state, buttons: state.buttons.filter(button => button.name !== action.name.name)}
     case "GET_DRAFT":
