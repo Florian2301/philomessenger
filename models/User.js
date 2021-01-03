@@ -7,7 +7,7 @@ const UsersSchema = new Schema({
         type: String,
         required: true
     },
-    userId: {
+    authId: {
         type: String,
         required: false
     },
