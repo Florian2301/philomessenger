@@ -61,9 +61,9 @@ export const getUser = (username) => dispatch => {
 }
 
 // update Profile
-export const updateUserDB = (id, userName, userId, chats) => dispatch => {
+export const updateUserDB = (id, userName, userId, email, chats) => dispatch => {
   axios
-    .patch(`/api/users/${id}`, {userName, userId, chats})
+    .patch(`/api/users/${id}`, {userName, userId, email, chats})
     .then(res => 
       dispatch({ type: 'UPDATE_USER' })
     )
