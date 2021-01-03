@@ -43,13 +43,13 @@ router.post('/', async (req, res) => {
 
 // Update one User - username / email / chats
 router.patch('/:id', getUser, async (req, res) => {
-    if (req.body.userName != null) {
+    if (req.body.userName !== res.user.username) {
         res.user.username = req.body.userName
     }
-    if (req.body.userEmail != null) {
+    if (req.body.userId !== res.user.email) {
         res.user.email = req.body.userEmail
     }
-    if (req.body.chats != null) {
+    if (req.body.chats !== res.user.chats) {
         res.user.chats.push(req.body.chats)
     }
     try {
