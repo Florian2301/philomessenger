@@ -68,7 +68,7 @@ export function DraftList (props) {
               button="true"
               className="publish-draft"
               id="draft"
-              label="Get drafts"
+              label="Show drafts"
               handleClick={showAllDrafts}
           ></Button>
         : <Spinner animation="border" role="status" ></Spinner>}
