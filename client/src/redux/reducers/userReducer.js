@@ -35,6 +35,8 @@ function users(state = initialState, action) {
           return {...state, welcome: true}
       case "UPDATE_USER":
           return {...state, update: true, welcome: false}
+      case "CHANGE_MODUS":
+            return {...state, modus: action.modus}
       case "CANCEL":
           return {...state, update: false, welcome: false}
       case "LOGOUT":
