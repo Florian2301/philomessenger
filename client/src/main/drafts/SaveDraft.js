@@ -10,7 +10,6 @@ import { startChat, removeName, saveDraft, saveUserDraft, getDrafts, getUserDraf
 import { clearDisplay } from '../../redux/actions/user'
 
 
-
 export function SaveDraft(props) {
     const titleRef = useRef()
     const dateRef = useRef()
@@ -91,12 +90,14 @@ export function SaveDraft(props) {
         props.removeName(name)
     }
 
+  // ----------------------------------- RETURN --------------------------------------------------------------------------
     
     return (
         <Panel id="saveDraft" title="Start a new chat">
             <div className="text-center mb-4">
                 {error && <Alert variant="danger">{error}</Alert>}
             </div>
+            
             <Form onSubmit={handleSubmit}>
                 <Form.Group id="save-draft" as={Row}>
                     <Form.Label id="save-title">Title:*</Form.Label>
@@ -104,6 +105,7 @@ export function SaveDraft(props) {
                         <Form.Control id="save-input-title" type="name" ref={titleRef} autoFocus placeholder="Choose a title for your chat" defaultValue={props.draft.title}/>
                     </Col>
                 </Form.Group>
+                
                 {props.draft.buttons.map((button) => {
                     return (
                     <Form.Group id="save-draft" as={Row} key={uuidv4()}>
@@ -115,12 +117,14 @@ export function SaveDraft(props) {
                     </Form.Group>
                     )
                 })}
+                
                 <Form.Group id="save-draft" as={Row}>
                     <Form.Label id="save-date">Date:</Form.Label>
                     <Col>
                         <Form.Control id="save-input-date" type="text" ref={dateRef} placeholder="YYYY-MM-DD" defaultValue={props.draft.date}/>
                     </Col>
                 </Form.Group>
+                
                 <Form.Group id="save-draft" as={Row}>
                     <Form.Label id="save-tags">Tags: </Form.Label>
                      <Col>
@@ -134,9 +138,11 @@ export function SaveDraft(props) {
                         <Form.Control id="save-input-description" type="text" as="textarea" ref={descriptionRef} placeholder="Give a brief summary or description of your chat" defaultValue={props.draft.description}/>
                      </Col>
                 </Form.Group>
+                
                 <div id="message-actions">
                     {spinner? <Spinner animation="border" role="status" ></Spinner> : null}
                 </div>
+                
                 <div className="save-actions">
                     <Button button={true} label="Start a new chat" id="save-btn" type="submit"></Button>
                     <Button button={true} label="Save changes" id="save-btn" type="submit" handleClick={() => setUpdate(true)}></Button>
@@ -149,6 +155,7 @@ export function SaveDraft(props) {
     )
 }
 
+//--------------------------------------- REDUX ------------------------------------------------------
 
 const mapStateToProps = state => ({
     draft: state.draft,
