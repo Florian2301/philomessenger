@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useMediaQuery } from 'react-responsive'
 import store from './store'
 import { Provider } from 'react-redux'
+import { useMediaQuery } from 'react-responsive'
 import Container from 'react-bootstrap/Container'
 import Header from './header/Header'
 import FlexMain from './main/FlexMain'
@@ -10,41 +10,61 @@ import TabletChatboxLeft from './responsive/TabletChatboxLeft'
 import TabletChatboxRight from './responsive/TabletChatboxRight'
 import MobileChatbox from './responsive/MobileChatbox'
 import './App.css'
+import SelectView from './header/SelectView'
 
 
-/**
- * breakpoints for different size of screens
- * @param {*} param0 
- */
-const Desktop = ({ children }) => {
-  const isDesktop = useMediaQuery({ minWidth: 1401 })
-  return isDesktop ? children : null
-}
+export default function App() {
+  const [ bigScreen, setBigScreen ] = useState(1200)
+  const [ mediumScreen, setMediumScreen ] = useState(768)
 
-const Tablet = ({ children }) => {
-  const isTablet = useMediaQuery({ minWidth: 982, maxWidth: 1400 })
-  return isTablet ? children : null
-}
-const Mobile = ({ children }) => {
-  const isMobile = useMediaQuery({ maxWidth: 981 })
-  return isMobile ? children : null
-}
+  const viewAuto = () => {
+    setBigScreen(1200)
+    setMediumScreen(768)
+  }
+
+  const viewDesktop = () => {
+    setBigScreen(980)
+    setMediumScreen(481)
+  }
+
+  const viewTablet = () => {
+    setBigScreen(3000)
+    setMediumScreen(641)
+  }
+
+  const viewMobile = () => {
+    setBigScreen(3000)
+    setMediumScreen(2991)
+  }  
+
+  const Desktop = ({ children }) => {
+    const isDesktop = useMediaQuery({ minWidth: bigScreen })
+    return isDesktop ? children : null
+  }
 
 
-/**
- * order of components for different screens
- */
-class App extends Component {
-  render() {
+  const Tablet = ({ children }) => {
+    const isTablet = useMediaQuery({ minWidth: mediumScreen, maxWidth: bigScreen-1 })
+    return isTablet ? children : null
+  }
+
+  const Mobile = ({ children }) => {
+    const isMobile = useMediaQuery({ maxWidth: mediumScreen-1 })
+    return isMobile ? children : null
+  }
+
+// ------------------------------------- RETURN ------------------------------------------------
+  
     return (
       <Provider store={store}>
         <div>
           <Desktop>
-            <Header />
+            <Header auto={() => viewAuto()} desktop={() => viewDesktop()} tablet={() => viewTablet()} mobile={() => viewMobile()} id="viewdesktop"/>
             <FlexMain />
           </Desktop>
 
           <Tablet >
+              <SelectView auto={() => viewAuto()} desktop={() => viewDesktop()} tablet={() => viewTablet()} mobile={() => viewMobile()} id="viewtablet"/>
               <Container id="flexTablet">
                 <TabletChatboxLeft/>
                 <TabletChatboxRight />
@@ -52,13 +72,10 @@ class App extends Component {
           </Tablet>
           
           <Mobile>
-              <MobileChatbox/>
+              <MobileChatbox auto={() => viewAuto()} desktop={() => viewDesktop()} tablet={() => viewTablet()} mobile={() => viewMobile()} id="viewmobile"/>
           </Mobile>
-
         </div>
-      </Provider>
+        </Provider>
     )
-  }
+  
 }
-
-export default App
