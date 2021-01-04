@@ -1,20 +1,25 @@
 /* Main view */
 .flexContainer-main {
-  display: flex;
-  justify-content: space-between;
-  max-height: 100%
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  max-height: 100%;
 }
 
 #item-1 {
-  width: 20vw
+  max-width: 20vw;
+  min-width: 280px;
 }
 
 #item-2 {
-  width: 25vw;
+  max-width: 25vw;
+  min-width: 280px;
+  justify-self: center;
 }
 
 #item-3 {
-  width: 25vw
+  max-width: 25vw;
+  min-width: 280px;
+  justify-self: center;
 }
 
 /* History Container */
