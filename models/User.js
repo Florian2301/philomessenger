@@ -15,10 +15,6 @@ const UsersSchema = new Schema({
         type: Boolean,
         default: false
     },
-    modus: {
-        type: String,
-        required: false
-    },
     date: {
         type: Date,
         default: Date.now
