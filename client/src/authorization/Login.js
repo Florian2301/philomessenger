@@ -54,7 +54,7 @@ export function Login(props) {
         <Panel id="auth" title="Log in to your account">
             <div className="text-center mb-4">
                 {error && <Alert variant="danger">{error}</Alert>}
-                {!props.user.signUp? <Alert variant="success">Check out this demo with the testuser below</Alert> : null}
+                {!props.user.signUp? <Alert variant="success">Check out this demo as testuser (below)</Alert> : null}
                 {props.user.signUp? <Alert variant="success">{verify}</Alert> : null}
                 {props.user.delete? <Alert variant="success">{goodbye}</Alert> : null}
             </div>
