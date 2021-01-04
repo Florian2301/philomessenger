@@ -81,12 +81,15 @@ export function SignUp(props) {
         }
         setLoading(false)
     }
+ 
+ // ---------------------------------- RETURN ------------------------------------------------------------------------------------
     
     return (
         <Panel id="auth" title="Sign up">
             <div className="text-center mb-4">
                 {error && <Alert variant="danger">{error}</Alert>}
             </div>
+            
             <Form onSubmit={handleSubmit}>
                 <Form.Group id="username" as={Row}>
                     <Form.Label id="auth-username">Username:</Form.Label>
@@ -94,27 +97,32 @@ export function SignUp(props) {
                         <Form.Control id="auth-input" type="name" ref={usernameRef} required autoFocus onChange={inputName} placeholder="Username"/>
                     </Col>
                 </Form.Group>
+                
                 <Form.Group id="email" as={Row}>
                     <Form.Label id="auth-email">Email:</Form.Label>
                     <Col>
                         <Form.Control id="auth-input" type="email" ref={emailRef} required onChange={inputMail} placeholder="Email"/>
                     </Col>
                 </Form.Group>
+                
                 <Form.Group id="password" as={Row}>
                     <Form.Label id="auth-password">Password:</Form.Label>
                     <Col>
                         <Form.Control id="auth-input" type="password" ref={passwordRef} required placeholder="Password"/>
                     </Col>
                 </Form.Group>
+                
                 <Form.Group id="password-confirm" as={Row}>
                     <Form.Label id="auth-password-confirm">Confirm:</Form.Label>
                     <Col>
                         <Form.Control id="auth-input" type="password" ref={passwordConfirmRef} required placeholder="Confirm password"/>
                     </Col>
                 </Form.Group>
+                
                 <div className="auth-actions-signup">
                     <Button button={true} disabled={loading} label="Sign up" className="auth-btn" type="submit"></Button>
                 </div>
+                
                 <div className="auth-actions" id="login-link">
                     <Link className="auth-link" to="/login">Log in</Link>
                 </div>
@@ -123,6 +131,7 @@ export function SignUp(props) {
     )
 }
 
+// --------------------------------------- REDUX ---------------------------------------------------------------------
 
 const mapStateToProps = state => ({
     user: state.user
