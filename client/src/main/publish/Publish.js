@@ -97,12 +97,14 @@ export function Publish(props) {
         }
     }
 
+ // ------------------------------------- RETURN --------------------------------------------------------
     
     return (
         <Panel id="publish-chat-panel" title="Publish your chat">
             <div className="text-center mb-4">
                 {error && <Alert variant="danger">{error}</Alert>}
             </div>
+            
             <Form onSubmit={handleSubmit}>
                 <Form.Group id="publish-chat" as={Row}>
                     <Form.Label id="publish-number">Chat-No:*</Form.Label>
@@ -110,18 +112,21 @@ export function Publish(props) {
                         <Form.Control id="publish-input-number" type="text" ref={numberRef} autoFocus placeholder="0-99" defaultValue={props.chat.chatnumber}/>
                     </Col>
                 </Form.Group>
+                
                 <Form.Group id="publish-chat" as={Row}>
                     <Form.Label id="publish-title">Title:*</Form.Label>
                     <Col>
                         <Form.Control id="publish-input-title" type="text" ref={titleRef} placeholder="Insert a title" defaultValue={props.chat.title}/>
                     </Col>
                 </Form.Group>
-               <Form.Group id="publish-chat" as={Row}>
+                
+                <Form.Group id="publish-chat" as={Row}>
                     <Form.Label id="publish-date">Date:*</Form.Label>
                     <Col>
                         <Form.Control id="publish-input-date" type="text" ref={dateRef} placeholder="YYYY-MM-DD" defaultValue={props.chat.date}/>
                     </Col>
                 </Form.Group>
+                
                 <Form.Group id="publish-chat" as={Row}>
                     <Form.Label id="publish-tags">Tags: </Form.Label>
                      <Col>
@@ -135,9 +140,11 @@ export function Publish(props) {
                         <Form.Control id="publish-input-description" type="text" as="textarea" ref={descriptionRef} placeholder="Give a brief summary or description of your chat" defaultValue={props.chat.description}/>
                      </Col>
                 </Form.Group>
+                
                 <div id="message-publish-actions">
                     {spinner? <Spinner animation="border" role="status" ></Spinner> : null}
                 </div>
+                
                 <div className="publish-actions">
                     <Button button={true} label="Publish chat" id="publish-btn" type="submit"></Button>
                     <Button button={true} label="Save changes" id="publish-btn" type="submit" handleClick={() => setUpdate(true)}></Button>
@@ -148,6 +155,7 @@ export function Publish(props) {
     )
 }
 
+// ------------------------------- REDUX -------------------------------------------------------------
 
 const mapStateToProps = state => ({
     title: state.title,
