@@ -1,7 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import firebase from 'firebase/app'
-import 'firebase/auth'
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
 import Container from 'react-bootstrap/Container'
@@ -18,82 +16,76 @@ import Authorization from '../authorization/Authorization'
 import About from '../main/About/About'
 import { getUser, setKey } from '../redux/actions/user'
 import MobileStart from './MobileStart'
-// CSS in App.css/FlexMain
+import SelectView from '../header/SelectView'
+// CSS MobileStart & SelectView in App.css/ CSS Nav in FlexMain.css
+
 
 // mobile version
-class MobileChatbox extends Component {
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-        loggedIn: false,
-        currentuser: ''
-    }  
-}
+export function MobileChatbox(props) {
 
+  function handleSelect(key) {
+    props.setKey(key)
+  } 
 
-currentUser = firebase.auth().onAuthStateChanged((user) => {
-if (user) {
-  this.setState({loggedIn: true, currentuser: user.displayName})
-  this.props.getUser(user.displayName)
-} else {
-  this.setState({loggedIn: false})
-}
-})
-
-handleSelect = (key) => {
-  this.props.setKey(key)
-} 
-
-  render() {
-    return (
-      <Container id="responsive-container"  >
-
-        <Tabs  id="uncontrolled" style={{borderBottom: 0}} activeKey={this.props.user.key} onSelect={this.handleSelect}>
+  // ------------------------------ RETURN -----------------------------------------------------------------------------
+  return (
+    <Container id="responsive-container-mobile">
+        
+        <SelectView auto={props.auto} desktop={props.desktop} tablet={props.tablet} mobile={props.mobile} id={props.id}/>
+      
+      <Tabs  id="uncontrolled" style={{borderBottom: 0}} activeKey={props.user.key} onSelect={handleSelect}>
+        
         <Tab eventKey="start" title="Menu">
-            <MobileStart />
+          <MobileStart />
+        </Tab>
+        
+        {props.user.key === "chat"?
+        <Tab eventKey="chat" title="Chat">
+          <Chat />
+        </Tab>
+         : null }
+        
+        {(props.user.key === "publish") && props.user.loggedIn?
+          <Tab eventKey="publish" title="Publish">
+              <Publish />
+              <DraftList />
+              <ChatList />
           </Tab>
-          {this.props.user.key === "chat"?
-          <Tab eventKey="chat" title="Chat">
-            <Chat />
+        : null}
+        
+        {(props.user.key === "publish") && !props.user.loggedIn?
+        <Tab eventKey="publish" title="Publish">
+          <p className="mobile-notlogged">- you must be logged in to see the content -</p>
+        </Tab> : null}
+        
+        {(props.user.key === "drafts") && props.user.loggedIn?
+          <Tab eventKey="drafts" title="Drafts">
+              <Name />
+              <SaveDraft />
+              <Drafts />
           </Tab>
-           : null }
-          {(this.props.user.key === "publish") && this.state.loggedIn?
-            <Tab eventKey="publish" title="Publish">
-                <Publish />
-                <DraftList />
-                <ChatList />
-            </Tab>
-          : null}
-          {(this.props.user.key === "publish") && !this.state.loggedIn?
-            <Tab eventKey="publish" title="Publish">
-              <p className="mobile-notlogged">- you must be logged in to see the content -</p>
-            </Tab> 
-          : null}
-          {(this.props.user.key === "drafts") && this.state.loggedIn?
-            <Tab eventKey="drafts" title="Drafts">
-                <Name />
-                <SaveDraft />
-                <Drafts />
-            </Tab>
-          : null}
-          {(this.props.user.key === "drafts") && !this.state.loggedIn?
-            <Tab eventKey="drafts" title="Drafts">
-              <p className="mobile-notlogged">- you must be logged in to see the content -</p>
-            </Tab> 
-          : null}
-          {this.props.user.key === "history"?
+        : null}
+        
+        {(props.user.key === "drafts") && !props.user.loggedIn?
+          <Tab eventKey="drafts" title="Drafts">
+            <p className="mobile-notlogged">- you must be logged in to see the content -</p>
+          </Tab> 
+        : null}
+        
+        {props.user.key === "history"?
           <Tab eventKey="history" title="History">
-              <History/>
+            <History/>
           </Tab>
-          : null}
-          {this.props.user.key === "userchats"?
+        : null}
+
+        {props.user.key === "userchats"?
           <Tab eventKey="userchats" title="Userchats">
               <Userchats />
           </Tab>
-          : null }
-          {this.props.user.key === "login"?   
-          this.state.loggedIn?
+        : null }
+        
+        {props.user.key === "login"?   
+          props.user.loggedIn?
             <Tab eventKey="login" title="Profile">
                 <Authorization />
             </Tab>
@@ -101,16 +93,17 @@ handleSelect = (key) => {
              <Tab eventKey="login" title="Login">
                  <Authorization />
             </Tab>
-          : null}
-          {this.props.user.key === "about"?
+        : null}
+        
+        {props.user.key === "about"?
           <Tab eventKey="about" title="About">
               <About />
           </Tab>
-          : null}
-        </Tabs>
-      </Container>
-    )
-  }
+        : null}
+        
+      </Tabs>
+    </Container>
+  )
 }
 
 // ---------------------- Redux ---------------------------------------
@@ -129,20 +122,3 @@ let mapDispatchToProps = {
 let MobileChatboxConnected = connect(mapStateToProps, mapDispatchToProps)(MobileChatbox)
 
 export default MobileChatboxConnected
-
-/* Menu für mobile Version - eventuell für später
-
-import Dropdown from 'react-bootstrap/Dropdown'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-
-<DropdownButton id="dropdown" title="Menu">
-  <Dropdown.Item onClick={()=>this.handleSelect("history")}>History</Dropdown.Item>
-  <Dropdown.Item onClick={()=>this.handleSelect("userchats")}>Userchats</Dropdown.Item>
-  <Dropdown.Item onClick={()=>this.handleSelect("chat")}>Chat</Dropdown.Item>
-  {this.state.loggedIn? <Dropdown.Item onClick={()=>this.handleSelect("drafts")}>Drafts</Dropdown.Item> : null}
-  {this.state.loggedIn? <Dropdown.Item onClick={()=>this.handleSelect("publish")}>Publish</Dropdown.Item> : null}
-  <Dropdown.Item onClick={()=>this.handleSelect("login")}>{loggedin}</Dropdown.Item>
-  <Dropdown.Item onClick={()=>this.handleSelect("about")}>About</Dropdown.Item>
-</DropdownButton>
-
-*/
