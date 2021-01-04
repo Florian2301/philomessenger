@@ -23,7 +23,7 @@ export function Dashboard(props) {
     const update = "Your profile has been updated successfully"
     let welcomeMessage = ''
     
-    // get all Users for further actions (update)
+    // get all Users for further actions (when update Profile is clicked)
     function getUsers() {
         props.getUser()
     }
@@ -101,7 +101,8 @@ export function Dashboard(props) {
         }
     }, [])
 
-
+// ----------------------------- RETURN ----------------------------------------------------------------------
+    
     return (
         <Panel id="auth" title="Your profile">
             <div className="text-center mb-4">
@@ -109,15 +110,19 @@ export function Dashboard(props) {
                 {welcome && props.user.welcome? <Alert variant="success">{welcomeMessage}</Alert> : null}
                 {updateProfile && props.user.update? <Alert variant="success">{update}</Alert> : null}
             </div>
+            
             <div className="auth-user">
                 <strong id="auth-strong-username">User:</strong>{currentUser.displayName}
             </div>
+            
             <div className="auth-user">
                 <strong id="auth-strong-email">Email:</strong>{currentUser.email}
             </div>
+            
             <div className="auth-actions" id="auth-actions-logout">
                 <Button button={true} handleClick={handleLogout} className="auth-btn" label="Log out"></Button>
             </div>
+            
             <div className="auth-actions" id="update-link">
                 <Link to="/update-profile" className="auth-link" onClick={getUsers}>Update Profile</Link>
             </div>
@@ -147,22 +152,3 @@ const mapActionsToProps = {
 
 export default connect(mapStateToProps, mapActionsToProps)(Dashboard)
 
-
-/*
-var user = firebase.auth().currentUser;
-    if (user) {
-      welcomeMessage = "Welcome " + user.displayName + "!"
-      welcome message activated by prop "welcome"(login) 
-      console.log(user.displayName, "logged in")
-      console.log("getname1", user.displayName)
-    } 
-
-    firebase.auth().onAuthStateChanged((user) => {
-        if(user) {
-            if (user.email === "philomessenger@gmail.com") {
-                setTestuser(user.email)
-                console.log("email verified", user.emailVerified)
-                console.log("getname2", user.displayName)
-            }
-        }
-    })*/
