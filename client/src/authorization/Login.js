@@ -48,6 +48,8 @@ export function Login(props) {
         props.getUser()
     }
 
+ // ------------------------------------------ RETURN ---------------------------------------------------------------------
+    
     return (
         <Panel id="auth" title="Log in to your account">
             <div className="text-center mb-4">
@@ -56,25 +58,31 @@ export function Login(props) {
                 {props.user.signUp? <Alert variant="success">{verify}</Alert> : null}
                 {props.user.delete? <Alert variant="success">{goodbye}</Alert> : null}
             </div>
+            
             <Form onSubmit={handleSubmit}>
+                
                 <Form.Group id="email" as={Row}>
                     <Form.Label id="auth-email">Email: </Form.Label>
                     <Col>
                         <Form.Control id="auth-input" type="email" ref={emailRef} required placeholder="Enter email" defaultValue="philomessenger@gmail.com"/>
                     </Col>
                 </Form.Group>
+                
                 <Form.Group id="password" as={Row}> 
                     <Form.Label id="auth-password">Password:</Form.Label>
                     <Col>
                         <Form.Control id="auth-input" type="password" ref={passwordRef} required placeholder="Enter password" defaultValue="Philomessenger2020"/>
                     </Col>
                 </Form.Group>
+                
                 <div className="auth-actions">
                     <Button button={true} disabled={loading} label="Log in" className="auth-btn" type="submit"></Button>
                 </div>
+                
                 <div className="auth-actions">
                     <Link className="auth-link" to="/signup" onClick={getUsers}>Sign Up</Link>
                 </div>
+                
                 <div className="auth-actions" id="forgotpassword-link">
                     <Link className="auth-link" to="/forgot-password">Forgot Password?</Link>
                 </div>
@@ -82,6 +90,8 @@ export function Login(props) {
         </Panel>
     )
 }
+
+// ----------------------- REDUX ---------------------------------------------------------------------------------------
 
 const mapStateToProps = state => ({
     user: state.user
