@@ -39,7 +39,7 @@ class History extends Component {
                 Date
               </div>
             </div>           
-            {adminTitle.map(({_id, title, chatnumber, date, user}) => {
+            {adminTitle.map(({_id, title, chatnumber, date, user, tags, description}) => {
                 return (
                   <div key={uuidv4()} className="data-rows-history">
                     <div className="history-column-1">{chatnumber}</div>
