@@ -28,13 +28,13 @@ export function SelectView(props) {
             <div id="size">
                 <Form.Group as={Row}>
                     <Form.Check type="radio" id="desktop" name="modi" label="" onChange={(e) => handleChange(e)} checked={props.user.modus === "desktop"? true : false} />
-                    <Form.Label id="label-view">Desktop</Form.Label>
+                    <Form.Label id="label-view" style={window.innerWidth <= 979? {color: 'grey'} : {color: 'white'}}>Desktop</Form.Label>
                 </Form.Group>
             </div>
             <div id="size">
                 <Form.Group as={Row}>
                     <Form.Check type="radio" id="tablet" name="modi" label="" onChange={(e) => handleChange(e)} checked={props.user.modus === "tablet"? true : false} />
-                    <Form.Label id="label-view">Tablet</Form.Label>
+                    <Form.Label id="label-view" style={window.innerWidth <= 767? {color: 'grey'} : {color: 'white'}}>Tablet</Form.Label>
                 </Form.Group>
             </div>
             <div id="size">
