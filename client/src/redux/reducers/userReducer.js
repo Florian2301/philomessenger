@@ -1,7 +1,6 @@
 let initialState = {
     userId: [],  
     username: [],
-    modus: [], 
     email: [],
     date: [],
     allUsers: [],
