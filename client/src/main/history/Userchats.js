@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { clearDisplay, setKey } from '../../redux/actions/user'
 import { getAllUserChats, getOneUserChat } from '../../redux/actions/chat'
 import { getAllUserTitle, getUserTitle } from '../../redux/actions/title'
+import Popover from './Popover'
 
 
 class Userchats extends Component {
@@ -42,12 +43,14 @@ class Userchats extends Component {
                 Date
               </div>
           </div>
-          {userTitle? userTitle.map(({_id, userId, user, chatnumber, title, date}) => {
+          {userTitle? userTitle.map(({_id, userId, user, chatnumber, title, date, tags, description}) => {
                 return (
                   <div key={uuidv4()} className="data-rows-userchats">
                     <div className="userchats-column-1">{user}</div>
                     <div className="userchats-column-2">{chatnumber}</div>
-                    <div className="userchats-column-3" onClick={() => this.displayChat(_id, chatnumber, userId)}>{title}</div>
+                    <div className="userchats-column-3" onClick={() => this.displayChat(_id, chatnumber, userId)}>
+                      <Popover title={title} tags={tags} description={description}/>
+                      </div>
                     <div className="userchats-column-4">
                       {chatnumber === this.props.chat.chatnumber && userId === this.props.chat.userId? 
                         <PDFDownloadLink
