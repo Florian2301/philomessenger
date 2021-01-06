@@ -7,6 +7,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { clearDisplay, setKey } from '../../redux/actions/user'
 import { getChat } from '../../redux/actions/chat'
 import { getAllTitle, getTitle } from '../../redux/actions/title'
+import Popover from './Popover'
+
 
 class History extends Component {
   
@@ -41,7 +43,9 @@ class History extends Component {
                 return (
                   <div key={uuidv4()} className="data-rows-history">
                     <div className="history-column-1">{chatnumber}</div>
-                    <div className="history-column-2" onClick={() => this.displayChat(_id, chatnumber)}>{title}</div>
+                    <div className="history-column-2" onClick={() => this.displayChat(_id, chatnumber)}>
+                      <Popover title={title} tags={tags} description={description}/>
+                      </div>
                     <div className="history-column-3" >
                       {chatnumber === this.props.chat.chatnumber && user === this.props.chat.user? 
                         <PDFDownloadLink
