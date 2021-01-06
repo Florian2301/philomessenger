@@ -18,18 +18,30 @@ export function SelectView(props) {
     
 
     return (
-        <Form as={Row} id={props.id}>
+ <Form as={Row} id={props.id}>
             <div id="size">
-                <Form.Check type="radio" id="auto" name="modi" label="Auto" onChange={(e) => handleChange(e)} checked={props.user.modus === "auto"? true : false} />
+                <Form.Group as={Row}>
+                    <Form.Check type="radio" id="auto" name="modi" label="" onChange={(e) => handleChange(e)} checked={props.user.modus === "auto"? true : false} />
+                    <Form.Label id="label-view">auto</Form.Label>
+                </Form.Group>
             </div>
             <div id="size">
-                <Form.Check type="radio" id="desktop" name="modi" label="Desktop" onChange={(e) => handleChange(e)} checked={props.user.modus === "desktop"? true : false} />
+                <Form.Group as={Row}>
+                    <Form.Check type="radio" id="desktop" name="modi" label="" onChange={(e) => handleChange(e)} checked={props.user.modus === "desktop"? true : false} />
+                    <Form.Label id="label-view">Desktop</Form.Label>
+                </Form.Group>
             </div>
             <div id="size">
-                <Form.Check type="radio" id="tablet" name="modi" label="Tablet" onChange={(e) => handleChange(e)} checked={props.user.modus === "tablet"? true : false} />
+                <Form.Group as={Row}>
+                    <Form.Check type="radio" id="tablet" name="modi" label="" onChange={(e) => handleChange(e)} checked={props.user.modus === "tablet"? true : false} />
+                    <Form.Label id="label-view">Tablet</Form.Label>
+                </Form.Group>
             </div>
             <div id="size">
-                <Form.Check type="radio" id="mobile" name="modi" label="Mobile" onChange={(e) => handleChange(e)} checked={props.user.modus === "mobile"? true : false} />
+                <Form.Group as={Row}>
+                    <Form.Check type="radio" id="mobile" name="modi" label="" onChange={(e) => handleChange(e)} checked={props.user.modus === "mobile"? true : false} />
+                    <Form.Label id="label-view">Mobile</Form.Label>
+                </Form.Group>
             </div>
       </Form>
     )
