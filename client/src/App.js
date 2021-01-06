@@ -24,7 +24,7 @@ export default function App() {
 
   const viewDesktop = () => {
     setBigScreen(980)
-    setMediumScreen(481)
+    setMediumScreen(768)
   }
 
   const viewTablet = () => {
