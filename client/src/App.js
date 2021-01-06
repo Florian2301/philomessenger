@@ -29,7 +29,7 @@ export default function App() {
 
   const viewTablet = () => {
     setBigScreen(3000)
-    setMediumScreen(641)
+    setMediumScreen(768)
   }
 
   const viewMobile = () => {
