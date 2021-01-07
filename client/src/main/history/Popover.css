@@ -2,6 +2,8 @@
     border-style: solid;
     border-color: dodgerblue;
     border-radius: 1rem;
+    transition: 1s ease-out;
+    background-color: transparent;
 }
 
 
