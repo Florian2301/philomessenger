@@ -52,7 +52,7 @@ class History extends Component {
                           document={
                             <PDF title={title} data={this.props.chat.messages} />
                           }
-                          fileName={title + '.pdf'}
+                          fileName={chatnumber + ". " + title + '.pdf'}
                           className="link-download-dbChat"
                          >
                          download
