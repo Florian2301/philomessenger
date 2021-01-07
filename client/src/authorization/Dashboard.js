@@ -81,21 +81,21 @@ export function Dashboard(props) {
     })
 
     
-    // set welcome message and timout after 20 sec
+    // set welcome message and timout after 10 sec
     useEffect(() => {
         const timer = setTimeout(() => {
             setWelcome(false)
-        }, 20000)
+        }, 10000)
         return () => {
             clearTimeout(timer)
         }
     }, [])
 
-    // set update message and timout after 20 sec
+    // set update message and timout after 10 sec
     useEffect(() => {
         const timer = setTimeout(() => {
             setUpdateProfile(false)
-        }, 20000)
+        }, 10000)
         return () => {
             clearTimeout(timer)
         }
