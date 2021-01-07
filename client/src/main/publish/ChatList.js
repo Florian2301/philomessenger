@@ -123,7 +123,7 @@ export function Chats (props) {
                 </div>
               )})
               :
-              props.chat.adminChats.map(({_id, title, chatnumber}) => {
+              props.chat.adminChats.map(({_id, userId, title, chatnumber}) => {
                 return (
                   <div key={uuidv4()} className="publish-data-rows-chats">
                     <div className="publish-chats-column-1" onClick={() => getOneChat(_id, chatnumber)}>{chatnumber + " " + title}</div>
