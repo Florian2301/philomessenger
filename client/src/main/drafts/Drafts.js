@@ -12,7 +12,7 @@ import {  clearDisplay, setKey } from '../../redux/actions/user'
 
 
 
-export function Name (props) {
+export function Drafts (props) {
     const [spinner, setSpinner] = useState(false)
     
     function showAllDrafts() {
@@ -139,6 +139,6 @@ let mapStateToProps = (state) => {
     setKey: setKey
   }
   
-  let ListOfNames = connect(mapStateToProps, mapDispatchToProps)(Name)
+  let ListOfNames = connect(mapStateToProps, mapDispatchToProps)(Drafts)
   
   export default ListOfNames
