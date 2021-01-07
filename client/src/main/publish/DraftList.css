@@ -42,10 +42,15 @@
 }
 
 .flexContainer-draftlist-publish {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr;
   position: relative;
   margin: 1rem;
+  text-align: center;
+}
+
+#spinner-draftlist {
+  margin-top: 1rem;
 }
 
 .publish-draft {
