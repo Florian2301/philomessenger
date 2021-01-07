@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import './Popover.css'
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import Popover from 'react-bootstrap/Popover'
+import { OverlayTrigger, Popover } from 'react-bootstrap'
 
 export function PopoverHistory(props) {
     const title = props.title
