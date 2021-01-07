@@ -17,7 +17,7 @@ export function PopoverHistory(props) {
       )
       
       const InfoPopover = () => (
-        <OverlayTrigger trigger={["hover", "focus"]} placement={props.user.modus==="mobile"? "top" : "right"} overlay={popover}>
+        <OverlayTrigger trigger={["hover", "focus"]} placement={window.innerWidth <= 767? "top" : "right"} overlay={popover}>
           <p>{title}</p>
         </OverlayTrigger>
       )
