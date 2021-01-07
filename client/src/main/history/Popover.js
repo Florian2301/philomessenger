@@ -1,9 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import './Popover.css'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Popover from 'react-bootstrap/Popover'
 
-export default function PopoverHistory(props) {
+export function PopoverHistory(props) {
     const title = props.title
     const tags = props.tags
     const description = props.description
@@ -16,7 +17,7 @@ export default function PopoverHistory(props) {
       )
       
       const InfoPopover = () => (
-        <OverlayTrigger trigger={["hover", "focus"]} placement="right" overlay={popover}>
+        <OverlayTrigger trigger={["hover", "focus"]} placement={props.user.modus==="mobile"? "top" : "right"} overlay={popover}>
           <p>{title}</p>
         </OverlayTrigger>
       )
@@ -27,3 +28,20 @@ export default function PopoverHistory(props) {
         </div>
     )
 }
+
+//----------- REDUX ----------------------------------------------------
+
+let mapStateToProps = (state) => {
+    return {
+      user: state.user,
+    }
+  }
+  
+  let mapDispatchToProps = {
+ 
+  }
+  
+  let PopoverContainer = connect(mapStateToProps, mapDispatchToProps)(PopoverHistory)
+  
+  export default PopoverContainer
+  
