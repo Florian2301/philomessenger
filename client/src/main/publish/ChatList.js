@@ -17,10 +17,14 @@ export function Chats (props) {
     const [spinner, setSpinner] = useState(false)
     
     function getAllChats() {
+      setSpinner(true)
       const admin = props.user.admin
       const id = props.user.userId
       admin? props.getAllChats() : props.getAllUserChatsById(id)  // get all title and all chat for updating or saving as draft
       admin? props.getAllTitle() : props.getAllUserTitleById(id)
+      setTimeout(() => {
+        setSpinner(false)
+      }, 500)           
     }
 
     function getOneChat(id, chatnumber) {
@@ -104,14 +108,16 @@ export function Chats (props) {
     return (
       <Panel title="Your published chats" id="panel-drafts">
         <section className="flexContainer-chatlist-publish">
-        {!spinner? <Button
+        <Button
               button="true"
               className="publish-chat"
               id="draft"
               label="Show chats"
               handleClick={getAllChats}
-          ></Button>
-        : <Spinner animation="border" role="status" ></Spinner>}
+        ></Button>
+        <div id="spinner-chatlist">
+          {!spinner? null : <Spinner animation="border" role="status" ></Spinner>}
+        </div>
         </section>
         <div className="publish-table-chats" >
             {!props.user.admin? props.chat.userCollection.map(({_id, userId, title, chatnumber}) => {
