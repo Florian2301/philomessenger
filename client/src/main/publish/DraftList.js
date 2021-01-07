@@ -4,7 +4,7 @@ import './DraftList.css'
 import Button from '../../elements/Button'
 import Panel from '../../elements/Panel'
 import { v4 as uuidv4 } from 'uuid'
-import Spinner from 'react-bootstrap/Spinner'
+import { Spinner } from 'react-bootstrap'
 import { getDrafts, getOneDraft, deleteDraft, getUserDrafts, getOneUserDraft, deleteUserDraft, publishAdminDraft, publishUserDraft } from '../../redux/actions/draft'
 import {  clearDisplay, setKey } from '../../redux/actions/user'
 
