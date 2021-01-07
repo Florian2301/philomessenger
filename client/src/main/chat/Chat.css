@@ -1,5 +1,5 @@
 .chatbox {
-  margin-top: 1rem;;
+  margin-top: 1rem;
   height: 70vh;
   width: 100%;
   border-width: thick;
@@ -50,4 +50,29 @@
   margin-top: 1rem;
   margin-left: 1rem;
   background-color: silver;
+}
+
+#save-clear-chat {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.transition-message-enter {
+  opacity: 0;
+}
+.transition-message-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.transition-message-exit {
+  opacity: 1;
+}
+.transition-message-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+.listgroup-message {
+  background-color: transparent;
+  border: none;
 }
