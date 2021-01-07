@@ -5,7 +5,7 @@ import PDF from '../../elements/PDF'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { v4 as uuidv4 } from 'uuid';
 import { clearDisplay, setKey } from '../../redux/actions/user'
-import { getAllUserChats, getOneUserChat } from '../../redux/actions/chat'
+import { getOneUserChat } from '../../redux/actions/chat'
 import { getAllUserTitle, getUserTitle } from '../../redux/actions/title'
 import Popover from './Popover'
 
@@ -83,7 +83,6 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = {
   clearDisplay: clearDisplay,
-  getAllUserChats: getAllUserChats,
   getOneUserChat: getOneUserChat,
   getAllUserTitle: getAllUserTitle,
   getUserTitle: getUserTitle,
