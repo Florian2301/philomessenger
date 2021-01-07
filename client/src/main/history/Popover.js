@@ -10,7 +10,7 @@ export function PopoverHistory(props) {
     const description = props.description
 
     const popover = (
-        <Popover id="popover-basic">
+        <Popover id="popover" className="fade-in-popover">
           {tags? <Popover.Title id="popover-title">{tags}</Popover.Title> : null}
           {description? <Popover.Content id="popover-content">{description}</Popover.Content> : null}
         </Popover> 
