@@ -7,7 +7,8 @@ import { addMessages, updateDraft, updateUserDraft } from '../../redux/actions/d
 import { clearDisplay } from '../../redux/actions/user'
 import './Chat.css'
 import { v4 as uuidv4 } from 'uuid'
-import Spinner from 'react-bootstrap/Spinner'
+import { Container, ListGroup, Spinner } from 'react-bootstrap';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const KEY_ENTER = 13
 const KEY_ESC = 27
@@ -114,10 +115,13 @@ class Chat extends Component {
 
     return (
       <div>
-        <div className="chatbox" id="chatbox">
-          <ul className="chatmessages">
+        <Container className="chatbox" id="chatbox">
+          <ListGroup className="chatmessages">
+            <TransitionGroup>
             {messages.map(({_id, color, name, messagenumber, text}) => {
               return (
+              <CSSTransition key={uuidv4()} timeout={100} classNames="transition-message">
+                <ListGroup.Item className="listgroup-message">
                 <Message
                   color={'color-' + color}
                   key={uuidv4()}
@@ -128,9 +132,13 @@ class Chat extends Component {
                   chatnumber={chatnumber}
                   messageId={_id}
                   userid={userId}
-                />)})
+                />
+                </ListGroup.Item>
+              </CSSTransition>
+            )})
             }
-          </ul>
+             </TransitionGroup>
+          </ListGroup>
             <Textarea
             writer={this.state.writer}
             placeholder={this.state.placeholder}
@@ -140,7 +148,7 @@ class Chat extends Component {
             onKeyDown={this.textareaKeyEvent}
             autofocus
           />
-        </div>
+        </Container>
         
         <section className="flexContainer-chat">
         <div className="addPhil">
