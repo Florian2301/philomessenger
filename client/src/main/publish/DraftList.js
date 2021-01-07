@@ -14,10 +14,14 @@ export function DraftList (props) {
     const [spinner, setSpinner] = useState(false)
     
     function showAllDrafts() {
+      setSpinner(true)
       const admin = props.user.admin
       const id = props.user.userId
       props.getUserDrafts(id)
       admin? props.getDrafts() : props.getUserDrafts(id)
+      setTimeout(() => {
+        setSpinner(false)
+      }, 500)           
     }
 
     // show one draft
@@ -64,14 +68,16 @@ export function DraftList (props) {
     return (
       <Panel title="Prepare drafts to publish" id="panel-drafts">
         <section className="flexContainer-draftlist-publish">
-        {!spinner? <Button
+        <Button
               button="true"
               className="publish-draft"
               id="draft"
               label="Show drafts"
               handleClick={showAllDrafts}
-          ></Button>
-        : <Spinner animation="border" role="status" ></Spinner>}
+        ></Button>
+        <div id="spinner-draftlist">
+          {!spinner? null : <Spinner animation="border" role="status" ></Spinner>}
+        </div>
         </section>
         <div className="publish-table-drafts" >
             {!props.user.admin? props.draft.userDrafts.map(({_id, title}) => {
