@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Container, Tab, Tabs}  from 'react-bootstrap/Tab'
+import { Container, Tab, Tabs}  from 'react-bootstrap'
 import History from '../main/history/History'
 import Chat from '../main/chat/Chat'
 import Userchats from '../main/history/Userchats'
