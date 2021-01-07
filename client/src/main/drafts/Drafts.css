@@ -62,6 +62,9 @@
     font-weight: bold;
   }
   
+  #draft:active {
+    background-color: dodgerblue;
+  }
 
   .flexContainer-draftlist {
   display: grid;
