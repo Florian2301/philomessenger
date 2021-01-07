@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import { Container, Tab, Tabs }  from 'react-bootstrap/Tab'
+import { Container, Tab, Tabs }  from 'react-bootstrap'
 import History from '../main/history/History'
 import Userchats from '../main/history/Userchats'
 import Publish from '../main/publish/Publish'
