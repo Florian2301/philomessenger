@@ -11,6 +11,10 @@
     margin: 1rem 1rem 0rem 1rem;
 }
 
+.auth-btn:active {
+    background-color: dodgerblue;
+}
+
 .auth-link {
     font-size: 1.2rem;
     color: white;
@@ -127,6 +131,10 @@
     max-width: 15rem;
     width: 100%;
     margin-top: 1rem;
+}
+
+#auth-btn-reset:active {
+    background-color: dodgerblue;
 }
 
 #auth-email-reset {
