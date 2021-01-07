@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Form, Alert, Col, Row } from 'react-bootstrap'
-import Spinner from 'react-bootstrap/Spinner'
+import { Form, Alert, Col, Row, Spinner } from 'react-bootstrap'
 import { v4 as uuidv4 } from 'uuid'
 import Panel from '../../elements/Panel'
 import Button from '../../elements/Button'
