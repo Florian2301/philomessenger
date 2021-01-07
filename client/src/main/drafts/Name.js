@@ -6,7 +6,7 @@ import Panel from '../../elements/Panel'
 import { startChat } from '../../redux/actions/draft'
 
 
-export function Start(props) {
+export function Name(props) {
     const nameRef = useRef()
     const [addName, setAddName] = useState('')
 
@@ -52,5 +52,5 @@ const mapActionsToProps = {
     startChat: startChat
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(Start)
+export default connect(mapStateToProps, mapActionsToProps)(Name)
 
