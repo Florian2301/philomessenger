@@ -7,15 +7,11 @@ import Button from '../elements/Button'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import { connect } from 'react-redux'
-import { deleteUserDraft } from '../redux/actions/draft'
-import { deleteUserTitle , getAllUserTitle} from '../redux/actions/title'
-import { deleteUserChat, getAllUserChats } from '../redux/actions/chat'
 import { getUser, clearDisplay, logout } from '../redux/actions/user'
 
 
 export function Dashboard(props) {
     const [error, setError] = useState('')
-    const [testuser, setTestuser] = useState('')
     const [welcome, setWelcome] = useState(true)
     const [updateProfile, setUpdateProfile] = useState(true)
     const { currentUser, logout } = useAuth()
@@ -38,32 +34,7 @@ export function Dashboard(props) {
             setError('Log out failed')
         }
         props.clearDisplay()
-        props.logout()                                          // reset state.user
-        if(testuser) {                                          // check if "testuser" is loggedIn
-            const currentId = props.user.userId                 
-            props.draft.userDrafts.map(({_id, userId}) => {
-                if (currentId === userId) {
-                    props.deleteUserDraft(_id)                  // delete drafts "testuser"
-                }
-                return currentId
-            })
-            props.chat.userCollection.map(({_id, userId}) => {
-                if (currentId === userId) {
-                    props.deleteUserChat(_id)                   // delete chats "testuser"
-                }
-                return currentId
-            })
-            props.title.userTitle.map(({_id, userId}) => {
-                if (currentId === userId) {
-                    props.deleteUserTitle(_id)                   // delete title "testuser"
-                }
-                return currentId
-            })
-            setTimeout(() => {
-                props.getAllUserChats()
-                props.getAllUserTitle()
-            }, 500 )
-        }
+        props.logout()                                      // reset state.user
     }
 
     // get currentUser for welcome message
@@ -72,15 +43,7 @@ export function Dashboard(props) {
       welcomeMessage = "Welcome " + user.displayName + "!"
     } 
 
-    firebase.auth().onAuthStateChanged((user) => {
-        if(user) {
-            if (user.email === "philomessenger@gmail.com") {    // check if testuser logs in
-                setTestuser(user.email) 
-            }
-        }
-    })
-
-    
+  
     // set welcome message and timout after 10 sec
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -134,20 +97,12 @@ export function Dashboard(props) {
 
 const mapStateToProps = state => ({
     user: state.user,
-    chat: state.chat,
-    draft: state.draft,
-    title: state.title
 })
 
 const mapActionsToProps = {
     getUser: getUser,
     clearDisplay: clearDisplay,
-    getAllUserChats: getAllUserChats,
-    deleteUserChat: deleteUserChat,
-    deleteUserDraft: deleteUserDraft,
     logout: logout,
-    deleteUserTitle: deleteUserTitle,
-    getAllUserTitle: getAllUserTitle
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Dashboard)
