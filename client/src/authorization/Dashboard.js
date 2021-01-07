@@ -41,7 +41,13 @@ export function Dashboard(props) {
     var user = firebase.auth().currentUser;
     if (user) {
       welcomeMessage = "Welcome " + user.displayName + "!"
-    } 
+    }
+    
+    firebase.auth().onAuthStateChanged((user) => {
+        if(user && !props.user.loggedIn) {
+            props.getUser(user.displayName)
+        }
+    })
 
   
     // set welcome message and timout after 10 sec
