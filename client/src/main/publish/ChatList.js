@@ -165,6 +165,8 @@ let mapStateToProps = (state) => {
     deleteUserTitle: deleteUserTitle,
     getAllUserChatsById: getAllUserChatsById,
     getOneUserChatById: getOneUserChatById,
+    getTitle: getTitle,
+    getUserTitle: getUserTitle
   }
   
   let ChatList = connect(mapStateToProps, mapDispatchToProps)(Chats)
