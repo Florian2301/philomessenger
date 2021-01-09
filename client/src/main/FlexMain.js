@@ -15,7 +15,7 @@ import DraftList from './publish/DraftList'
 import ChatList from './publish/ChatList'
 import Authorization from '../authorization/Authorization'
 import About from './About/About'
-import Sitemap from './about/Sitemap'
+import Sitemap from './About/Sitemap'
 
 
 export default function FlexMain() {
