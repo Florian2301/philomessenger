@@ -85,7 +85,7 @@ export function MobileChatbox(props) {
           <Tab eventKey="chat" title="Chat">
             <Chat />
           </Tab>
-        : props.user.loggedIn?
+        : props.user.loggedIn && (props.user.key !== "history") && (props.user.key !== "userchats") && (props.user.key !== "about") && (props.user.key !== "login")?
           <Tab eventKey="chat" title="Chat">
             <Chat />
           </Tab>
