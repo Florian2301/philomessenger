@@ -15,7 +15,7 @@ import DraftList from './publish/DraftList'
 import ChatList from './publish/ChatList'
 import Authorization from '../authorization/Authorization'
 import About from './About/About'
-import Start from './chat/Start'
+import Sitemap from './about/Sitemap'
 
 
 export default function FlexMain() {
@@ -89,8 +89,8 @@ export default function FlexMain() {
               </Tab>
             }
             
-            <Tab eventKey="start" title="Info">
-              <Start />
+            <Tab eventKey="sitemap" title="Sitemap">
+              <Sitemap />
             </Tab>
             
             <Tab eventKey="about" title="About">
