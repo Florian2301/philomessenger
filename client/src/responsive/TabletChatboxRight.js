@@ -27,7 +27,7 @@ export default function TabletChatboxLeft() {
 
   return (
     <Container fluid id="responsive-container-tablet">
-      <Tabs defaultActiveKey={"start"} id="uncontrolled" style={{borderBottom: 0}}>
+      <Tabs defaultActiveKey={"sitemap"} id="uncontrolled" style={{borderBottom: 0}}>
           
           <Tab eventKey="sitemap" title="Sitemap">
             <TabletSitemap />
