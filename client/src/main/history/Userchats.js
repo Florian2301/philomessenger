@@ -28,7 +28,7 @@ class Userchats extends Component {
     const { userTitle } = this.props.title
     return (
      
-        <div className="table-userchats">
+        <div className="table-userchats" style={this.props.user.modus === "mobile"? {marginBottom: 1.5+"rem"} : {marginBottom: 0+"rem"}}>
           <div className="data-columns-userchats">
               <div className="thead-userchats-1">
                 User
