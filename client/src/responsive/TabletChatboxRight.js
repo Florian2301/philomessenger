@@ -10,7 +10,7 @@ import TabletSitemap from './TabletSitemap'
 // CSS in App.css/FlexMain
 
 
-export function TabletChatboxLeft() {
+export function TabletChatboxRight(props) {
   const [login, setLogin] = useState(false)
 
   // get user-status to display/hide navigation
