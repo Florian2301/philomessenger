@@ -26,6 +26,8 @@
 #uncontrolled-tab-history {
   background-color: rgb(53, 53, 53);
   color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 #uncontrolled-tab-history:hover {
@@ -35,6 +37,8 @@
 #uncontrolled-tab-userchats {
   background-color: rgb(53, 53, 53);
   color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 #uncontrolled-tab-userchats:hover {
@@ -54,59 +58,24 @@
   width: 100%;
 }
 
-/* Abstände der Edit-Panels */
-#panel-addTitle {
-  margin-top: 1.5rem;
-}
-
-#panel-addPhil {
-  margin-top: 1.5rem;
-}
-
-#panel-reset {
-  margin-top: 1.5rem;
-}
-
-#panel-save {
-  margin-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-#panel-drafts {
-  margin-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-#edit-addTitle {
-  margin: 1rem;
-}
-
-#edit-addPhil {
-  margin: 1rem;
-}
 
 /* Farbe der Reiter der Navigation */
 #uncontrolled-tab-start {
   background-color: rgb(53, 53, 53);
   color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 #uncontrolled-tab-start:hover {
   background: midnightblue;
 }
 
-#uncontrolled-tab-edit {
-  background-color: rgb(53, 53, 53);
-  color: lightgray;
-}
-
-#uncontrolled-tab-edit:hover {
-  background: midnightblue;
-}
-
 #uncontrolled-tab-login {
   background-color: rgb(53, 53, 53);
   color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 #uncontrolled-tab-login:hover {
@@ -116,6 +85,8 @@
 #uncontrolled-tab-about {
   background-color: rgb(53, 53, 53);
   color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 #uncontrolled-tab-about:hover {
@@ -126,6 +97,8 @@
 #uncontrolled-tab-chat {
   background-color: rgb(53, 53, 53);
   color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 #uncontrolled-tab-chat:hover {
@@ -137,9 +110,13 @@
 #uncontrolled-tab-publish {
   background-color: rgb(53, 53, 53);
   color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 #uncontrolled-tab-drafts {
   background-color: rgb(53, 53, 53);
   color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
