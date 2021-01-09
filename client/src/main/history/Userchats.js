@@ -52,7 +52,7 @@ class Userchats extends Component {
                       <Popover title={title} tags={tags} description={description}/>
                       </div>
                     <div className="userchats-column-4">
-                      {chatnumber === this.props.chat.chatnumber && userId === this.props.chat.userId? 
+                      {chatnumber === this.props.chat.chatnumber && userId === this.props.chat.userId && !this.props.user.loggedIn? 
                         <PDFDownloadLink
                           document={
                             <PDF title={title} data={this.props.chat.messages} />
@@ -77,7 +77,8 @@ class Userchats extends Component {
 let mapStateToProps = (state) => {
   return {
     chat: state.chat,
-    title: state.title
+    title: state.title,
+    user: state.user
   }
 }
 
