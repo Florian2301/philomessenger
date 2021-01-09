@@ -1,7 +1,5 @@
-import React, { useState }  from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import firebase from 'firebase/app'
-import 'firebase/auth'
 import { Container, Tab, Tabs }  from 'react-bootstrap'
 import Chat from '../main/chat/Chat'
 import Authorization from '../authorization/Authorization'
@@ -11,31 +9,6 @@ import TabletSitemap from './TabletSitemap'
 
 
 export function TabletChatboxRight(props) {
-  const [login, setLogin] = useState(false)
-
-  // get user-status to display/hide navigation
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        if(user.emailVerified) {
-          setLogin(true)
-        } else {
-          setLogin(false)
-        }
-    } else {
-      setLogin(false)
-    }
-  })
-  
-  
- //zweifache Prüfung, ob user eingeloggt ist
-if(props.user.loggedIn) {
-  setLogin(true)
-}
-else {
-  setLogin(false)
-}
-  
-// ------------------------------- RETURN ----------------------------------------------  
 
   return (
     <Container fluid id="responsive-container-tablet">
@@ -49,7 +22,7 @@ else {
             <Chat />
           </Tab>
           
-          {login?
+          {props.user.loggedIn?
           <Tab eventKey="login" title="Profile">
               <Authorization />
           </Tab>
