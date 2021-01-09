@@ -13,9 +13,81 @@ export function MobileSitemap(props) {
   const [publish, setPublish] = useState(false);
   const [about, setAbout] = useState(false);
 
-    function handleKey(key) {
-        props.setKey(key)
-    } 
+  function handleKey(key) {
+      props.setKey(key)
+  }
+  
+  function toggleAbout() {
+    setAbout(!about)
+    if(history) {setHistory(false)}
+    if(userchats) {setUserchats(false)}
+    if(chat) {setChat(false)}
+    if(login) {setLogin(false)}
+    if(drafts) {setDrafts(false)}
+    if(publish) {setPublish(false)}
+  }
+
+  function toggleHistory() {
+    setHistory(!history)
+    if(about) {setAbout(false)}
+    if(userchats) {setUserchats(false)}
+    if(chat) {setChat(false)}
+    if(login) {setLogin(false)}
+    if(drafts) {setDrafts(false)}
+    if(publish) {setPublish(false)}
+  }
+
+  function toggleUserchats() {
+    setUserchats(!userchats)
+    if(about) {setAbout(false)}
+    if(history) {setHistory(false)}
+    if(chat) {setChat(false)}
+    if(login) {setLogin(false)}
+    if(drafts) {setDrafts(false)}
+    if(publish) {setPublish(false)}
+  }
+
+  function toggleChat() {
+    setChat(!chat)
+    if(about) {setAbout(false)}
+    if(userchats) {setUserchats(false)}
+    if(history) {setHistory(false)}
+    if(login) {setLogin(false)}
+    if(drafts) {setDrafts(false)}
+    if(publish) {setPublish(false)}
+  }
+
+  function toggleLogin() {
+    setLogin(!login)
+    if(about) {setAbout(false)}
+    if(userchats) {setUserchats(false)}
+    if(chat) {setChat(false)}
+    if(login) {setLogin(false)}
+    if(drafts) {setDrafts(false)}
+    if(publish) {setPublish(false)}
+  }
+
+  function toggleDrafts() {
+    setDrafts(!drafts)
+    if(about) {setAbout(false)}
+    if(userchats) {setUserchats(false)}
+    if(chat) {setChat(false)}
+    if(login) {setLogin(false)}
+    if(history) {setHistory(false)}
+    if(publish) {setPublish(false)}
+  }
+
+  function togglePublish() {
+    setPublish(!publish)
+    if(about) {setAbout(false)}
+    if(userchats) {setUserchats(false)}
+    if(chat) {setChat(false)}
+    if(login) {setLogin(false)}
+    if(drafts) {setDrafts(false)}
+    if(history) {setHistory(false)}
+  }
+  
+  //------------------------- RETURN --------------------------------------------------------------------------
     
     return (
         <Panel title="The structure of this app is as follows" id="start-panel">            
@@ -24,7 +96,7 @@ export function MobileSitemap(props) {
             <div>
               <div className="menu-panel">
             <p className="start-para"><span className="menu" onClick={() => handleKey("about")}> About </span></p>
-            <p className="menu-link" onClick={() => setAbout(!about)} aria-controls="example-collapse-text" aria-expanded={about}>{!about? "more..." : "less..."}</p>
+            <p className="menu-link" onClick={() => toggleAbout()} aria-controls="example-collapse-text" aria-expanded={about}>{!about? "more..." : "less..."}</p>
               </div>
               <Collapse in={about}>
                 <div className="menu-details" id="example-collapse-text">
@@ -37,7 +109,7 @@ export function MobileSitemap(props) {
             <div>
               <div className="menu-panel">
                 <p className="start-para"><span className="menu" onClick={() => handleKey("history")}> History </span></p>
-                <p className="menu-link" onClick={() => setHistory(!history)} aria-controls="example-collapse-text" aria-expanded={history}>{!history? "more..." : "less..."}</p>
+                <p className="menu-link" onClick={() => toggleHistory()} aria-controls="example-collapse-text" aria-expanded={history}>{!history? "more..." : "less..."}</p>
               </div>
               <Collapse in={history}>
                 <div className="menu-details" id="example-collapse-text">
@@ -51,7 +123,7 @@ export function MobileSitemap(props) {
             <div>
               <div className="menu-panel">
                 <p className="start-para"><span className="menu" onClick={() => handleKey("userchats")}> Userchats </span></p>
-                <p className="menu-link" onClick={() => setUserchats(!userchats)} aria-controls="example-collapse-text" aria-expanded={userchats}>{!userchats? "more..." : "less..."}</p>
+                <p className="menu-link" onClick={() => toggleUserchats()} aria-controls="example-collapse-text" aria-expanded={userchats}>{!userchats? "more..." : "less..."}</p>
               </div>
               <Collapse in={userchats}>
                 <div className="menu-details" id="example-collapse-text">
@@ -64,7 +136,7 @@ export function MobileSitemap(props) {
             <div>
               <div className="menu-panel">
                 <p className="start-para"><span className="menu" onClick={() => handleKey("chat")}> Chat </span></p>
-                <p className="menu-link" onClick={() => setChat(!chat)} aria-controls="example-collapse-text" aria-expanded={chat}>{!chat? "more..." : "less..."}</p>
+                <p className="menu-link" onClick={() => toggleChat()} aria-controls="example-collapse-text" aria-expanded={chat}>{!chat? "more..." : "less..."}</p>
               </div>
               <Collapse in={chat}>
                 <div className="menu-details" id="example-collapse-text">
@@ -77,12 +149,12 @@ export function MobileSitemap(props) {
             <div>
               <div className="menu-panel">
                 <p className="start-para"><span className="menu" onClick={() => handleKey("login")}> Login / Logout</span></p>
-                <p className="menu-link" onClick={() => setLogin(!login)} aria-controls="example-collapse-text" aria-expanded={login}>{!login? "more..." : "less..."}</p>
+                <p className="menu-link" onClick={() => toggleLogin()} aria-controls="example-collapse-text" aria-expanded={login}>{!login? "more..." : "less..."}</p>
               </div>
               <Collapse in={login}>
                 <div className="menu-details" id="example-collapse-text">
                   <p className="start-para-details">If you like to try this text editor you can go to <span className="menu-inside" onClick={() => handleKey("login")}>"Login" </span>. 
-                  There you can either just click "login" and try the testuser account (stored data will be deleted after logout) or create your own profile by signing up</p>
+                  There you can either just click "login" and try the testuser account or create your own profile by signing up</p>
                 </div>
               </Collapse>
             </div>
@@ -90,7 +162,7 @@ export function MobileSitemap(props) {
             <div>
               <div className="menu-panel">
                 <p className="start-para"><span className="menu" onClick={() => handleKey("drafts")}> Drafts </span></p>
-                <p className="menu-link" onClick={() => setDrafts(!drafts)} aria-controls="example-collapse-text" aria-expanded={drafts}>{!drafts? "more..." : "less..."}</p>
+                <p className="menu-link" onClick={() => toggleDrafts()} aria-controls="example-collapse-text" aria-expanded={drafts}>{!drafts? "more..." : "less..."}</p>
               </div>
               <Collapse in={drafts}>
                 <div className="menu-details" id="example-collapse-text">
@@ -104,7 +176,7 @@ export function MobileSitemap(props) {
             <div>
               <div className="menu-panel">
                 <p className="start-para"><span className="menu" onClick={() => handleKey("publish")}> Publish </span></p>
-                <p className="menu-link" onClick={() => setPublish(!publish)} aria-controls="example-collapse-text" aria-expanded={publish}>{!publish? "more..." : "less..."}</p>
+                <p className="menu-link" onClick={() => togglePublish()} aria-controls="example-collapse-text" aria-expanded={publish}>{!publish? "more..." : "less..."}</p>
               </div>
               <Collapse in={publish}>
                 <div className="menu-details" id="example-collapse-text">
