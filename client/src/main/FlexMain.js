@@ -1,8 +1,6 @@
-import React, { useState }  from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import './FlexMain.css'
-import firebase from 'firebase/app'
-import 'firebase/auth'
 import {Container, Tab, Tabs} from 'react-bootstrap'
 import Chat from './chat/Chat'
 import History from './history/History'
@@ -19,32 +17,8 @@ import About from './About/About'
 import Sitemap from './About/Sitemap'
 
 
-export default function FlexMain() {
-  const [login, setLogin] = useState(false)
+export function FlexMain(props) {
 
-  // get user-status to display/hide navigation
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        if(user.emailVerified) {
-          setLogin(true)
-        } else {
-          setLogin(false)
-        }
-    } else {
-      setLogin(false)
-    }
-  })
-  
-  //zweifache Prüfung, ob user eingeloggt ist
-  if(props.user.loggedIn) {
-    setLogin(true)
-  }
-  else {
-    setLogin(false)
-  }
-
-
-  // ----------------------------- RETURN -------------------------------------------------------------------
   return (
     <section className="flexContainer-main">
       <div className="flexItem-main" id="item-1">
@@ -72,7 +46,7 @@ export default function FlexMain() {
         <Container fluid>
           <Tabs defaultActiveKey={"login"} id="uncontrolled" style={{borderBottom: 0}}>
             
-            {login?
+            {props.user.loggedIn?
               <Tab eventKey="drafts" title="Drafts">
                 <Name />
                 <SaveDraft />
@@ -80,7 +54,7 @@ export default function FlexMain() {
               </Tab>
             : null}
             
-            {login?
+            {props.user.loggedIn?
               <Tab eventKey="publish" title="Publish">
                 <Publish />
                 <DraftList />
@@ -88,7 +62,7 @@ export default function FlexMain() {
               </Tab>
             : null}
             
-            {login? 
+            {props.user.loggedIn? 
               <Tab eventKey="login" title="Profile">
                   <Authorization />
               </Tab>
