@@ -89,7 +89,7 @@ class Message extends Component {
 
   render() {
     return (
-      <div className="message" id={this.props.color} >
+      <div className="message" id={this.props.user.loggedIn? this.props.edit : this.props.color} >
         <div className="message-header">
           <p id="message-name">{this.props.name}:</p>
         
