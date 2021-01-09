@@ -47,7 +47,7 @@ class History extends Component {
                       <Popover title={title} tags={tags} description={description}/>
                       </div>
                     <div className="history-column-3" >
-                      {chatnumber === this.props.chat.chatnumber && user === this.props.chat.user? 
+                      {chatnumber === this.props.chat.chatnumber && user === this.props.chat.user && !this.props.user.loggedIn? 
                         <PDFDownloadLink
                           document={
                             <PDF title={title} data={this.props.chat.messages} />
@@ -72,7 +72,8 @@ class History extends Component {
 let mapStateToProps = (state) => {
   return {
     title: state.title,
-    chat: state.chat
+    chat: state.chat,
+    user: state.user
   }
 }
 
