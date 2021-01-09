@@ -5,7 +5,7 @@ import { Container, Tab, Tabs }  from 'react-bootstrap'
 import Chat from '../main/chat/Chat'
 import Authorization from '../authorization/Authorization'
 import About from '../main/About/About'
-import TabletStart from './TabletStart'
+import TabletSitemap from './TabletSitemap'
 // CSS in App.css/FlexMain
 
 
@@ -29,8 +29,8 @@ export default function TabletChatboxLeft() {
     <Container fluid id="responsive-container-tablet">
       <Tabs defaultActiveKey={"start"} id="uncontrolled" style={{borderBottom: 0}}>
           
-          <Tab eventKey="start" title="Info">
-            <TabletStart />
+          <Tab eventKey="sitemap" title="Sitemap">
+            <TabletSitemap />
           </Tab>
           
           <Tab eventKey="chat" title="Chat">
