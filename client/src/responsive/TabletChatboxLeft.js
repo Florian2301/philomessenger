@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import firebase from 'firebase/app'
-import 'firebase/auth'
 import { Container, Tab, Tabs }  from 'react-bootstrap'
 import History from '../main/history/History'
 import Userchats from '../main/history/Userchats'
@@ -15,31 +13,6 @@ import Drafts from '../main/drafts/Drafts'
 
 
 export function TabletChatboxLeft(props) {
-  const [login, setLogin] = useState(false)
-
-  // get user-status to display/hide navigation
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        if(user.emailVerified) {
-          setLogin(true)
-        } else {
-          setLogin(false)
-        }
-    } else {
-      setLogin(false)
-    }
-  })
-  
-  //zweifache Prüfung, ob user eingeloggt ist
-  if(props.user.loggedIn) {
-    setLogin(true)
-  }
-  else {
-    setLogin(false)
-  }
-  
-  
- // ------------------------- RETURN --------------------------------------------------
 
   return (
     <Container fluid id="responsive-container-tablet">
@@ -53,7 +26,7 @@ export function TabletChatboxLeft(props) {
             <Userchats />
         </Tab>
         
-        {login?
+        {props.user.loggedIn?
           <Tab eventKey="drafts" title="Drafts">
              <Name />
              <SaveDraft />
@@ -61,7 +34,7 @@ export function TabletChatboxLeft(props) {
           </Tab>
         : null}
         
-        {login?
+        {props.user.loggedIn?
           <Tab eventKey="publish" title="Publish">
               <Publish />
               <DraftList />
