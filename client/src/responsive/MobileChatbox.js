@@ -13,7 +13,7 @@ import Drafts from '../main/drafts/Drafts'
 import Authorization from '../authorization/Authorization'
 import About from '../main/About/About'
 import { getUser, setKey } from '../redux/actions/user'
-import MobileStart from './MobileStart'
+import MobileSitemap from './MobileSitemap'
 import SelectView from '../header/SelectView'
 // CSS MobileStart & SelectView in App.css/ CSS Nav in FlexMain.css
 
@@ -33,8 +33,8 @@ export function MobileChatbox(props) {
       
       <Tabs  id="uncontrolled" style={{borderBottom: 0}} activeKey={props.user.key} onSelect={handleSelect}>
         
-        <Tab eventKey="start" title="Menu">
-          <MobileStart />
+        <Tab eventKey="sitemap" title="Sitemap">
+          <MobileSitemap />
         </Tab>
         
         {props.user.key === "chat"?
