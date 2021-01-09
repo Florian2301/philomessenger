@@ -116,14 +116,36 @@ class Chat extends Component {
     return (
       <div>
         <Container className="chatbox" id="chatbox">
-          <ListGroup className="chatmessages">
-            <TransitionGroup>
+          {!this.props.user.loggedIn?
+            <ListGroup className="chatmessages">
+              <TransitionGroup>
+              {messages.map(({_id, color, name, messagenumber, text}) => {
+                return (
+                <CSSTransition key={uuidv4()} timeout={100} classNames="transition-message">
+                  <ListGroup.Item className="listgroup-message">
+                  <Message
+                    color={'color-' + color}
+                    key={uuidv4()}
+                    number={messagenumber}
+                    name={name}
+                    text={text}
+                    chatid={chatId}
+                    chatnumber={chatnumber}
+                    messageId={_id}
+                    userid={userId}
+                  />
+                  </ListGroup.Item>
+                </CSSTransition>
+              )})
+              }
+               </TransitionGroup>
+            </ListGroup>
+          :
+          <ul className="chatmessages">
             {messages.map(({_id, color, name, messagenumber, text}) => {
               return (
-              <CSSTransition key={uuidv4()} timeout={100} classNames="transition-message">
-                <ListGroup.Item className="listgroup-message">
                 <Message
-                  color={'color-' + color}
+                  edit={'color-' + color + '-edit'}
                   key={uuidv4()}
                   number={messagenumber}
                   name={name}
@@ -132,13 +154,10 @@ class Chat extends Component {
                   chatnumber={chatnumber}
                   messageId={_id}
                   userid={userId}
-                />
-                </ListGroup.Item>
-              </CSSTransition>
-            )})
+                />)})
             }
-             </TransitionGroup>
-          </ListGroup>
+          </ul>
+          }
             <Textarea
             writer={this.state.writer}
             placeholder={this.state.placeholder}
