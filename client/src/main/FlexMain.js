@@ -35,11 +35,12 @@ export default function FlexMain() {
     }
   })
   
+  //zweifache Prüfung, ob user eingeloggt ist
   if(props.user.loggedIn) {
-    console.log("login")
+    setLogin(true)
   }
   else {
-    console.log("not login")
+    setLogin(false)
   }
 
 
