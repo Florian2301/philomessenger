@@ -26,7 +26,7 @@ export function Start() {
             <br></br>
             <h2 className="start-para-tablet">Login</h2>
             <p className="start-para">If you like to try this text editor you can go to<span className="start-para-tablet">"Login"</span>. 
-            There you can either just click "login" and try the testuser account (stored data will be deleted after logout) or create your own profile by signing up</p>
+            There you can either just click "login" and try the testuser account or create your own profile by signing up</p>
             
             <br></br>
             <h2 className="start-para-tablet">Drafts</h2>
