@@ -1,4 +1,5 @@
 import React, { useState }  from 'react'
+import { connect } from 'react-redux'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import { Container, Tab, Tabs }  from 'react-bootstrap'
@@ -9,7 +10,7 @@ import TabletSitemap from './TabletSitemap'
 // CSS in App.css/FlexMain
 
 
-export default function TabletChatboxLeft() {
+export function TabletChatboxLeft() {
   const [login, setLogin] = useState(false)
 
   // get user-status to display/hide navigation
@@ -24,6 +25,17 @@ export default function TabletChatboxLeft() {
       setLogin(false)
     }
   })
+  
+  
+ //zweifache Prüfung, ob user eingeloggt ist
+if(props.user.loggedIn) {
+  setLogin(true)
+}
+else {
+  setLogin(false)
+}
+  
+// ------------------------------- RETURN ----------------------------------------------  
 
   return (
     <Container fluid id="responsive-container-tablet">
@@ -56,4 +68,18 @@ export default function TabletChatboxLeft() {
   )
 }
 
+
+// ------------- REDUX -----------------------------------------------
+
+let mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  }
+}
+
+let mapDispatchToProps = {}
+
+let ContainerTabletR = connect(mapStateToProps, mapDispatchToProps)(TabletChatboxRight)
+
+export default ContainerTabletR
 
