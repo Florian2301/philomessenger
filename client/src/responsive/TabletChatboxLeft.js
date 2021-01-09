@@ -14,7 +14,7 @@ import Drafts from '../main/drafts/Drafts'
 // CSS in App.css/FlexMain
 
 
-export function TabletChatboxLeft() {
+export function TabletChatboxLeft(props) {
   const [login, setLogin] = useState(false)
 
   // get user-status to display/hide navigation
