@@ -1,4 +1,5 @@
 import React, { useState }  from 'react'
+import { connect } from 'react-redux'
 import './FlexMain.css'
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -33,6 +34,13 @@ export default function FlexMain() {
       setLogin(false)
     }
   })
+  
+  if(props.user.loggedIn) {
+    console.log("login")
+  }
+  else {
+    console.log("not login")
+  }
 
 
   // ----------------------------- RETURN -------------------------------------------------------------------
@@ -103,4 +111,19 @@ export default function FlexMain() {
     </section>
   )
 }
+
+// ------------- REDUX -----------------------------------------------
+
+let mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  }
+}
+
+let mapDispatchToProps = {}
+
+let FlexContainer = connect(mapStateToProps, mapDispatchToProps)(FlexMain)
+
+export default FlexContainer
+
 
