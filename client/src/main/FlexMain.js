@@ -63,7 +63,7 @@ export function FlexMain(props) {
             : null}
             
             {props.user.loggedIn? 
-              <Tab eventKey="login" title="Profile">
+              <Tab eventKey="login" title="Logout">
                   <Authorization />
               </Tab>
             :   
