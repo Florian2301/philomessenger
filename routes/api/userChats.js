@@ -122,7 +122,7 @@ async function getChat(req, res, next) {
     let userchat
     try{
         userchat = await Userchat.findById(req.params.id)
-        if (userchat == null) {
+        if (userchat === null) {
             return res.status(404).json({ message: "Cannot find userchat" })
         }
     } catch (err) {
