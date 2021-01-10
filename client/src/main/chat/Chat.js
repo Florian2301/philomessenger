@@ -4,7 +4,7 @@ import Button from '../../elements/Button'
 import Message from './Message'
 import { connect } from 'react-redux'
 import { addMessages, updateDraft, updateUserDraft } from '../../redux/actions/draft'
-import { clearDisplay } from '../../redux/actions/user'
+import { clearDisplay, setKey } from '../../redux/actions/user'
 import './Chat.css'
 import { v4 as uuidv4 } from 'uuid'
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
@@ -93,6 +93,14 @@ class Chat extends Component {
   clear = () => {
     this.props.clearDisplay()
   }
+  
+   history = () => {
+    this.props.setKey("history")
+  }
+
+  userchats = () => {
+    this.props.setKey("userchats")
+  }
 
   //---------- RENDER ----------------------------------------
 
@@ -170,22 +178,34 @@ class Chat extends Component {
         </Container>
         
         <section className="flexContainer-chat">
-        <div className="addPhil">
-          {buttons.map((p) => {
-            return (
-              <Button
-                className="button-chat-Phil"
-                key={uuidv4()}
-                button={true}
-                id={p.id}
-                label={p.name}
-                phil={p.name}
-                handleClick={this.writeMessage}
-              />
-            )
-          })}
-        </div>
-          <div>
+          {this.props.chat.chatEditmode && this.props.user.modus === "mobile"?
+            <div id="link-back">
+              <div>
+                <p id="link-back-chat" onClick={this.history}>back to history</p>
+              </div>
+
+              <div>
+                <p id="link-back-chat" onClick={this.userchats}>back to userchats</p>
+              </div>
+            </div>
+          :
+          <div className="addPhil">
+            {buttons.map((p) => {
+              return (
+                <Button
+                  className="button-chat-Phil"
+                  key={uuidv4()}
+                  button={true}
+                  id={p.id}
+                  label={p.name}
+                  phil={p.name}
+                  handleClick={this.writeMessage}
+                />
+              )
+            })}
+          </div>
+          }
+          <div id="save-clear-chat">
             <div>
               {this.props.draft.draftEditmode? <p id="link-clear" onClick={this.saveMessageAndButton}>
                 {this.state.save? <Spinner animation="border" role="status" ></Spinner> : "save"}</p> 
@@ -215,7 +235,8 @@ let mapDispatchToProps = {
   clearDisplay: clearDisplay,
   addMessages: addMessages,
   updateDraft: updateDraft,
-  updateUserDraft: updateUserDraft
+  updateUserDraft: updateUserDraft,
+  setKey: setKey
 }
 
 let ChatContainer = connect(mapStateToProps, mapDispatchToProps)(Chat)
