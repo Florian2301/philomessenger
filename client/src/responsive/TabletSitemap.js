@@ -42,7 +42,7 @@ export function TabletSitemap() {
                 </div>
                 <Collapse in={about}>
                     <div className="menu-details" id="example-collapse-text">
-                        <p className="start-para">Finally, on the last page,<span className="start-para-tablet">"About"</span>, 
+                        <p className="start-para">On <span className="start-para-tablet"> "About" </span>  
                            you will find a short explanation about why i created this app, get more technical informations about it and see the code behind (on github).</p>
                     </div>
                 </Collapse>
