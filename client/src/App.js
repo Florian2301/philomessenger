@@ -59,12 +59,12 @@ export default function App() {
       <Provider store={store}>
         <div>
           <Desktop>
-            <Header auto={() => viewAuto()} desktop={() => viewDesktop()} tablet={() => viewTablet()} mobile={() => viewMobile()} id="viewdesktop"/>
+            <Header auto={viewAuto} desktop={viewDesktop} tablet={viewTablet} mobile={viewMobile} id="viewdesktop"/>
             <FlexMain />
           </Desktop>
 
           <Tablet >
-              <SelectView auto={() => viewAuto()} desktop={() => viewDesktop()} tablet={() => viewTablet()} mobile={() => viewMobile()} id="viewtablet"/>
+              <SelectView auto={viewAuto} desktop={viewDesktop} tablet={viewTablet} mobile={viewMobile} id="viewtablet"/>
               <Container id="flexTablet">
                 <TabletChatboxLeft/>
                 <TabletChatboxRight />
@@ -72,7 +72,7 @@ export default function App() {
           </Tablet>
           
           <Mobile>
-              <MobileChatbox auto={() => viewAuto()} desktop={() => viewDesktop()} tablet={() => viewTablet()} mobile={() => viewMobile()} id="viewmobile"/>
+              <MobileChatbox auto={viewAuto} desktop={viewDesktop} tablet={viewTablet} mobile={viewMobile} id="viewmobile"/>
           </Mobile>
         </div>
         </Provider>
