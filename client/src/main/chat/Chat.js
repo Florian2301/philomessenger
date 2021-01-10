@@ -181,11 +181,11 @@ class Chat extends Component {
           {this.props.chat.chatEditmode && window.innerWidth <= 767?
             <div id="link-back">
               <div>
-                <p id="link-back-chat" onClick={this.history}>back to history</p>
+                <p id="link-back-chat" onClick={this.history}>go to history</p>
               </div>
 
               <div>
-                <p id="link-back-chat" onClick={this.userchats}>back to userchats</p>
+                <p id="link-back-chat" onClick={this.userchats}>go to userchats</p>
               </div>
             </div>
           :
