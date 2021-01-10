@@ -22,13 +22,13 @@ export function MobileSitemap(props) {
     setLogin(false)
     setDrafts(false)
     setPublish(false)
-    if(key === "about") setAbout(true)
-    if(key === "history") setHistory(true)
-    if(key === "userchats") setUserchats(true)
-    if(key === "chat") setChat(true)
-    if(key === "login") setLogin(true)
-    if(key === "drafts") setDrafts(true)
-    if(key === "publish") setPublish(true)
+    if(key === "about") setAbout(!about)
+    if(key === "history") setHistory(!history)
+    if(key === "userchats") setUserchats(!userchats)
+    if(key === "chat") setChat(!chat)
+    if(key === "login") setLogin(!login)
+    if(key === "drafts") setDrafts(!drafts)
+    if(key === "publish") setPublish(!publish)
   }
 
   function handleKey(key) {
