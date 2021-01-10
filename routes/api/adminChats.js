@@ -118,7 +118,7 @@ async function getChat(req, res, next) {
     let chat
     try{
         chat = await Chat.findById(req.params.id)
-        if (chat == null) {
+        if (chat === null) {
             return res.status(404).json({ message: "Cannot find title" })
         }
     } catch (err) {
