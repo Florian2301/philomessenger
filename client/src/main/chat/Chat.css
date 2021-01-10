@@ -30,9 +30,29 @@
 }
 
 .flexContainer-chat {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 12rem;
+  margin-bottom: 1rem;
+}
+
+#link-back {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#link-back-chat {
+  margin: 1rem;
+}
+
+#link-back-chat:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: dodgerblue;
+}
+
+#save-clear-chat {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 #link-clear {
@@ -50,11 +70,6 @@
   margin-top: 1rem;
   margin-left: 1rem;
   background-color: silver;
-}
-
-#save-clear-chat {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 
 .transition-message-enter {
