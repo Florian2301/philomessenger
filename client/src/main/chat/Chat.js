@@ -178,7 +178,7 @@ class Chat extends Component {
         </Container>
         
         <section className="flexContainer-chat">
-          {this.props.chat.chatEditmode && this.props.user.modus === "mobile"?
+          {this.props.chat.chatEditmode && window.innerWidth <= 767?
             <div id="link-back">
               <div>
                 <p id="link-back-chat" onClick={this.history}>back to history</p>
