@@ -10,7 +10,8 @@ let initialState = {
     signUp: false,
     update: false,
     delete: false,
-    modus: "auto"
+    modus: "auto",
+    key: "about"
 }
 
 
