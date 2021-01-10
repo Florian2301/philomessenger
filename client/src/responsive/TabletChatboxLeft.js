@@ -1,22 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Container, Tab, Tabs }  from 'react-bootstrap'
+import { Container, Tab, Tabs}  from 'react-bootstrap'
 import History from '../main/history/History'
 import Userchats from '../main/history/Userchats'
-import Publish from '../main/publish/Publish'
-import DraftList from '../main/publish/DraftList'
-import ChatList from '../main/publish/ChatList'
-import Name from '../main/drafts/Name'
-import SaveDraft from '../main/drafts/SaveDraft'
-import Drafts from '../main/drafts/Drafts'
+import Chat from '../main/chat/Chat'
+import About from '../main/About/About'
+import { setKey } from '../redux/actions/user'
 // CSS in App.css/FlexMain
 
 
 export function TabletChatboxLeft(props) {
 
+  function handleSelect(key) {
+    props.setKey(key)
+  } 
+
   return (
     <Container fluid id="responsive-container-tablet">
-      <Tabs defaultActiveKey={"history"} id="uncontrolled" style={{borderBottom: 0}}>
+      <Tabs activeKey={props.user.key} id="uncontrolled" style={{borderBottom: 0}} onSelect={handleSelect}>
         
         <Tab eventKey="history" title="History">
             <History/>
@@ -26,27 +27,19 @@ export function TabletChatboxLeft(props) {
             <Userchats />
         </Tab>
         
-        {props.user.loggedIn?
-          <Tab eventKey="drafts" title="Drafts">
-             <Name />
-             <SaveDraft />
-             <Drafts />
-          </Tab>
-        : null}
-        
-        {props.user.loggedIn?
-          <Tab eventKey="publish" title="Publish">
-              <Publish />
-              <DraftList />
-              <ChatList />
-          </Tab>
-        : null}
+        <Tab eventKey="chat" title="Chat">
+            <Chat />
+        </Tab>
+
+        <Tab eventKey="about" title="About">
+          <About />
+        </Tab>
+
       
       </Tabs>
     </Container>
   )
 }
-
 
 // ------------- REDUX -----------------------------------------------
 
@@ -56,9 +49,10 @@ let mapStateToProps = (state) => {
   }
 }
 
-let mapDispatchToProps = {}
+let mapDispatchToProps = {
+  setKey: setKey
+}
 
 let ContainerTabletL = connect(mapStateToProps, mapDispatchToProps)(TabletChatboxLeft)
 
 export default ContainerTabletL
-
