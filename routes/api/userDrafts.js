@@ -116,7 +116,7 @@ async function getDrafts(req, res, next) {
     let draft
     try{
         draft = await Userdrafts.findById(req.params.id)
-        if (draft == null) {
+        if (draft === null) {
             return res.status(404).json({ message: "Cannot find userdraft" })
         }
     } catch (err) {
