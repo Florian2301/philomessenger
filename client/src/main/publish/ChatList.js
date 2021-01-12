@@ -64,9 +64,9 @@ export function Chats (props) {
       const date = props.chat.date
       const tags = props.chat.tags
       const description = props.chat.description
-      const buttons = props.chat.buttons
+      const philosopher = props.chat.philosopher
       const messages = props.chat.messages
-      props.saveDraft(userId, user, title, date, tags, description, buttons, messages, admin) 
+      props.saveDraft(userId, user, title, date, tags, description, philosopher, messages, admin) 
       setTimeout(() => {
         props.getDrafts(userId, admin)
         setSpinner(false)
@@ -89,7 +89,6 @@ export function Chats (props) {
             props.getAllChats(admin)
           }, 500)
       } else {
-        props.deleteChat(id, admin)
         props.title.userCollection.map((title) => { // usertitle has onw state
           if(title.chatnumber === chatnumber) {
             titleId = title._id
