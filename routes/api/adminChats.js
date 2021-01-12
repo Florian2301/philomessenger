@@ -50,8 +50,8 @@ router.post('/', async (req, res) => {
         req.body.messages.map((message) => {
             chat.messages.push(message)
         })
-        req.body.philosopher.map((button) => {
-            chat.philosopher.push(button)
+        req.body.philosopher.map((phil) => {
+            chat.philosopher.push(phil)
         })
     try {
         const newChat = await chat.save()
