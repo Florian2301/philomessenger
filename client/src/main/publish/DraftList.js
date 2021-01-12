@@ -5,7 +5,7 @@ import Button from '../../elements/Button'
 import Panel from '../../elements/Panel'
 import { v4 as uuidv4 } from 'uuid'
 import { Spinner } from 'react-bootstrap'
-import { getDrafts, getOneDraft, deleteDraft, getUserDrafts, getOneUserDraft, deleteUserDraft, publishAdminDraft, publishUserDraft } from '../../redux/actions/draft'
+import { getDrafts, getOneDraft, deleteDraft, prepareUploadDraft } from '../../redux/actions/draft'
 import {  clearDisplay, setKey } from '../../redux/actions/user'
 
 
@@ -16,9 +16,8 @@ export function DraftList (props) {
     function showAllDrafts() {
       setSpinner(true)
       const admin = props.user.admin
-      const id = props.user.userId
-      props.getUserDrafts(id)
-      admin? props.getDrafts() : props.getUserDrafts(id)
+      const userId = props.user.userId
+      props.getDrafts(userId, admin)
       setTimeout(() => {
         setSpinner(false)
       }, 500)           
@@ -26,12 +25,12 @@ export function DraftList (props) {
 
     // show one draft
     function showDraft(id) {
-        setSpinner(true)
-        props.clearDisplay()
-        const admin = props.user.admin
-        admin? props.getOneDraft(id) : props.getOneUserDraft(id)
-        props.setKey("chat")  // for navigation of mobile version
-        setTimeout(() => {
+      setSpinner(true)
+      props.clearDisplay()
+      props.setKey("chat")  // for navigation of mobile version
+      const admin = props.user.admin
+      props.getOneDraft(id, admin)
+      setTimeout(() => {
         setSpinner(false)
       }, 500)           
     }
@@ -41,25 +40,19 @@ export function DraftList (props) {
       setSpinner(true)
       props.clearDisplay()
       const admin = props.user.admin
-      admin? props.publishAdminDraft(id) : props.publishUserDraft(id)
+      props.prepareUploadDraft(id, admin)
       setTimeout(() => {
         setSpinner(false)
-      }, 500)           
+      }, 500)      
   }
 
     function deleteDraft(id) {
       const admin = props.user.admin
-      if (admin) {
-          props.deleteDraft(id)
-          setTimeout(() => {
-            props.getDrafts()
-          }, 500)
-      } else {
-        props.deleteUserDraft(id)
-        setTimeout(() => {
-          props.getUserDrafts(id)
-        }, 500)
-      } 
+      const userId = props.user.userId
+      props.deleteDraft(id, admin)
+      setTimeout(() => {
+        props.getDrafts(userId, admin)
+      }, 500)
     }
 
   
@@ -117,13 +110,9 @@ let mapStateToProps = (state) => {
   let mapDispatchToProps = {
     getDrafts: getDrafts,
     getOneDraft: getOneDraft,
+    prepareUploadDraft: prepareUploadDraft,
     deleteDraft: deleteDraft,
     clearDisplay: clearDisplay,
-    getUserDrafts: getUserDrafts,
-    getOneUserDraft: getOneUserDraft,
-    deleteUserDraft: deleteUserDraft,
-    publishUserDraft: publishUserDraft,
-    publishAdminDraft: publishAdminDraft,
     setKey: setKey
   }
   
