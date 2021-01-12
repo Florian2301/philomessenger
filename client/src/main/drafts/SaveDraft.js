@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react'
 import { Form, Alert, Col, Row, Spinner } from 'react-bootstrap'
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
 import Panel from '../../elements/Panel'
 import Button from '../../elements/Button'
 import './SaveDraft.css'
 import { connect } from 'react-redux'
-import { startChat, removeName, saveDraft, saveUserDraft, getDrafts, getUserDrafts, updateDraft, updateUserDraft } from '../../redux/actions/draft'
+import { startChat, removeName, saveDraft, getDrafts, updateDraft } from '../../redux/actions/draft'
 import { clearDisplay } from '../../redux/actions/user'
+
 
 
 export function SaveDraft(props) {
@@ -16,9 +17,9 @@ export function SaveDraft(props) {
     const descriptionRef = useRef()
     const [error, setError] = useState('')
     const [update, setUpdate] = useState(false)
-    const [reset, setReset] = useState(false) 
+    const [reset, setReset] = useState(false)
     const [spinner, setSpinner] = useState(false)
-    
+
     
     function handleSubmit(e) {
         e.preventDefault()
@@ -40,57 +41,31 @@ export function SaveDraft(props) {
             if(!buttons) {return setError('Please add at least one name')}
 
             if(!update) {           // if draft will be updated
-                if(admin) {
-                    setSpinner(true)
-                    props.saveDraft(userId, user, title, date, tags, description, buttons, messages)
-                    setTimeout(() => {
-                        props.getDrafts()
-                        setSpinner(false)
-                    }, 500)
-                } else {
-                    setSpinner(true)
-                    props.saveUserDraft(userId, user, title, date, tags, description, buttons, messages)
-                    setTimeout(() => {
-                        props.getUserDrafts(userId)
-                        setSpinner(false)
-                    }, 500)
-                }
+                props.saveDraft(userId, user, title, date, tags, description, buttons, messages, admin)
             } else {                // else create a new draft
-                if(admin) {
-                    setSpinner(true)
-                    props.updateDraft(draftId, title, date, tags, description, buttons, messages)
-                    setTimeout(() => {
-                        props.getDrafts()
-                        setSpinner(false)
-                    }, 500)
-                } else {
-                    setSpinner(true)
-                    props.updateUserDraft(draftId, title, date, tags, description, buttons, messages)
-                    setTimeout(() => {
-                        props.getUserDrafts(userId)
-                        setSpinner(false)
-                    }, 500)
-                }
+                props.updateDraft(draftId, title, date, tags, description, buttons, messages, admin)
             }
-            setUpdate(false)
-            setReset(false)
-            setError("")
-            e.target.reset()
-        } else {                    // clear button
+            setSpinner(true)
+            setTimeout(() => {
+                props.getDrafts(userId, admin)
+                setSpinner(false)
+            }, 500)
+            
+        } else {  // clear button
             props.clearDisplay()
-            setUpdate(false)
-            setReset(false)
-            setError("")
-            e.target.reset()
         }
+        setUpdate(false)
+        setReset(false)
+        setError("")
+        e.target.reset()
     }
 
     function removeName(name) {
         props.removeName(name)
     }
 
-  // ----------------------------------- RETURN --------------------------------------------------------------------------
-    
+// ----------------------------------- RETURN --------------------------------------------------------------------------
+
     return (
         <Panel id="saveDraft" title="Start a new chat">
             <div className="text-center mb-4">
@@ -162,15 +137,12 @@ const mapStateToProps = state => ({
 })
 
 const mapActionsToProps = {
+    clearDisplay: clearDisplay,
     saveDraft: saveDraft,
-    saveUserDraft: saveUserDraft,
     startChat: startChat,
     removeName: removeName,
-    clearDisplay: clearDisplay,
     getDrafts: getDrafts,
-    getUserDrafts: getUserDrafts,
     updateDraft: updateDraft,
-    updateUserDraft: updateUserDraft
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(SaveDraft)
