@@ -6,7 +6,7 @@ let initialState = {
     date: "",
     tags: [],
     description: "",
-    buttons: [],
+    philosopher: [],
     messages: [],
     adminChats: [],
     userChats: [],
@@ -27,7 +27,7 @@ function chats(state = initialState, action) {
               date: action.payload.date,
               tags: action.payload.tags,
               description: action.payload.description,
-              buttons: action.payload.buttons,
+              philosopher: action.payload.philosopher,
               messages: action.payload.messages,
               chatEditmode: true
             }
@@ -53,7 +53,7 @@ function chats(state = initialState, action) {
               date: "",
               tags: [],
               description: "",
-              buttons: [],
+              philosopher: [],
               messages: [], 
               chatEditmode: false }
     case "DELETE_USER_CHAT":
