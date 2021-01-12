@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 // save as chat
-export const saveChat = (userId, user, chatnumber, title, date, tags, description, buttons, messages, admin) => dispatch => {
+export const saveChat = (userId, user, chatnumber, title, date, tags, description, philosopher, messages, admin) => dispatch => {
   if(admin) {
     axios
-      .post('/api/chats', {userId, user, chatnumber, title, date, tags, description, buttons, messages})
+      .post('/api/chats', {userId, user, chatnumber, title, date, tags, description, philosopher, messages})
       .then(res => dispatch({
         type: 'GET_CHAT', payload: res.data
       }))
@@ -13,7 +13,7 @@ export const saveChat = (userId, user, chatnumber, title, date, tags, descriptio
       })
   } else { 
     axios
-      .post('/api/userchats', {userId, user, chatnumber, title, date, tags, description, buttons, messages})
+      .post('/api/userchats', {userId, user, chatnumber, title, date, tags, description, philosopher, messages})
       .then(res => dispatch({
         type: 'GET_CHAT', payload: res.data
       }))
