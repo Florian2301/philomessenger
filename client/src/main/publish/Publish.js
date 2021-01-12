@@ -38,7 +38,7 @@ export function Publish(props) {
             const tagsValue = tagsRef.current.value
             const tags = tagsValue.split(",")
             const description = descriptionRef.current.value
-            const buttons = props.chat.buttons
+            const philosopher = props.chat.philosopher
             const messages = props.chat.messages
 
             if(!chatnumber) {return setError('Please insert a chatnumber')}
@@ -75,9 +75,6 @@ export function Publish(props) {
 
 // ------------------------------------- RETURN --------------------------------------------------------
 
-  console.log("chat", props.chat)
-  console.log("user", props.user)
-  console.log("title", props.title)
     return (
         <Panel id="publish-chat-panel" title="Publish your chat">
             <div className="text-center mb-4">
