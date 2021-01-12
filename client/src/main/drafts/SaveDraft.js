@@ -34,16 +34,16 @@ export function SaveDraft(props) {
             const tagsValue = tagsRef.current.value
             let tags = tagsValue.split(",")
             const description = descriptionRef.current.value
-            const buttons = props.draft.buttons
+            const philosopher = props.draft.philosopher
             const messages = props.draft.messages
 
             if(!title) {return setError('Please insert a title')}
-            if(!buttons) {return setError('Please add at least one name')}
+            if(!philosopher) {return setError('Please add at least one name')}
 
             if(!update) {           // if draft will be updated
-                props.saveDraft(userId, user, title, date, tags, description, buttons, messages, admin)
+                props.saveDraft(userId, user, title, date, tags, description, philosopher, messages, admin)
             } else {                // else create a new draft
-                props.updateDraft(draftId, title, date, tags, description, buttons, messages, admin)
+                props.updateDraft(draftId, title, date, tags, description, philosopher, messages, admin)
             }
             setSpinner(true)
             setTimeout(() => {
@@ -80,14 +80,14 @@ export function SaveDraft(props) {
                     </Col>
                 </Form.Group>
                 
-                {props.draft.buttons.map((button) => {
+                {props.draft.philosopher.map((phil) => {
                     return (
                     <Form.Group id="save-draft" as={Row} key={uuidv4()}>
                         <Form.Label id="save-name">Name:*</Form.Label>
                         <Col>
-                            <Form.Control id="save-input-name" type="name" defaultValue={button.name}/>
+                            <Form.Control id="save-input-name" type="name" defaultValue={phil.name}/>
                         </Col>
-                        <p id="remove-name-link" onClick={() => removeName(button)}>remove</p>
+                        <p id="remove-name-link" onClick={() => removeName(phil)}>remove</p>
                     </Form.Group>
                     )
                 })}
