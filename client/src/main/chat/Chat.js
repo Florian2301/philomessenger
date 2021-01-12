@@ -56,11 +56,11 @@ class Chat extends Component {
       this.setState({
         number                                                      // new messagenumber for new message
       })
-      let storeName = this.props.draft.buttons                      // get names of draft
+      let storeName = this.props.draft.philosopher                  // get names of draft
       let indexOfName
-      storeName.map((button) => {
-        if (button.name === name) {                                 // get name of button
-          indexOfName = storeName.indexOf(button)                   // find index of name (for color of message)
+      storeName.map((phil) => {
+        if (phil.name === name) {                                   // get name of button
+          indexOfName = storeName.indexOf(phil)                     // find index of name (for color of message)
         }
         return indexOfName
       }) 
@@ -76,8 +76,8 @@ class Chat extends Component {
   }
 
   
-  // save new messages and buttons to draft
-  saveMessageAndButton = () => {
+  // save new messages and philosophers to draft
+  saveMessageAndPhil = () => {
     this.setState({ save: true})
     setTimeout(() => { this.setState({ save: false}) }, 500)
     const admin = this.props.user.admin
@@ -86,9 +86,9 @@ class Chat extends Component {
     const date = this.props.draft.date
     const tags = this.props.draft.tags
     const description = this.props.draft.description
-    const buttons = this.props.draft.buttons
+    const philosopher = this.props.draft.philosopher
     const messages = this.props.draft.messages
-    this.props.updateDraft(draftId, title, date, tags, description, buttons, messages, admin) 
+    this.props.updateDraft(draftId, title, date, tags, description, philosopher, messages, admin) 
   }
 
   clear = () => {
@@ -109,7 +109,7 @@ class Chat extends Component {
     // get data for display saved draft
     let messages = this.props.draft.messages 
     let chatId = this.props.draft.draftId
-    let buttons = this.props.draft.buttons
+    let philosopher = this.props.draft.philosopher
     let chatnumber = ""
     let userId = this.props.draft.userId
     
@@ -119,7 +119,7 @@ class Chat extends Component {
       chatId = this.props.chat.chatId
       chatnumber = this.props.chat.chatnumber
       userId = this.props.chat.userId
-      buttons = []
+      philosopher = []
     }
 
     return (
@@ -191,15 +191,15 @@ class Chat extends Component {
             </div>
           :
           <div className="addPhil">
-            {buttons.map((p) => {
+            {philosopher.map((phil) => {
               return (
                 <Button
                   className="button-chat-Phil"
                   key={uuidv4()}
                   button={true}
-                  id={p.id}
-                  label={p.name}
-                  phil={p.name}
+                  id={phil.id}
+                  label={phil.name}
+                  phil={phil.name}
                   handleClick={this.writeMessage}
                 />
               )
@@ -209,7 +209,7 @@ class Chat extends Component {
 
           <div id="save-clear-chat">
             <div>
-              {this.props.draft.draftEditmode? <p id="link-clear" onClick={this.saveMessageAndButton}>
+              {this.props.draft.draftEditmode? <p id="link-clear" onClick={this.saveMessageAndPhil}>
                 {this.state.save? <Spinner animation="border" role="status" ></Spinner> : "save"}</p> 
               : <p id="link-clear"></p>} 
             </div>
