@@ -4,7 +4,7 @@ http://philomessenger.herokuapp.com/login
 
 Note: To deploy this app on heroku, the package.json file has to be outside of the server folder.
 
-Its a MERN stack app, means I use MongoDB as my database, express as middleware, React as framework library and node.js as runtime environment for javascript. Additionally I use Redux for state management, firebase for authentification, react-bootstrap for styling some parts (e.g. for forms) and react hooks.
+Its a MERN stack app, means I use MongoDB as my database, express as middleware, React as framework library and node.js as runtime environment for javascript. Additionally I use Redux for state management, firebase for authorization, react-bootstrap for styling some parts (e.g. for forms) and react hooks.
 
 This is a demoversion for a free online text editor for writing texts/dialogues in form of a chat and same time a platform to publish those texts. I always wanted to write down my own philosophical ideas, but couldn't find the right way to bring them on paper. Finally in 2019 I thought about writing in form of dialogues to express my thoughts. So I decided to create my own online text editor and a plattform to publish the chats.
 
