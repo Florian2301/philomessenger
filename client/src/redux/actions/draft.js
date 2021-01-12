@@ -13,10 +13,10 @@ export function addMessages(messages) {
 }
 
 // save draft
-export const saveDraft = (userId, user, title, date, tags, description, buttons, messages, admin) => dispatch => {
+export const saveDraft = (userId, user, title, date, tags, description, philosopher, messages, admin) => dispatch => {
   if(admin) {
     axios
-      .post('/api/drafts/', {userId, user, title, date, tags, description, buttons, messages})
+      .post('/api/drafts/', {userId, user, title, date, tags, description, philosopher, messages})
       .then(res => dispatch({
         type: 'GET_DRAFT', payload: res.data
       }))
@@ -25,7 +25,7 @@ export const saveDraft = (userId, user, title, date, tags, description, buttons,
       })
   } else {
     axios
-      .post('/api/userdrafts/', {userId, user, title, date, tags, description, buttons, messages})
+      .post('/api/userdrafts/', {userId, user, title, date, tags, description, philosopher, messages})
       .then(res => dispatch({
         type: 'GET_DRAFT', payload: res.data
       }))
@@ -181,10 +181,10 @@ export const editDraft = (draftId, messagenumber, text, admin) => dispatch => {
 }
 
 // update details of one draft
-export const updateDraft = (id, title, date, tags, description, buttons, messages, admin) => dispatch => {
+export const updateDraft = (id, title, date, tags, description, philosopher, messages, admin) => dispatch => {
   if(admin) {
     axios
-      .patch(`/api/drafts/${id}`, {title: title, date: date, tags: tags, description: description, buttons: buttons, messages: messages})
+      .patch(`/api/drafts/${id}`, {title: title, date: date, tags: tags, description: description, philosopher: philosopher, messages: messages})
       .then(res =>
         dispatch({
           type: 'GET_DRAFT', payload: res.data
@@ -194,7 +194,7 @@ export const updateDraft = (id, title, date, tags, description, buttons, message
       })
   } else {
     axios
-      .patch(`/api/userdrafts/${id}`, {title: title, date: date, tags: tags, description: description, buttons: buttons, messages: messages})
+      .patch(`/api/userdrafts/${id}`, {title: title, date: date, tags: tags, description: description, philosopher: philosopher, messages: messages})
       .then(res =>
         dispatch({
           type: 'GET_DRAFT', payload: res.data
