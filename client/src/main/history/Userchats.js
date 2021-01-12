@@ -5,21 +5,23 @@ import PDF from '../../elements/PDF'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { v4 as uuidv4 } from 'uuid';
 import { clearDisplay, setKey } from '../../redux/actions/user'
-import { getOneUserChat } from '../../redux/actions/chat'
-import { getAllUserTitle, getUserTitle } from '../../redux/actions/title'
+import { getChat } from '../../redux/actions/chat'
+import { getAllTitle, getTitle } from '../../redux/actions/title'
 import Popover from './Popover'
 
 
 class Userchats extends Component {
   
   componentDidMount = () => {
-    this.props.getAllUserTitle()
+    const admin = false 
+    this.props.getAllTitle(admin)
   }
 
   displayChat = (id, chatnumber, userId) => {
+    const admin = false
     this.props.clearDisplay()
-    this.props.getUserTitle(id)
-    this.props.getOneUserChat(chatnumber, userId)
+    this.props.getTitle(id, admin)
+    this.props.getChat(chatnumber, userId, admin)
     this.props.setKey("chat")             // for navigation of mobile version
   }
 
@@ -28,7 +30,7 @@ class Userchats extends Component {
     const { userTitle } = this.props.title
     return (
      
-        <div className="table-userchats" style={this.props.user.modus === "mobile"? {marginBottom: 1.5+"rem"} : {marginBottom: 0+"rem"}}>
+        <div className="table-userchats" style={window.innerWidth <= 767? {marginBottom: 1.5+"rem"} : {marginBottom: 0+"rem"}}>
           <div className="data-columns-userchats">
               <div className="thead-userchats-1">
                 User
@@ -43,21 +45,21 @@ class Userchats extends Component {
                 Date
               </div>
           </div>
-          {userTitle? userTitle.map(({_id, userId, user, chatnumber, title, date, tags, description}) => {
+          {userTitle.map(({_id, userId, user, chatnumber, title, date, tags, description}) => {
                 return (
                   <div key={uuidv4()} className="data-rows-userchats">
                     <div className="userchats-column-1">{user}</div>
                     <div className="userchats-column-2">{chatnumber}</div>
                     <div className="userchats-column-3" onClick={() => this.displayChat(_id, chatnumber, userId)}>
-                      <Popover title={title} tags={tags} description={description}/>
-                      </div>
+                    <Popover title={title} tags={tags} description={description}/>
+                    </div>
                     <div className="userchats-column-4">
                       {chatnumber === this.props.chat.chatnumber && userId === this.props.chat.userId && !this.props.user.loggedIn? 
                         <PDFDownloadLink
                           document={
                             <PDF title={title} data={this.props.chat.messages} />
                           }
-                          fileName={chatnumber + ". " + title + '.pdf'}
+                          fileName={title + '.pdf'}
                           className="link-download-userchat"
                          >
                          download
@@ -65,7 +67,7 @@ class Userchats extends Component {
                       : date }
                     </div>     
                   </div>
-            )}): this.props.getAllUserChats()}
+            )})}
         </div>
      
     )
@@ -84,9 +86,9 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = {
   clearDisplay: clearDisplay,
-  getOneUserChat: getOneUserChat,
-  getAllUserTitle: getAllUserTitle,
-  getUserTitle: getUserTitle,
+  getChat: getChat,
+  getAllTitle: getAllTitle,
+  getTitle: getTitle,
   setKey: setKey
 }
 
