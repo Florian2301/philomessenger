@@ -10,9 +10,9 @@ export default function About (props) {
         
             <br></br>
         
-            <p>This is a demoversion for a free online text editor for writing texts/dialogues in form of a chat. I always wanted to write down my own philosophical ideas, 
+            <p>This is a demoversion for a free online text editor for writing texts/dialogues in form of a chat and same time a platform to publish those texts. I always wanted to write down my own philosophical ideas, 
                 but couldn't find the right way to bring them on paper. Finally in 2019 I thought about writing in form of dialogues to express my thoughts. 
-                So I decided to create my own online text editor.
+                So I decided to create my own online text editor. This app is also a plattform to publish the chats.
             </p>
 
             <br></br>
@@ -21,9 +21,14 @@ export default function About (props) {
                 is my first project I have launched and it represents my current knowledge of web developing. I am using this one as a part of my job applications.</p>
             
             <br></br>
+
+            <p>Its a MERN stack app, means I use MongoDB as my database, express as middleware, React as framework library and node.js as runtime environment for javascript. 
+              Additionally I use Redux for state management, firebase for authentification, react-bootstrap for styling some parts (e.g. for forms) and react hooks.</p>
+            
+            <br></br>
                 
             <a id="git" href="https://github.com/Florian2301/philomessenger">See code on Github</a>
-            <p id="about-update">Last update: 2021-01-09</p>
+            <p id="about-update">Last update: 2021-01-13</p>
             
             <br></br>
 
