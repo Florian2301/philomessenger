@@ -47,7 +47,7 @@ export function Publish(props) {
             
             if(!update) {
                 props.saveTitle(userId, user, chatnumber, title, date, tags, description, admin)
-                props.saveChat(userId, user, chatnumber, title, date, tags, description, buttons, messages, admin)
+                props.saveChat(userId, user, chatnumber, title, date, tags, description, philosopher, messages, admin)
                 setTimeout(() => {
                     admin? props.getAllChats(admin) : props.getAllUserChatsById(userId)
                 }, 500)
