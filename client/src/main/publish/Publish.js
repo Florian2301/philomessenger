@@ -5,8 +5,8 @@ import Panel from '../../elements/Panel'
 import Button from '../../elements/Button'
 import './Publish.css'
 import { connect } from 'react-redux'
-import { saveTitle, updateTitle, saveUserTitle, updateUserTitle, getAllUserTitle, getAllTitle } from '../../redux/actions/title'
-import { getChatById, getOneUserChatById, saveChat, updateChatDetails, getAllChats, saveUserChat, getAllUserChatsById, updateUserChat } from '../../redux/actions/chat'
+import { saveTitle, updateTitle, getAllTitle } from '../../redux/actions/title'
+import { getChatById, saveChat, updateChatDetails, getAllChats, getAllUserChatsById } from '../../redux/actions/chat'
 import { clearDisplay } from '../../redux/actions/user'
 
 
@@ -46,59 +46,38 @@ export function Publish(props) {
             if(!date) {return setError('Please insert a date')}
             
             if(!update) {
-                if(admin) {
-                    setSpinner(true)
-                    props.saveTitle(userId, user, chatnumber, title, date, tags, description)
-                    props.saveChat(userId, user, chatnumber, title, date, tags, description, buttons, messages)
-                    setTimeout(() => {
-                        props.getAllChats()
-                        setSpinner(false)
-                    }, 500)
-                } else {
-                    setSpinner(true)
-                    props.saveUserTitle(userId, user, chatnumber, title, date, tags, description)
-                    props.saveUserChat(userId, user, chatnumber, title, date, tags, description, buttons, messages)
-                    setTimeout(() => {
-                        props.getAllUserChatsById(userId)
-                        setSpinner(false)
-                    }, 500)
-                }
+                props.saveTitle(userId, user, chatnumber, title, date, tags, description, admin)
+                props.saveChat(userId, user, chatnumber, title, date, tags, description, buttons, messages, admin)
+                setTimeout(() => {
+                    admin? props.getAllChats(admin) : props.getAllUserChatsById(userId)
+                }, 500)
             } else {
-                if(admin) {
-                    setSpinner(true)
-                    props.updateTitle(titleId, chatnumber, title, date, tags, description)
-                    props.updateChatDetails(chatId, chatnumber, title, date, tags, description)
-                    setTimeout(() => {
-                        props.getChatById(chatId)
-                        setSpinner(false)
-                    }, 500)
-                } else {
-                    setSpinner(true)
-                    props.updateUserTitle(titleId, chatnumber, title, date, tags, description)
-                    props.updateUserChat(chatId, chatnumber, title, date, tags, description)
-                    setTimeout(() => {
-                        props.getOneUserChatById(chatId)
-                        setSpinner(false)
-                    }, 500)
-                }
+                props.updateTitle(titleId, chatnumber, title, date, tags, description, admin)
+                props.updateChatDetails(chatId, chatnumber, title, date, tags, description, admin)
+                setTimeout(() => {
+                    props.getChatById(chatId, admin)
+                }, 500)
             }
-            props.getAllTitle()
-            props.getAllUserTitle()
-            setUpdate(false)
-            setReset(false)
-            setError("")
-            e.target.reset()
-        } else {
+            setSpinner(true)
+            setTimeout(() => {
+                setSpinner(false)
+            }, 500)
+            props.getAllTitle(admin)
+            
+        } else {  // clear button
             props.clearDisplay()
-            setUpdate(false)
-            setReset(false)
-            setError("")
-            e.target.reset()
         }
+        setUpdate(false)
+        setReset(false)
+        setError("")
+        e.target.reset()
     }
 
- // ------------------------------------- RETURN --------------------------------------------------------
-    
+// ------------------------------------- RETURN --------------------------------------------------------
+
+  console.log("chat", props.chat)
+  console.log("user", props.user)
+  console.log("title", props.title)
     return (
         <Panel id="publish-chat-panel" title="Publish your chat">
             <div className="text-center mb-4">
@@ -155,6 +134,7 @@ export function Publish(props) {
     )
 }
 
+
 // ------------------------------- REDUX -------------------------------------------------------------
 
 const mapStateToProps = state => ({
@@ -165,20 +145,15 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
     clearDisplay: clearDisplay,
+    getAllTitle: getAllTitle,
     saveTitle: saveTitle,
     updateTitle: updateTitle,
     saveChat: saveChat,
     updateChatDetails: updateChatDetails,
     getAllChats: getAllChats,
-    saveUserChat: saveUserChat,
     getAllUserChatsById: getAllUserChatsById,
-    updateUserChat: updateUserChat,
     getChatById: getChatById,
-    getOneUserChatById: getOneUserChatById,
-    saveUserTitle: saveUserTitle,
-    updateUserTitle: updateUserTitle,
-    getAllUserTitle: getAllUserTitle,
-    getAllTitle: getAllTitle
+    
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Publish)
