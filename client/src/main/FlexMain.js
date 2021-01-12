@@ -1,11 +1,7 @@
-import React, { Component } from 'react'
-import './FlexMain.css'
+import React from 'react'
 import { connect } from 'react-redux'
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import Tab from 'react-bootstrap/Tab'
-import Tabs from 'react-bootstrap/Tabs'
-import Container from 'react-bootstrap/Container'
+import './FlexMain.css'
+import {Container, Tab, Tabs} from 'react-bootstrap'
 import Chat from './chat/Chat'
 import History from './history/History'
 import Title from './chat/Title'
@@ -18,109 +14,91 @@ import DraftList from './publish/DraftList'
 import ChatList from './publish/ChatList'
 import Authorization from '../authorization/Authorization'
 import About from './About/About'
-import Start from './chat/Start'
-import { getUser } from '../redux/actions/user'
-
-class FlexMain extends Component {
-        constructor(props) {
-          super(props)
-        
-          this.state = {
-              loggedIn: false,
-              currentuser: ''
-          }  
-      }
-
-  // get user-status to display/hide navigation
-  currentUser = firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        if(user.emailVerified) {
-          this.setState({loggedIn: true, currentuser: user.displayName})
-          this.props.getUser(user.displayName)
-        } else {
-          this.setState({loggedIn: false})
-        }
-    } else {
-        this.setState({loggedIn: false})
-    }
-  })
+import Sitemap from './About/Sitemap'
 
 
-  // -------------- render() -----------------------------------------------
-  render() {
-    return (
-      <section className="flexContainer-main">
-        <div className="flexItem-main" id="item-1">
-          <Container fluid>
-            <Tabs defaultActiveKey="history" id="uncontrolled" style={{borderBottom: 0}}>
-              <Tab eventKey="history" title="History">
-                 <History />
-              </Tab>
-              <Tab eventKey="userchats" title="Userchats">
-                <Userchats />
-              </Tab>
-            </Tabs>
-          </Container>
-        </div>
+export function FlexMain(props) {
 
-        <div className="flexItem-main" id="item-2">
-         <Title />
-         <Chat />
-        </div>
-
-        <div className="flexItem-main" id="item-3">
-          <Container fluid>
-            <Tabs defaultActiveKey="start" id="uncontrolled" style={{borderBottom: 0}}>
-
-              {this.state.loggedIn?
+  return (
+    <section className="flexContainer-main">
+      <div className="flexItem-main" id="item-1">
+        <Container fluid>
+          <Tabs defaultActiveKey="history" id="uncontrolled" style={{borderBottom: 0}}>
+            
+            <Tab eventKey="history" title="History">
+               <History />
+            </Tab>
+            
+            <Tab eventKey="userchats" title="Userchats">
+              <Userchats />
+            </Tab>
+          
+          </Tabs>
+        </Container>
+      </div>
+      
+      <div className="flexItem-main" id="item-2">
+       <Title />
+       <Chat />
+      </div>
+      
+      <div className="flexItem-main" id="item-3">
+        <Container fluid>
+          <Tabs defaultActiveKey={"login"} id="uncontrolled" style={{borderBottom: 0}}>
+            
+            {props.user.loggedIn?
               <Tab eventKey="drafts" title="Drafts">
                 <Name />
                 <SaveDraft />
                 <Drafts />
               </Tab>
-              : null}
-              {this.state.loggedIn?
+            : null}
+            
+            {props.user.loggedIn?
               <Tab eventKey="publish" title="Publish">
                 <Publish />
                 <DraftList />
                 <ChatList />
               </Tab>
-              : null}
-              {this.state.loggedIn? 
-              <Tab eventKey="login" title="Profile">
+            : null}
+            
+            {props.user.loggedIn? 
+              <Tab eventKey="login" title="Logout">
                   <Authorization />
               </Tab>
-              :   
+            :   
               <Tab eventKey="login" title="Login">
                   <Authorization />
               </Tab>
-              }
-              <Tab eventKey="start" title="Start">
-                <Start />
-              </Tab>
-              <Tab eventKey="about" title="About">
-                <About />
-              </Tab>
-            </Tabs>
-          </Container>
-        </div>
-      </section>
-    )
-  }
+            }
+            
+            <Tab eventKey="sitemap" title="Sitemap">
+              <Sitemap />
+            </Tab>
+            
+            <Tab eventKey="about" title="About">
+              <About />
+            </Tab>
+          
+          </Tabs>
+        </Container>
+      </div>
+    </section>
+  )
 }
 
-// --------------------------------- Redux -----------------------------------------
+// ------------- REDUX -----------------------------------------------
 
 let mapStateToProps = (state) => {
   return {
-    users: state.Users
+    user: state.user,
   }
 }
 
-let mapDispatchToProps = {
-  getUser: getUser
-}
+let mapDispatchToProps = {}
 
-let FlexMainConnected = connect(mapStateToProps, mapDispatchToProps)(FlexMain)
+let FlexContainer = connect(mapStateToProps, mapDispatchToProps)(FlexMain)
 
-export default FlexMainConnected
+export default FlexContainer
+
+

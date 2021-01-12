@@ -6,7 +6,7 @@ let initialState = {
   date: "",
   tags: [],
   description: "",
-  buttons: [],
+  philosopher: [],
   messages: [],
   adminDrafts: [],
   userDrafts: [],
@@ -16,11 +16,10 @@ let initialState = {
 function drafts(state = initialState, action) {
   switch (action.type) {
     case "START_CHAT": 
-      return {...state, buttons: action.names, draftEditmode: true}
+      return {...state, philosopher: action.names}
     case "REMOVE_NAME":
-      return {...state, buttons: state.buttons.filter(button => button.name !== action.name.name)}
+      return {...state, philosopher: state.philosopher.filter(phil => phil.name !== action.name.name)}
     case "GET_DRAFT":
-      console.log("action draft", action.payload)
       return {...state,
               draftId: action.payload._id,
               userId: action.payload.userId,
@@ -29,7 +28,7 @@ function drafts(state = initialState, action) {
               date: action.payload.date,
               tags: action.payload.tags,
               description: action.payload.description, 
-              buttons: action.payload.buttons, 
+              philosopher: action.payload.philosopher, 
               messages: action.payload.messages,
               draftEditmode: true
             }
@@ -53,7 +52,7 @@ function drafts(state = initialState, action) {
                 date: "",
                 tags: [],
                 description: "",
-                buttons: [],
+                philosopher: [],
                 messages: [],
                 draftEditmode: false}
     case "DELETE_USER_DRAFT":

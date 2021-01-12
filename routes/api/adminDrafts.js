@@ -38,8 +38,8 @@ router.post('/', async (req, res) => {
     req.body.messages.map((message) => {
         draft.messages.push(message)
     })
-    req.body.buttons.map((button) => {
-        draft.buttons.push(button)
+    req.body.philosopher.map((phil) => {
+        draft.philosopher.push(phil)
     })
     try {
         const newDraft = await draft.save()
@@ -87,8 +87,8 @@ router.patch('/:id', getDrafts, async (req, res) => {
     if (req.body.messages !== res.draft.messages) {
         res.draft.messages = req.body.messages
     }
-    if (req.body.buttons !== res.draft.buttons) {
-        res.draft.buttons = req.body.buttons
+    if (req.body.philosopher !== res.draft.philosopher) {
+        res.draft.philosopher = req.body.philosopher
     }
     try {
         const updatedDraft = await res.draft.save()
@@ -113,7 +113,7 @@ async function getDrafts(req, res, next) {
     let draft
     try{
         draft = await Draft.findById(req.params.id)
-        if (draft == null) {
+        if (draft === null) {
             return res.status(404).json({ message: "Cannot find draft" })
         }
     } catch (err) {

@@ -7,25 +7,30 @@ import { v4 as uuidv4 } from 'uuid';
 import { clearDisplay, setKey } from '../../redux/actions/user'
 import { getChat } from '../../redux/actions/chat'
 import { getAllTitle, getTitle } from '../../redux/actions/title'
+import Popover from './Popover'
+
 
 class History extends Component {
   
   componentDidMount = () => {
-    this.props.getAllTitle()
+    const admin = true
+    this.props.getAllTitle(admin)
   }
 
-  displayChat = (id, chatnumber) => {
+  displayChat = (id, chatnumber, userId) => {
+    const admin = true
     this.props.clearDisplay()
-    this.props.getTitle(id)
-    this.props.getChat(chatnumber)
+    this.props.getTitle(id, admin)
+    this.props.getChat(chatnumber, userId, admin)
     this.props.setKey("chat")       // for navigation of mobile version
   }
 
-  //--------------------- render -----------------------------------------------------------
+
+//--------------------- render -----------------------------------------------------------
   render() {
     const { adminTitle } = this.props.title
     return (
-      <div className="table-history">
+      <div className="table-history" style={window.innerWidth <= 767? {marginBottom: 1.5+"rem"} : {marginBottom: 0+"rem"}}>
             <div className="data-columns-history">
               <div className="thead-history-1">
                 No.
@@ -37,18 +42,20 @@ class History extends Component {
                 Date
               </div>
             </div>           
-            {adminTitle.map(({_id, title, chatnumber, date, user}) => {
+            {adminTitle.map(({_id, userId, title, chatnumber, date, user, tags, description}) => {
                 return (
                   <div key={uuidv4()} className="data-rows-history">
                     <div className="history-column-1">{chatnumber}</div>
-                    <div className="history-column-2" onClick={() => this.displayChat(_id, chatnumber)}>{title}</div>
+                    <div className="history-column-2" onClick={() => this.displayChat(_id, chatnumber, userId)}>
+                      <Popover title={title} tags={tags} description={description}/>
+                    </div>
                     <div className="history-column-3" >
-                      {chatnumber === this.props.chat.chatnumber && user === this.props.chat.user? 
+                      {chatnumber === this.props.chat.chatnumber && user === this.props.chat.user && !this.props.user.loggedIn? 
                         <PDFDownloadLink
                           document={
                             <PDF title={title} data={this.props.chat.messages} />
                           }
-                          fileName={title + '.pdf'}
+                          fileName={chatnumber + ". " + title + '.pdf'}
                           className="link-download-dbChat"
                          >
                          download
@@ -68,16 +75,17 @@ class History extends Component {
 let mapStateToProps = (state) => {
   return {
     title: state.title,
-    chat: state.chat
+    chat: state.chat,
+    user: state.user
   }
 }
 
 let mapDispatchToProps = {
+  clearDisplay: clearDisplay,
   getAllTitle: getAllTitle,
   getTitle: getTitle,
-  clearDisplay: clearDisplay,
   getChat: getChat,
-  setKey: setKey
+  setKey: setKey,
 }
 
 let HistoryDB = connect(mapStateToProps, mapDispatchToProps)(History)

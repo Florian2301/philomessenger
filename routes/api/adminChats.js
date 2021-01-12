@@ -5,7 +5,7 @@ const router = express.Router()
 const Chat = require('../../models/Chat')
 
 
-// Getting one or all Chats
+// Get all or only one userchat by id or chatnumber
 router.get('/', async (req, res) => {
     const number = req.query.chatnumber
     const chatId = req.query.chatId
@@ -50,8 +50,8 @@ router.post('/', async (req, res) => {
         req.body.messages.map((message) => {
             chat.messages.push(message)
         })
-        req.body.buttons.map((button) => {
-            chat.buttons.push(button)
+        req.body.philosopher.map((phil) => {
+            chat.philosopher.push(phil)
         })
     try {
         const newChat = await chat.save()
@@ -118,7 +118,7 @@ async function getChat(req, res, next) {
     let chat
     try{
         chat = await Chat.findById(req.params.id)
-        if (chat == null) {
+        if (chat === null) {
             return res.status(404).json({ message: "Cannot find title" })
         }
     } catch (err) {

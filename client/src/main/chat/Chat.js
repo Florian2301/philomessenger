@@ -3,10 +3,12 @@ import Textarea from '../../elements/Textarea'
 import Button from '../../elements/Button'
 import Message from './Message'
 import { connect } from 'react-redux'
-import { addMessages } from '../../redux/actions/draft'
-import { clearDisplay } from '../../redux/actions/user'
+import { addMessages, updateDraft } from '../../redux/actions/draft'
+import { clearDisplay, setKey } from '../../redux/actions/user'
 import './Chat.css'
 import { v4 as uuidv4 } from 'uuid';
+import { Container, ListGroup, Spinner } from 'react-bootstrap';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const KEY_ENTER = 13
 const KEY_ESC = 27
@@ -18,6 +20,7 @@ class Chat extends Component {
     this.state = {
       messages: [],
       number: 0,
+      save: false
     }
   }
 
@@ -53,11 +56,11 @@ class Chat extends Component {
       this.setState({
         number                                                      // new messagenumber for new message
       })
-      let storeName = this.props.draft.buttons                      // get names of draft
+      let storeName = this.props.draft.philosopher                  // get names of draft
       let indexOfName
-      storeName.map((button) => {
-        if (button.name === name) {                                 // get name of button
-          indexOfName = storeName.indexOf(button)                   // find index of name (for color of message)
+      storeName.map((phil) => {
+        if (phil.name === name) {                                   // get name of button
+          indexOfName = storeName.indexOf(phil)                     // find index of name (for color of message)
         }
         return indexOfName
       }) 
@@ -73,8 +76,31 @@ class Chat extends Component {
   }
 
   
+  // save new messages and philosophers to draft
+  saveMessageAndPhil = () => {
+    this.setState({ save: true})
+    setTimeout(() => { this.setState({ save: false}) }, 500)
+    const admin = this.props.user.admin
+    const draftId = this.props.draft.draftId
+    const title = this.props.draft.title
+    const date = this.props.draft.date
+    const tags = this.props.draft.tags
+    const description = this.props.draft.description
+    const philosopher = this.props.draft.philosopher
+    const messages = this.props.draft.messages
+    this.props.updateDraft(draftId, title, date, tags, description, philosopher, messages, admin) 
+  }
+
   clear = () => {
     this.props.clearDisplay()
+  }
+
+  history = () => {
+    this.props.setKey("history")
+  }
+
+  userchats = () => {
+    this.props.setKey("userchats")
   }
 
   //---------- RENDER ----------------------------------------
@@ -83,7 +109,7 @@ class Chat extends Component {
     // get data for display saved draft
     let messages = this.props.draft.messages 
     let chatId = this.props.draft.draftId
-    let buttons = this.props.draft.buttons
+    let philosopher = this.props.draft.philosopher
     let chatnumber = ""
     let userId = this.props.draft.userId
     
@@ -93,17 +119,42 @@ class Chat extends Component {
       chatId = this.props.chat.chatId
       chatnumber = this.props.chat.chatnumber
       userId = this.props.chat.userId
-      buttons = []
+      philosopher = []
     }
 
     return (
       <div>
-        <div className="chatbox" id="chatbox">
+        <Container className="chatbox" id="chatbox">
+          {!this.props.user.loggedIn?
+            <ListGroup className="chatmessages">
+              <TransitionGroup>
+              {messages.map(({_id, color, name, messagenumber, text}) => {
+                return (
+                <CSSTransition key={uuidv4()} timeout={100} classNames="transition-message">
+                  <ListGroup.Item className="listgroup-message">
+                  <Message
+                    color={'color-' + color}
+                    key={uuidv4()}
+                    number={messagenumber}
+                    name={name}
+                    text={text}
+                    chatid={chatId}
+                    chatnumber={chatnumber}
+                    messageId={_id}
+                    userid={userId}
+                  />
+                  </ListGroup.Item>
+                </CSSTransition>
+              )})
+              }
+               </TransitionGroup>
+            </ListGroup>
+          :
           <ul className="chatmessages">
             {messages.map(({_id, color, name, messagenumber, text}) => {
               return (
                 <Message
-                  color={'color-' + color}
+                  edit={'color-' + color + '-edit'}
                   key={uuidv4()}
                   number={messagenumber}
                   name={name}
@@ -115,6 +166,7 @@ class Chat extends Component {
                 />)})
             }
           </ul>
+          }
             <Textarea
             writer={this.state.writer}
             placeholder={this.state.placeholder}
@@ -124,27 +176,49 @@ class Chat extends Component {
             onKeyDown={this.textareaKeyEvent}
             autofocus
           />
-        </div>
+        </Container>
         
         <section className="flexContainer-chat">
-        <div className="addPhil">
-          {buttons.map((p) => {
-            return (
-              <Button
-                className="button-chat-Phil"
-                key={uuidv4()}
-                button={true}
-                id={p.id}
-                label={p.name}
-                phil={p.name}
-                handleClick={this.writeMessage}
-              />
-            )
-          })}
-        </div>
-          <div>
-            <p id="link-clear" onClick={this.clear}>clear</p>
+          {this.props.chat.chatEditmode && window.innerWidth <= 767?
+            <div id="link-back">
+              <div>
+                <p id="link-back-chat" onClick={this.history}>history</p>
+              </div>
+
+              <div>
+                <p id="link-back-chat" onClick={this.userchats}>userchats</p>
+              </div>
+            </div>
+          :
+          <div className="addPhil">
+            {philosopher.map((phil) => {
+              return (
+                <Button
+                  className="button-chat-Phil"
+                  key={uuidv4()}
+                  button={true}
+                  id={phil.id}
+                  label={phil.name}
+                  phil={phil.name}
+                  handleClick={this.writeMessage}
+                />
+              )
+            })}
           </div>
+          }
+
+          <div id="save-clear-chat">
+            <div>
+              {this.props.draft.draftEditmode? <p id="link-clear" onClick={this.saveMessageAndPhil}>
+                {this.state.save? <Spinner animation="border" role="status" ></Spinner> : "save"}</p> 
+              : <p id="link-clear"></p>} 
+            </div>
+
+            <div>
+              <p id="link-clear" onClick={this.clear}>clear</p>
+            </div>
+          </div>
+
         </section>
       </div>
     )
@@ -157,12 +231,15 @@ let mapStateToProps = (state) => {
   return {
     chat: state.chat,
     draft: state.draft,
+    user: state.user
   }
 }
 
 let mapDispatchToProps = {
   clearDisplay: clearDisplay,
-  addMessages: addMessages
+  addMessages: addMessages,
+  updateDraft: updateDraft,
+  setKey: setKey
 }
 
 let ChatContainer = connect(mapStateToProps, mapDispatchToProps)(Chat)

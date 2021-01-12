@@ -4,3 +4,4 @@ route.rest
 .env.local
 package-lock.json
 .prettierrc
+desktop.ini

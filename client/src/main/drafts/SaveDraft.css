@@ -55,11 +55,26 @@ Form {
     background-color: silver;
     font-size: 1.2rem;
     font-weight: bold;
-  }
+}
+
+#save-btn:active {
+    background-color:dodgerblue;
+}
+
 #save-btn-reset {
   border-radius: 0.5rem;
   margin-bottom: 1.5rem;
   background-color: silver;
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+#save-btn-reset:active {
+    background-color:dodgerblue;
+}
+
+#message-actions {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 1rem;
 }

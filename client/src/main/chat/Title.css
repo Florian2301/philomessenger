@@ -10,6 +10,7 @@
 
   #span-props-title {
     font-size: 1.5rem;
+    width: fit-content
   }
 
   #span-number {
@@ -25,7 +26,7 @@
   #span-date {
     color: darkgray;
     position: relative;
-    margin-left: 5rem;
+    margin-left: 2rem;
     font-size: 1.5rem;
   }
 

@@ -43,13 +43,13 @@ router.post('/', async (req, res) => {
 
 // Update one User - username / email / chats
 router.patch('/:id', getUser, async (req, res) => {
-    if (req.body.userName != null) {
-        res.user.username = req.body.userName
+    if (req.body.username !== res.user.username) {
+        res.user.username = req.body.username
     }
-    if (req.body.userEmail != null) {
-        res.user.email = req.body.userEmail
+    if (req.body.email !== res.user.email) {
+        res.user.email = req.body.email
     }
-    if (req.body.chats != null) {
+    if (req.body.chats !== res.user.chats) {
         res.user.chats.push(req.body.chats)
     }
     try {
@@ -76,7 +76,7 @@ async function getUser(req, res, next) {
     let user
     try{
         user = await User.findById(req.params.id)
-        if (user == null) {
+        if (user === null) {
             return res.status(404).json({ message: "Cannot find user" })
         }
     } catch (err) {

@@ -49,44 +49,95 @@
 }
 
 /* index of name of phil-array is its color */
+/* fade in mode (not loggedIn) */
 #color-0 {
   background-color: aqua;
   position: relative;
-  right: 0.5rem;
-  margin: 0.7rem;
+  margin-left: 4rem;
+  margin-right: -2rem;
 }
 
 #color-1 {
   background-color: pink;
   position: relative;
-  left: -3.5rem;
-  margin: 0.7rem;
+  margin-left: -2rem;
+  margin-right: 4rem;
 }
 
 #color-2 {
   background-color: palegreen;
   position: relative;
-  left: -3.5rem;
-  margin: 0.7rem;
+  margin-left: 4rem;
+  margin-right: -2rem;
 }
 
 #color-3 {
   background-color: lavender;
   position: relative;
-  left: -3.5rem;
-  margin: 0.7rem;
+  margin-left: -2rem;
+  margin-right: 4rem;
 }
 
 #color-4 {
   background-color: lightyellow;
   position: relative;
-  left: -3.5rem;
-  margin: 0.7rem;
+  margin-left: 4rem;
+  margin-right: -2rem;
 }
 
 #color-5 {
   background-color: lightsalmon;
   position: relative;
-  left: -3.5rem;
-  margin: 0.7rem;
+  margin-left: -2rem;
+  margin-right: 4rem;
+}
+
+/* if user is logged In (no fade in) */
+
+#color-0-edit {
+  background-color: aqua;
+  position: relative;
+  margin-top: 0.7rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+#color-1-edit {
+  background-color: pink;
+  position: relative;
+  margin-top: 0.7rem;
+  margin-left: -3.5rem;
+  margin-right: 3.5rem;
+}
+
+#color-2-edit {
+  background-color: palegreen;
+  position: relative;
+  margin-top: 0.7rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+#color-3-edit {
+  background-color: lavender;
+  position: relative;
+  margin-top: 0.7rem;
+  margin-left: -3.5rem;
+  margin-right: 3.5rem;
+}
+
+#color-4-edit {
+  background-color: lightyellow;
+  position: relative;
+  margin-top: 0.7rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+#color-5-edit {
+  background-color: lightsalmon;
+  position: relative;
+  margin-top: 0.7rem;
+  margin-left: -3.5rem;
+  margin-right: 3.5rem;
 }

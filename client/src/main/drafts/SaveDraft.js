@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
-import { Form, Alert, Col, Row } from 'react-bootstrap'
+import { Form, Alert, Col, Row, Spinner } from 'react-bootstrap'
 import { v4 as uuidv4 } from 'uuid';
 import Panel from '../../elements/Panel'
 import Button from '../../elements/Button'
 import './SaveDraft.css'
 import { connect } from 'react-redux'
-import { startChat, removeName, saveDraft, saveUserDraft, getDrafts, getUserDrafts, updateDraft, updateUserDraft } from '../../redux/actions/draft'
+import { startChat, removeName, saveDraft, getDrafts, updateDraft } from '../../redux/actions/draft'
 import { clearDisplay } from '../../redux/actions/user'
 
 
@@ -17,9 +17,9 @@ export function SaveDraft(props) {
     const descriptionRef = useRef()
     const [error, setError] = useState('')
     const [update, setUpdate] = useState(false)
-    const [reset, setReset] = useState(false) 
-    
-    
+    const [reset, setReset] = useState(false)
+    const [spinner, setSpinner] = useState(false)
+
     
     function handleSubmit(e) {
         e.preventDefault()
@@ -34,60 +34,44 @@ export function SaveDraft(props) {
             const tagsValue = tagsRef.current.value
             let tags = tagsValue.split(",")
             const description = descriptionRef.current.value
-            const buttons = props.draft.buttons
+            const philosopher = props.draft.philosopher
             const messages = props.draft.messages
 
             if(!title) {return setError('Please insert a title')}
-            if(!buttons) {return setError('Please add at least one name')}
+            if(!philosopher) {return setError('Please add at least one name')}
 
             if(!update) {           // if draft will be updated
-                if(admin) {
-                    props.saveDraft(userId, user, title, date, tags, description, buttons, messages)
-                    setTimeout(() => {
-                        props.getDrafts()
-                    }, 500)
-                } else {
-                    props.saveUserDraft(userId, user, title, date, tags, description, buttons, messages)
-                    setTimeout(() => {
-                        props.getUserDrafts(userId)
-                    }, 500)
-                }
+                props.saveDraft(userId, user, title, date, tags, description, philosopher, messages, admin)
             } else {                // else create a new draft
-                if(admin) {
-                    props.updateDraft(draftId, title, date, tags, description, buttons, messages)
-                    setTimeout(() => {
-                        props.getDrafts()
-                    }, 500)
-                } else {
-                    props.updateUserDraft(draftId, title, date, tags, description, buttons, messages)
-                    setTimeout(() => {
-                        props.getUserDrafts(userId)
-                    }, 500)
-                }
+                props.updateDraft(draftId, title, date, tags, description, philosopher, messages, admin)
             }
-            setUpdate(false)
-            setReset(false)
-            setError("")
-            e.target.reset()
-        } else {                    // clear button
+            setSpinner(true)
+            setTimeout(() => {
+                props.getDrafts(userId, admin)
+                setSpinner(false)
+            }, 500)
+            
+        } else {  // clear button
             props.clearDisplay()
-            setUpdate(false)
-            setReset(false)
-            setError("")
-            e.target.reset()
         }
+        setUpdate(false)
+        setReset(false)
+        setError("")
+        e.target.reset()
     }
 
     function removeName(name) {
         props.removeName(name)
     }
 
-    
+// ----------------------------------- RETURN --------------------------------------------------------------------------
+
     return (
-        <Panel id="saveDraft" title="Save your chat as draft">
+        <Panel id="saveDraft" title="Start a new chat">
             <div className="text-center mb-4">
                 {error && <Alert variant="danger">{error}</Alert>}
             </div>
+            
             <Form onSubmit={handleSubmit}>
                 <Form.Group id="save-draft" as={Row}>
                     <Form.Label id="save-title">Title:*</Form.Label>
@@ -95,23 +79,26 @@ export function SaveDraft(props) {
                         <Form.Control id="save-input-title" type="name" ref={titleRef} autoFocus placeholder="Choose a title for your chat" defaultValue={props.draft.title}/>
                     </Col>
                 </Form.Group>
-                {props.draft.buttons.map((button) => {
+                
+                {props.draft.philosopher.map((phil) => {
                     return (
                     <Form.Group id="save-draft" as={Row} key={uuidv4()}>
                         <Form.Label id="save-name">Name:*</Form.Label>
                         <Col>
-                            <Form.Control id="save-input-name" type="name" defaultValue={button.name}/>
+                            <Form.Control id="save-input-name" type="name" defaultValue={phil.name}/>
                         </Col>
-                        <p id="remove-name-link" onClick={() => removeName(button)}>remove</p>
+                        <p id="remove-name-link" onClick={() => removeName(phil)}>remove</p>
                     </Form.Group>
                     )
                 })}
+                
                 <Form.Group id="save-draft" as={Row}>
                     <Form.Label id="save-date">Date:</Form.Label>
                     <Col>
                         <Form.Control id="save-input-date" type="text" ref={dateRef} placeholder="YYYY-MM-DD" defaultValue={props.draft.date}/>
                     </Col>
                 </Form.Group>
+                
                 <Form.Group id="save-draft" as={Row}>
                     <Form.Label id="save-tags">Tags: </Form.Label>
                      <Col>
@@ -125,9 +112,14 @@ export function SaveDraft(props) {
                         <Form.Control id="save-input-description" type="text" as="textarea" ref={descriptionRef} placeholder="Give a brief summary or description of your chat" defaultValue={props.draft.description}/>
                      </Col>
                 </Form.Group>
+                
+                <div id="message-actions">
+                    {spinner? <Spinner animation="border" role="status" ></Spinner> : null}
+                </div>
+                
                 <div className="save-actions">
-                    <Button button={true} label="Save as new draft" id="save-btn" type="submit"></Button>
-                    <Button button={true} label="Update draft" id="save-btn" type="submit" handleClick={() => setUpdate(true)}></Button>
+                    <Button button={true} label="New chat" id="save-btn" type="submit"></Button>
+                    <Button button={true} label="Save changes" id="save-btn" type="submit" handleClick={() => setUpdate(true)}></Button>
                     <Button button={true} label="Clear" id="save-btn-reset" type="submit" handleClick={() => setReset(true)}></Button>
                 </div>    
 
@@ -137,6 +129,7 @@ export function SaveDraft(props) {
     )
 }
 
+//--------------------------------------- REDUX ------------------------------------------------------
 
 const mapStateToProps = state => ({
     draft: state.draft,
@@ -144,15 +137,12 @@ const mapStateToProps = state => ({
 })
 
 const mapActionsToProps = {
+    clearDisplay: clearDisplay,
     saveDraft: saveDraft,
-    saveUserDraft: saveUserDraft,
     startChat: startChat,
     removeName: removeName,
-    clearDisplay: clearDisplay,
     getDrafts: getDrafts,
-    getUserDrafts: getUserDrafts,
     updateDraft: updateDraft,
-    updateUserDraft: updateUserDraft
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(SaveDraft)

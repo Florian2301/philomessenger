@@ -42,16 +42,21 @@
   }
   
   .flexContainer-chatlist-publish {
-    display: flex;
-    justify-content: space-around;
-    position: relative;
-    margin: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
+  margin: 1rem;
+  text-align: center;
   }
+
+    #spinner-chatlist {
+    margin-top: 1rem;
+    }
   
   .publish-chat {
     color: black;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border-radius: 0.5rem;
-      background-color: silver; 
-    }
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    background-color: silver; 
+   }

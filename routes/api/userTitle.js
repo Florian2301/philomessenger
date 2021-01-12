@@ -40,7 +40,6 @@ router.post('/', async (req, res) => {
 
 // Updating one Title
 router.patch('/:id', getTitle, async (req, res) => {
-    console.log("router usertitle1", res.usertitle)
     if (req.body.chatnumber !== res.usertitle.chatnumber) {
         res.usertitle.chatnumber = req.body.chatnumber
     }
@@ -56,7 +55,6 @@ router.patch('/:id', getTitle, async (req, res) => {
     if (req.body.description !== res.usertitle.description) {
         res.usertitle.description = req.body.description
     }
-    console.log("router usertitle2", res.usertitle)
     try {
         const updatedTitle = await res.usertitle.save()
         res.json(updatedTitle)
@@ -80,7 +78,7 @@ async function getTitle(req, res, next) {
     let title
     try{
         title = await Usertitle.findById(req.params.id)
-        if (title == null) {
+        if (title === null) {
             return res.status(404).json({ message: "Cannot find title" })
         }
     } catch (err) {

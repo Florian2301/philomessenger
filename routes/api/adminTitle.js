@@ -79,7 +79,7 @@ async function getTitle(req, res, next) {
     let title
     try{
         title = await Title.findById(req.params.id)
-        if (title == null) {
+        if (title === null) {
             return res.status(404).json({ message: "Cannot find title" })
         }
     } catch (err) {

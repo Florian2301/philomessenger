@@ -1,49 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import './Drafts.css'
 import Button from '../../elements/Button'
 import Panel from '../../elements/Panel'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
+import { Spinner } from 'react-bootstrap'
 import PDF from '../../elements/PDF'
 import { PDFDownloadLink } from '@react-pdf/renderer'
-import { getDrafts, getOneDraft, deleteDraft, getUserDrafts, getOneUserDraft, deleteUserDraft } from '../../redux/actions/draft'
+import { getDrafts, getOneDraft, deleteDraft } from '../../redux/actions/draft'
 import {  clearDisplay, setKey } from '../../redux/actions/user'
 
 
 
-export function Name (props) {
+export function Drafts (props) {
+    const [spinner, setSpinner] = useState(false)
     
     function showAllDrafts() {
+      setSpinner(true)
       const admin = props.user.admin
-      const id = props.user.userId
-      admin? props.getDrafts() : props.getUserDrafts(id)
+      const userId = props.user.userId
+      props.getDrafts(userId, admin)
+      setTimeout(() => {
+        setSpinner(false)
+      }, 500)           
     }
 
     function showDraft(id) {
-        props.clearDisplay()            // if draft will be displayed, window will be cleaned first
-        const admin = props.user.admin
-        admin? props.getOneDraft(id) : props.getOneUserDraft(id)
-        props.setKey("chat")
+      setSpinner(true)
+      props.clearDisplay()            // if draft will be displayed, window will be cleaned first
+      props.setKey("chat")            // for mobile navigation
+      const admin = props.user.admin
+      props.getOneDraft(id, admin)
+      setTimeout(() => {
+        setSpinner(false)
+      }, 500)           
     }
 
     function deleteDraft(id) {
       const admin = props.user.admin
-      if (admin) {
-          props.deleteDraft(id)
-          setTimeout(() => {          // get all drafts after one draft is deleted
-            props.getDrafts()
-          }, 500)
-      } else {
-        props.deleteUserDraft(id)
-        setTimeout(() => {            // get all drafts after one draft is deleted
-          props.getUserDrafts(id)
-        }, 500)
-      } 
+      const userId = props.user.userId
+      props.deleteDraft(id, admin)
+      setTimeout(() => {          // get all drafts after one draft is deleted
+        props.getDrafts(userId, admin)
+      }, 500)
     }
 
 
 // -------------------- return --------------------------------------------------
-
+ 
     return (
       <Panel title="Your saved drafts" id="panel-drafts">
         <section className="flexContainer-draftlist">
@@ -53,8 +57,12 @@ export function Name (props) {
               id="draft"
               label="Show drafts"
               handleClick={showAllDrafts}
-          ></Button>
+        ></Button>
+        <div id="spinner-draft">
+          {!spinner? null : <Spinner animation="border" role="status" ></Spinner>}
+        </div>
         </section>
+        
         <div className="table-drafts" >
             {!props.user.admin? props.draft.userDrafts.map(({_id, title, messages}) => {
               return (
@@ -120,12 +128,9 @@ let mapStateToProps = (state) => {
     getOneDraft: getOneDraft,
     deleteDraft: deleteDraft,
     clearDisplay: clearDisplay,
-    getUserDrafts: getUserDrafts,
-    getOneUserDraft: getOneUserDraft,
-    deleteUserDraft: deleteUserDraft,
     setKey: setKey
   }
   
-  let ListOfNames = connect(mapStateToProps, mapDispatchToProps)(Name)
+  let ListOfNames = connect(mapStateToProps, mapDispatchToProps)(Drafts)
   
   export default ListOfNames

@@ -25,6 +25,11 @@ export function setKey(key) {
   return { type: 'SET_KEY', key}
 }
 
+// changes mediaquery: desktop, tablet, mobile
+export function changeModus(modus) {
+  return { type: 'CHANGE_MODUS', modus}
+}
+
 // add user to database
 export const addUserToDB = (userName, userEmail) => dispatch => {
   axios
@@ -61,16 +66,17 @@ export const getUser = (username) => dispatch => {
 }
 
 // update Profile
-export const updateUserDB = (id, userName, userEmail, chats) => dispatch => {
+export const updateUserDB = (id, username, email, chats) => dispatch => {
   axios
-    .patch(`/api/users/${id}`, {userName, userEmail, chats})
+    .patch(`/api/users/${id}`, {username, email, chats})
     .then(res => 
-      dispatch({ type: 'UPDATE_USER', currentUser: res.data })
+      dispatch({ type: 'UPDATE_USER' })
     )
     .catch(function (error) {
       console.log(error.message);
     })
 }
+
 
 // delete one user
 export const deleteUserDB = (id) => dispatch => {

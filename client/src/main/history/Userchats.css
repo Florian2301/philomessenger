@@ -78,7 +78,7 @@
   }
   
   .userchats-column-3:hover {
-    text-decoration: underline;
+    color: dodgerblue;
     cursor: pointer;
   }
   

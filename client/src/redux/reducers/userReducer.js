@@ -10,7 +10,8 @@ let initialState = {
     signUp: false,
     update: false,
     delete: false,
-    
+    modus: "auto",
+    key: "about"
 }
 
 
@@ -21,7 +22,7 @@ function users(state = initialState, action) {
       case "GET_USER":
         return {...state, 
                 userId: action.payload._id, 
-                username: action.payload.username, 
+                username: action.payload.username,
                 email: action.payload.email, 
                 admin: action.payload.admin,
                 date: action.payload.date,
@@ -34,6 +35,8 @@ function users(state = initialState, action) {
           return {...state, welcome: true}
       case "UPDATE_USER":
           return {...state, update: true, welcome: false}
+      case "CHANGE_MODUS":
+            return {...state, modus: action.modus}
       case "CANCEL":
           return {...state, update: false, welcome: false}
       case "LOGOUT":

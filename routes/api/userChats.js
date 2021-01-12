@@ -6,13 +6,14 @@ const router = express.Router()
 const Userchat = require('../../models/Userchat')
 
 
-// Get all or only one userchat
+// Get all or only one userchat by id or chatnumber
 router.get('/', async (req, res) => {
     const number = req.query.chatnumber
     const chatId = req.query.chatId
+    const userId = req.query.userId
     if(number) {
         try {
-            const userchat = await Userchat.findOne({chatnumber: number})
+            const userchat = await Userchat.findOne({userId: userId, chatnumber: number})
             res.json(userchat)
         } catch (err) {
             res.status(500).json({ message: err.message })
@@ -51,8 +52,8 @@ router.post('/', async (req, res) => {
         req.body.messages.map((message) => {
             chat.messages.push(message)
         })
-        req.body.buttons.map((button) => {
-            chat.buttons.push(button)
+        req.body.philosopher.map((phil) => {
+            chat.philosopher.push(phil)
         })
     try {
         const newChat = await chat.save()
@@ -97,12 +98,12 @@ router.put('/:id', getChat, async (req, res) => {
         } 
         return message.text
     })
-try {
-    const updatedChat = await res.userchat.save()
-    res.json(updatedChat)
-} catch (err) {
-    res.status(400).json({ message: err.message})
-}
+    try {
+        const updatedChat = await res.userchat.save()
+        res.json(updatedChat)
+    } catch (err) {
+        res.status(400).json({ message: err.message})
+    }
 })
 
 
@@ -121,7 +122,7 @@ async function getChat(req, res, next) {
     let userchat
     try{
         userchat = await Userchat.findById(req.params.id)
-        if (userchat == null) {
+        if (userchat === null) {
             return res.status(404).json({ message: "Cannot find userchat" })
         }
     } catch (err) {

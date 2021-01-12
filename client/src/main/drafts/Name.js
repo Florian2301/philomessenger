@@ -6,14 +6,14 @@ import Panel from '../../elements/Panel'
 import { startChat } from '../../redux/actions/draft'
 
 
-export function Start(props) {
+export function Name(props) {
     const nameRef = useRef()
     const [addName, setAddName] = useState('')
 
     function handleSubmit(e) {
         e.preventDefault()
 
-        let names = props.draft.buttons
+        let names = props.draft.philosopher
         let newName = nameRef.current.value
         if(newName) {names.push({id: newName, name: newName})}  // if a new name is entered, push it to existing names
     
@@ -23,19 +23,19 @@ export function Start(props) {
         setAddName(newName)                                     // short messages, name is added
         setTimeout(() => {
             setAddName("")
-        }, 5000)
+        }, 1000)
     }
 
     
     return (
-        <Panel id="start" title="Add a name and start writing your Chat">
+        <Panel id="start" title="Add names to your chat">
             <Form onSubmit={handleSubmit}>
                 <Form.Group id="startname" as={Row}>
                     <Form.Label id="start-name">Name:*</Form.Label>
                     <Col>
                         <Form.Control id="start-input" type="name" ref={nameRef} placeholder="Add a name"/>
                     </Col>
-                    {addName && <p id="addname"><span id="addname-name">{addName}</span> added</p>}
+                    {addName && <p id="addname">{addName} added...</p>}
                 </Form.Group>
             </Form>
            
@@ -52,5 +52,5 @@ const mapActionsToProps = {
     startChat: startChat
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(Start)
+export default connect(mapStateToProps, mapActionsToProps)(Name)
 

@@ -62,11 +62,19 @@
     font-weight: bold;
   }
   
-
-  .flexContainer-draftlist {
-    display: flex;
-    justify-content: space-around;
-    position: relative;
-    margin: 1rem;
+  #draft:active {
+    background-color: dodgerblue;
   }
 
+  .flexContainer-draftlist {
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
+  margin: 1rem;
+  text-align: center;
+}
+
+#spinner-draft {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

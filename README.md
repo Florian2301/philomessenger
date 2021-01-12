@@ -1,5 +1,7 @@
 - this is not a commercial app -
 
+http://philomessenger.herokuapp.com/login
+
 This app was created during my studies of web development and its published as MERN stack app on heroku: philomessenger.herokuapp.com
 
 Its my firt web app as a result of my self-studies and its still under progresss. Because it grew organically, the code on every file does not show the same level of developing skills i already reached. By time i will work through the whole code and bring it to one level.

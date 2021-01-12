@@ -113,11 +113,14 @@ export function UpdateProfile(props) {
         props.cancel()  // makes sure, alerts are turned off
     }
 
+// --------------------------- RETURN ----------------------------------------------------------------------
+    
     return (
         <Panel id="auth" title="Update your profile">
             <div className="text-center mb-4">
                 {error && <Alert variant="danger">{error}</Alert>}
             </div>
+            
             <Form onSubmit={handleSubmit}>
                 <Form.Group id="username" as={Row}>
                     <Form.Label id="auth-username">Username:</Form.Label>
@@ -125,28 +128,33 @@ export function UpdateProfile(props) {
                         <Form.Control id="auth-input" type="text" ref={usernameRef} autoFocus onChange={inputName} placeholder="New username"/>
                     </Col>
                 </Form.Group>
+                
                 <Form.Group id="email" as={Row}>
                     <Form.Label id="auth-email">Email:</Form.Label>
                     <Col>
                         <Form.Control id="auth-input" type="email" ref={emailRef} onChange={inputMail} placeholder="New email address"/>
                     </Col>
                 </Form.Group>
+                
                 <Form.Group id="password" as={Row}>
                     <Form.Label id="auth-password">Password:</Form.Label>
                     <Col>
                         <Form.Control id="auth-input" type="password" ref={passwordRef} placeholder="New password"/>
                     </Col>
                 </Form.Group>
+                
                 <Form.Group id="password-confirm" as={Row}>
                     <Form.Label id="auth-password-confirm">Confirm:</Form.Label>
                     <Col>
                         <Form.Control id="auth-input" type="password" ref={passwordConfirmRef} placeholder="Confirm new password"/>
                     </Col>
                 </Form.Group>
+                
                 <div className="auth-actions">
                     <Button button={true} disabled={loading} label="Update Profile" className="auth-btn" type="submit"></Button>
                     <Button button={true} disabled={loading} label="Delete Profile" className="auth-btn" handleClick={deleteProfile}></Button>
                 </div>
+                
                 <div className="auth-actions" id="cancel">
                     <Link className="auth-link" id="auth-link" to="/" onClick={cancel}>Cancel</Link>
                 </div>

@@ -1,88 +1,58 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import Tab from 'react-bootstrap/Tab'
-import Tabs from 'react-bootstrap/Tabs'
-import Container from 'react-bootstrap/Container'
+import { Container, Tab, Tabs}  from 'react-bootstrap'
 import History from '../main/history/History'
 import Userchats from '../main/history/Userchats'
-import Publish from '../main/publish/Publish'
-import DraftList from '../main/publish/DraftList'
-import ChatList from '../main/publish/ChatList'
-import Name from '../main/drafts/Name'
-import SaveDraft from '../main/drafts/SaveDraft'
-import Drafts from '../main/drafts/Drafts'
-import { getUser } from '../redux/actions/user'
+import Chat from '../main/chat/Chat'
+import About from '../main/About/About'
+import { setKey } from '../redux/actions/user'
 // CSS in App.css/FlexMain
 
-/**
- * new Component for screens like tablets
- * -> new component for styling
- */
-class TabletChatboxRight extends Component {
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-        loggedIn: false,
-        currentuser: ''
-    }  
+
+export function TabletChatboxLeft(props) {
+
+  function handleSelect(key) {
+    props.setKey(key)
+  } 
+
+  return (
+    <Container fluid id="responsive-container-tablet">
+      <Tabs activeKey={props.user.key} id="uncontrolled" style={{borderBottom: 0}} onSelect={handleSelect}>
+        
+        <Tab eventKey="history" title="History">
+            <History/>
+        </Tab>
+        
+        <Tab eventKey="userchats" title="Userchats">
+            <Userchats />
+        </Tab>
+        
+        <Tab eventKey="chat" title="Chat">
+            <Chat />
+        </Tab>
+
+        <Tab eventKey="about" title="About">
+          <About />
+        </Tab>
+
+      
+      </Tabs>
+    </Container>
+  )
 }
 
-  currentUser = firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      this.setState({loggedIn: true, currentuser: user.displayName})
-      this.props.getUser(user.displayName)
-    } else {
-      this.setState({loggedIn: false})
-    }
-    })
-
-
-  render() {
-    return (
-      <Container fluid id="responsive-container">
-        <Tabs defaultActiveKey={"history"} id="uncontrolled" style={{borderBottom: 0}}>
-          <Tab eventKey="history" title="History">
-              <History/>
-          </Tab>
-          <Tab eventKey="userchats" title="Userchats">
-              <Userchats />
-          </Tab>
-          {this.state.loggedIn?
-            <Tab eventKey="drafts" title="Drafts">
-               <Name />
-               <SaveDraft />
-               <Drafts />
-            </Tab>
-          : null}
-          {this.state.loggedIn?
-            <Tab eventKey="publish" title="Publish">
-                <Publish />
-                <DraftList />
-                <ChatList />
-            </Tab>
-          : null}
-        </Tabs>
-      </Container>
-    )
-  }
-}
-
-
-// ---------------------- Redux ---------------------------------------
+// ------------- REDUX -----------------------------------------------
 
 let mapStateToProps = (state) => {
   return {
-    users: state.User
+    user: state.user,
   }
 }
 
 let mapDispatchToProps = {
-  getUser: getUser,
+  setKey: setKey
 }
 
-let TabletChatboxR = connect(mapStateToProps, mapDispatchToProps)(TabletChatboxRight)
+let ContainerTabletL = connect(mapStateToProps, mapDispatchToProps)(TabletChatboxLeft)
 
-export default TabletChatboxR
+export default ContainerTabletL

@@ -1,10 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import Tab from 'react-bootstrap/Tab'
-import Tabs from 'react-bootstrap/Tabs'
-import Container from 'react-bootstrap/Container'
+import { Container, Tab, Tabs}  from 'react-bootstrap'
 import History from '../main/history/History'
 import Chat from '../main/chat/Chat'
 import Userchats from '../main/history/Userchats'
@@ -17,92 +13,120 @@ import Drafts from '../main/drafts/Drafts'
 import Authorization from '../authorization/Authorization'
 import About from '../main/About/About'
 import { getUser, setKey } from '../redux/actions/user'
-import MobileStart from './MobileStart'
-// CSS in App.css/FlexMain
+import MobileSitemap from './MobileSitemap'
+import SelectView from '../header/SelectView'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+// CSS MobileStart & SelectView in App.css/ CSS Nav in FlexMain.css
+
 
 // mobile version
-class MobileChatbox extends Component {
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-        loggedIn: false,
-        currentuser: ''
-    }  
-}
+export function MobileChatbox(props) {
 
+  function handleSelect(key) {
+    props.setKey(key)
+  } 
 
-currentUser = firebase.auth().onAuthStateChanged((user) => {
-if (user) {
-  this.setState({loggedIn: true, currentuser: user.displayName})
-  this.props.getUser(user.displayName)
-} else {
-  this.setState({loggedIn: false})
-}
+  firebase.auth().onAuthStateChanged((user) => {
+    if(user && !props.user.loggedIn) {
+        props.getUser(user.displayName)
+    }
 })
 
-handleSelect = (key) => {
-  this.props.setKey(key)
-} 
+  // ------------------------------ RETURN -----------------------------------------------------------------------------
+  return (
+    <Container id="responsive-container-mobile">
+        
+      <SelectView auto={props.auto} desktop={props.desktop} tablet={props.tablet} mobile={props.mobile} id={props.id}/>
+      
+      <Tabs id="uncontrolled" style={{borderBottom: 0}} activeKey={props.user.key} onSelect={handleSelect}>
+        
+        <Tab eventKey="sitemap" title="Menu">
+          <MobileSitemap />
+        </Tab>
 
-  render() {
-    return (
-      <Container id="responsive-container"  >
 
-        <Tabs  id="uncontrolled" style={{borderBottom: 0}} activeKey={this.props.user.key} onSelect={this.handleSelect}>
-        <Tab eventKey="start" title="Start">
-            <MobileStart />
+        {!props.user.loggedIn?
+          <Tab eventKey="about" title="About">
+            <About />
+            <br></br>
           </Tab>
-          {this.props.user.key === "chat"?
+        : props.user.key === "about"?
+          <Tab eventKey="about" title="About">
+            <About />
+            <br></br>
+          </Tab>
+        : null}
+
+
+        {!props.user.loggedIn?
+          <Tab eventKey="history" title="History">
+            <History/>
+          </Tab>
+        : props.user.key === "history"?
+          <Tab eventKey="history" title="History">
+            <History/>
+          </Tab>
+        : null}
+
+
+        {!props.user.loggedIn?
+          <Tab eventKey="userchats" title="Userchats">
+            <Userchats />
+          </Tab>
+        : props.user.key === "userchats"?
+          <Tab eventKey="userchats" title="Userchats">
+            <Userchats />
+          </Tab>
+        : null}
+        
+
+        {props.user.key === "chat"?
           <Tab eventKey="chat" title="Chat">
             <Chat />
           </Tab>
-           : null }
-          {(this.props.user.key === "publish") && this.state.loggedIn?
-            <Tab eventKey="publish" title="Publish">
-                <Publish />
-                <DraftList />
-                <ChatList />
-            </Tab>
-          : 
-          null}
-          {(this.props.user.key === "drafts") && this.state.loggedIn?
-            <Tab eventKey="drafts" title="Drafts">
-                <Name />
-                <SaveDraft />
-                <Drafts />
-            </Tab>
-          : 
-          null}
-          {this.props.user.key === "history"?
-          <Tab eventKey="history" title="History">
-              <History/>
+        : props.user.loggedIn && (props.user.key !== "history") && (props.user.key !== "userchats") && (props.user.key !== "about") && (props.user.key !== "login")?
+          <Tab eventKey="chat" title="Chat">
+            <Chat />
           </Tab>
-          : null}
-          {this.props.user.key === "userchats"?
-          <Tab eventKey="userchats" title="Userchats">
-              <Userchats />
+         : null }
+        
+
+        {(props.user.key === "drafts") && !props.user.loggedIn?
+          <Tab eventKey="drafts" title="Drafts">
+            <p className="mobile-notlogged">- you must be logged in to see the content -</p>
           </Tab>
-          : null }
-          {this.props.user.key === "login"?   
-          this.state.loggedIn?
-            <Tab eventKey="login" title="Profile">
-                <Authorization />
-            </Tab>
-          :  
-             <Tab eventKey="login" title="Login">
-                 <Authorization />
-            </Tab>
-          : null}
-          {this.props.user.key === "about"?
-          <Tab eventKey="about" title="About">
-              <About />
+        : props.user.loggedIn?
+          <Tab eventKey="drafts" title="Drafts">
+            <Name />
+            <SaveDraft />
+            <Drafts />
           </Tab>
-          : null}
-        </Tabs>
-      </Container>
-    )
-  }
+        : null}
+        
+
+        {(props.user.key === "publish") && !props.user.loggedIn?
+          <Tab eventKey="publish" title="Publish">
+            <p className="mobile-notlogged">- you must be logged in to see the content -</p>
+          </Tab> 
+        : props.user.loggedIn?
+          <Tab eventKey="publish" title="Publish">
+            <Publish />
+            <DraftList />
+            <ChatList />
+          </Tab>
+        : null}
+        
+
+        {props.user.key === "login"? 
+          <Tab eventKey="login" title={props.user.loggedIn? "Logout" : "Login"}>
+            <Authorization />
+          </Tab>
+        : null}
+        
+      </Tabs>
+    </Container>
+  )
 }
 
 // ---------------------- Redux ---------------------------------------
@@ -121,20 +145,3 @@ let mapDispatchToProps = {
 let MobileChatboxConnected = connect(mapStateToProps, mapDispatchToProps)(MobileChatbox)
 
 export default MobileChatboxConnected
-
-/* Menu für mobile Version - eventuell für später
-
-import Dropdown from 'react-bootstrap/Dropdown'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-
-<DropdownButton id="dropdown" title="Menu">
-  <Dropdown.Item onClick={()=>this.handleSelect("history")}>History</Dropdown.Item>
-  <Dropdown.Item onClick={()=>this.handleSelect("userchats")}>Userchats</Dropdown.Item>
-  <Dropdown.Item onClick={()=>this.handleSelect("chat")}>Chat</Dropdown.Item>
-  {this.state.loggedIn? <Dropdown.Item onClick={()=>this.handleSelect("drafts")}>Drafts</Dropdown.Item> : null}
-  {this.state.loggedIn? <Dropdown.Item onClick={()=>this.handleSelect("publish")}>Publish</Dropdown.Item> : null}
-  <Dropdown.Item onClick={()=>this.handleSelect("login")}>{loggedin}</Dropdown.Item>
-  <Dropdown.Item onClick={()=>this.handleSelect("about")}>About</Dropdown.Item>
-</DropdownButton>
-
-*/
