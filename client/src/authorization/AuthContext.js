@@ -11,6 +11,10 @@ export function useAuth() {
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
+    
+    function errorHandling(error) {
+        console.log("error", error.message)
+    }
 
     function signup(username, email, password) {
        return auth.createUserWithEmailAndPassword(email, password)
@@ -20,7 +24,7 @@ export function AuthProvider({ children }) {
                         displayName: username
                     })
                     .then(console.log("user signed up"))
-                    .catch((error) => console.log("error", error.message))
+                    .catch((error) => errorHandling(error))
                     user.sendEmailVerification().then(() => auth.signOut())  
                 })
     }
@@ -28,13 +32,13 @@ export function AuthProvider({ children }) {
     function login(email, password) {
         return auth.signInWithEmailAndPassword(email, password)
                 .then(console.log("user logged in"))
-                .catch((error) => console.log("error", error.message))
+                .catch((error) => errorHandling(error))
      }
 
     function logout() {
        return auth.signOut()
                 .then(console.log("user logged out"))
-                .catch((error) => console.log("error", error.message))
+                .catch((error) => errorHandling(error))
     }
 
     function resetPassword(email) {
@@ -49,26 +53,26 @@ export function AuthProvider({ children }) {
                 displayName: username
                 })
                 .then(console.log("username updated"))
-                .catch((error) => console.log("error", error.message))
+                .catch((error) => errorHandling(error))
     }
 
     function updateEmail(email) {
         let user = auth.currentUser
         return user.updateEmail(email)
                 .then(console.log("email updated"))
-                .catch((error) => console.log("error", error.message))   
+                .catch((error) => errorHandling(error))   
      }
 
      function updatePassword(password) {
         return currentUser.updatePassword(password)
                 .then(console.log("password updated"))
-                .catch((error) => console.log("error", error.message))
+                .catch((error) => errorHandling(error))
      }
 
      function deleteUser(currentUser) {
          return currentUser.delete()
                 .then(console.log("user deleted"))
-                .catch((error) => console.log("error", error.message))
+                .catch((error) => errorHandling(error))
      }
 
     useEffect(() => {
