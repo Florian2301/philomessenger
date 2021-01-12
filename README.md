@@ -1,11 +1,14 @@
-- this is not a commercial app -
+See live demo on heroku (might take a few seconds to load, its free hosting on heroku):
 
 http://philomessenger.herokuapp.com/login
 
-This app was created during my studies of web development and its published as MERN stack app on heroku: philomessenger.herokuapp.com
+Note: To deploy this app on heroku, the package.json file has to be outside of the server folder.
 
-Its my firt web app as a result of my self-studies and its still under progresss. Because it grew organically, the code on every file does not show the same level of developing skills i already reached. By time i will work through the whole code and bring it to one level.
+Its a MERN stack app, means I use MongoDB as my database, express as middleware, React as framework library and node.js as runtime environment for javascript. Additionally I use Redux for state management, firebase for authentification, react-bootstrap for styling some parts (e.g. for forms) and react hooks.
 
-About this app:
+This is a demoversion for a free online text editor for writing texts/dialogues in form of a chat and same time a platform to publish those texts. I always wanted to write down my own philosophical ideas, but couldn't find the right way to bring them on paper. Finally in 2019 I thought about writing in form of dialogues to express my thoughts. So I decided to create my own online text editor and a plattform to publish the chats.
 
-It was actually created for my personal use to write and publish texts, but opened up for more users to do the same. But why a new online text editor? My intention is to write dialogues in the form of a group chat like you know from modern messengers. I haven't found the right one for myself, so i decided to invent my own one and teach myself the same time about web development.
+At the beginning of 2020 I started to teach myself programming to become a web developer and building this app. This MERN stack single page application 
+is my first project I have launched. I am using this one as a part of my job applications.
+
+I do not follow any commercial purposes with this app.
