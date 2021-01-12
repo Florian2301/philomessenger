@@ -13,7 +13,7 @@ export function Name(props) {
     function handleSubmit(e) {
         e.preventDefault()
 
-        let names = props.draft.buttons
+        let names = props.draft.philosopher
         let newName = nameRef.current.value
         if(newName) {names.push({id: newName, name: newName})}  // if a new name is entered, push it to existing names
     
