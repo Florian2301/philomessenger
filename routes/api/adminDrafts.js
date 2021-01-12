@@ -38,8 +38,8 @@ router.post('/', async (req, res) => {
     req.body.messages.map((message) => {
         draft.messages.push(message)
     })
-    req.body.philosopher.map((button) => {
-        draft.philosopher.push(button)
+    req.body.philosopher.map((phil) => {
+        draft.philosopher.push(phil)
     })
     try {
         const newDraft = await draft.save()
