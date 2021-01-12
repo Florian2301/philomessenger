@@ -5,10 +5,10 @@ import Button from '../../elements/Button'
 import Panel from '../../elements/Panel'
 import { v4 as uuidv4 } from 'uuid'
 import { Spinner } from 'react-bootstrap'
-import { getAllChats, getAllUserChats, getAllUserChatsById, getChatById, getOneUserChat, getOneUserChatById, deleteChat, deleteUserChat } from '../../redux/actions/chat'
-import { saveDraft, saveUserDraft } from '../../redux/actions/draft'
-import { getAllTitle, getAllUserTitleById, getTitle, getUserTitle, deleteTitle, deleteUserTitle } from '../../redux/actions/title'
-import { clearDisplay } from '../../redux/actions/user'
+import { getAllChats, getAllUserChatsById, getChatById, deleteChat } from '../../redux/actions/chat'
+import { saveDraft, getDrafts } from '../../redux/actions/draft'
+import { getAllTitle, getAllUserTitleById, getTitle, deleteTitle } from '../../redux/actions/title'
+import {  clearDisplay } from '../../redux/actions/user'
 
 
 
@@ -20,43 +20,43 @@ export function Chats (props) {
       setSpinner(true)
       const admin = props.user.admin
       const id = props.user.userId
-      admin? props.getAllChats() : props.getAllUserChatsById(id)  // get all title and all chat for updating or saving as draft
-      admin? props.getAllTitle() : props.getAllUserTitleById(id)
+      admin? props.getAllChats(admin) : props.getAllUserChatsById(id)  // get all title and all chat for updating or saving as draft
+      admin? props.getAllTitle(admin) : props.getAllUserTitleById(id)
       setTimeout(() => {
         setSpinner(false)
       }, 500)           
     }
 
     function getOneChat(id, chatnumber) {
-        setSpinner(true)
-        props.clearDisplay()
-        let titleId = ""
-        const admin = props.user.admin
-        admin? props.getChatById(id) : props.getOneUserChatById(id) // get one chat
-        if(admin) {                                                 // get one title
-          props.title.adminTitle.map((title) => {
-            if(title.chatnumber === chatnumber) {
-                titleId = title._id
-            } return titleId
-          })
-          props.getTitle(titleId)
-        } else {
-          props.title.userCollection.map((title) => {
-            if(title.chatnumber === chatnumber) {
+      let titleId = ""
+      const admin = props.user.admin
+      props.getChatById(id, admin)                // get one chat
+      if(admin) {                                 // get one title
+        props.title.adminTitle.map((title) => {   // adminTitle has own state
+          if(title.chatnumber === chatnumber) {
               titleId = title._id
-            } return titleId
-          })
-          props.getUserTitle(titleId)
-        }
-        setDraft(id)  // if chat is clicked, a link for saving as draft displays 
-        setTimeout(() => {
-          setSpinner(false)
-        }, 500)          
+          } return titleId
+        })
+        props.getTitle(titleId, admin)
+      } else {
+        props.title.userCollection.map((title) => { // usertitle has onw state
+          if(title.chatnumber === chatnumber) {
+            titleId = title._id
+          } return titleId
+        })
+        props.getTitle(titleId, admin)
+      }
+      props.clearDisplay()
+      setDraft(id)  // if chat is clicked, a link for saving as draft displays
+      setSpinner(true)  
+      setTimeout(() => {
+        setSpinner(false)
+      }, 500)                                              
     }
 
     // save chat as draft for further editing
-    function saveAsDraft() {
-      setSpinner(true) 
+    function saveAsDraft() {  
+      setSpinner(true)                                        
       const admin = props.user.admin
       const userId = props.user.userId
       const user = props.user.username
@@ -66,9 +66,9 @@ export function Chats (props) {
       const description = props.chat.description
       const buttons = props.chat.buttons
       const messages = props.chat.messages
-      admin? props.saveDraft(userId, user, title, date, tags, description, buttons, messages) 
-        : props.saveUserDraft(userId, user, title, date, tags, description, buttons, messages)
+      props.saveDraft(userId, user, title, date, tags, description, buttons, messages, admin) 
       setTimeout(() => {
+        props.getDrafts(userId, admin)
         setSpinner(false)
       }, 500)      
     }
@@ -77,25 +77,25 @@ export function Chats (props) {
     function deleteChat(id, userId, chatnumber) {
       const admin = props.user.admin
       let titleId = ""
-      if (admin) {
-          props.deleteChat(id)
-          props.title.adminTitle.map((title) => {
+      props.deleteChat(id, admin)
+      if (admin) {              
+          props.title.adminTitle.map((title) => {   // adminTitle has own state
             if(title.chatnumber === chatnumber) {
                 titleId = title._id
             } return titleId
           })
-          props.deleteTitle(titleId)
+          props.deleteTitle(titleId, admin)
           setTimeout(() => {
-            props.getAllChats()
+            props.getAllChats(admin)
           }, 500)
       } else {
-        props.deleteUserChat(id)
-        props.title.userCollection.map((title) => {
+        props.deleteChat(id, admin)
+        props.title.userCollection.map((title) => { // usertitle has onw state
           if(title.chatnumber === chatnumber) {
             titleId = title._id
           } return titleId
         })
-        props.deleteUserTitle(titleId)
+        props.deleteTitle(titleId, admin)
         setTimeout(() => {
           props.getAllUserChatsById(userId)
         }, 500)
@@ -158,21 +158,15 @@ let mapStateToProps = (state) => {
   let mapDispatchToProps = {
     clearDisplay: clearDisplay,
     getAllChats: getAllChats,
-    getAllUserChats: getAllUserChats,
     getChatById: getChatById,
-    getOneUserChat: getOneUserChat,
-    deleteChat: deleteChat,
-    deleteUserChat: deleteUserChat,
-    saveDraft: saveDraft,
-    saveUserDraft: saveUserDraft,
-    getAllTitle: getAllTitle,
-    deleteTitle: deleteTitle,
-    getAllUserTitleById: getAllUserTitleById,
-    deleteUserTitle: deleteUserTitle,
     getAllUserChatsById: getAllUserChatsById,
-    getOneUserChatById: getOneUserChatById,
+    deleteChat: deleteChat,
+    saveDraft: saveDraft,
+    getDrafts: getDrafts,
+    getAllTitle: getAllTitle,
+    getAllUserTitleById: getAllUserTitleById,
     getTitle: getTitle,
-    getUserTitle: getUserTitle
+    deleteTitle: deleteTitle,
   }
   
   let ChatList = connect(mapStateToProps, mapDispatchToProps)(Chats)
