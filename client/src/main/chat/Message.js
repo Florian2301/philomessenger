@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './Message.css'
 import { connect } from 'react-redux'
-import { updateChat, updateUserMessage } from '../../redux/actions/chat'
-import { editDraft, editUserDraft, deleteDraftMessage, deleteUserDraftMessage } from '../../redux/actions/draft'
+import { updateChat } from '../../redux/actions/chat'
+import { editDraft, deleteDraftMessage } from '../../redux/actions/draft'
 
 
 const KEY_ENTER = 13
@@ -47,14 +47,14 @@ class Message extends Component {
     const userId = this.props.user.userId
     const userIdChat = this.props.chat.userId
     if (this.props.draft.draftEditmode) {         // check if draft
-      admin? this.props.editDraft(chatId, number, this.state.value) : this.props.editUserDraft(chatId, number, this.state.value)
+      this.props.editDraft(chatId, number, this.state.value, admin)
     }
     if (this.props.chat.chatEditmode) {           // check if chat
       if (admin) {
-          this.props.updateChat(chatId, number, this.state.value) 
+          this.props.updateChat(chatId, number, this.state.value, admin) 
       } else {
           if(userId === userIdChat) {             // user can only edit his own chats
-            this.props.updateUserMessage(chatId, number, this.state.value)
+            this.props.updateChat(chatId, number, this.state.value, admin)
           }
       }
     }
@@ -81,7 +81,7 @@ class Message extends Component {
       }
       return newMessages
     })
-    admin? this.props.deleteDraftMessage(chatId, newMessages) : this.props.deleteUserDraftMessage(chatId, newMessages)
+    this.props.deleteDraftMessage(chatId, newMessages, admin)
   }
   
 
@@ -130,10 +130,7 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = {
   editDraft: editDraft,
   updateChat: updateChat,
-  editUserDraft: editUserDraft,
-  updateUserMessage: updateUserMessage,
   deleteDraftMessage: deleteDraftMessage,
-  deleteUserDraftMessage: deleteUserDraftMessage
 }
 
 let EditContainer = connect(mapStateToProps, mapDispatchToProps)(Message)
