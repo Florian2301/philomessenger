@@ -47,7 +47,7 @@ export function Drafts (props) {
 
 
 // -------------------- return --------------------------------------------------
-    console.log("draft", props.draft)
+ 
     return (
       <Panel title="Your saved drafts" id="panel-drafts">
         <section className="flexContainer-draftlist">
