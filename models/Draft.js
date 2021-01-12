@@ -27,7 +27,7 @@ const DraftSchema = new Schema({
         type: String,
         required: false
     },
-    buttons: [{
+    philosopher: [{
         id: {
             type: String,
             required: true
