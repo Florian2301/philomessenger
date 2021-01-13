@@ -4,8 +4,7 @@ import './Sitemap.css'
 
 export function Start() {    
     return (
-        <Panel title='Introduction to "The Messenger" ' id="start-panel-chat">            
-            <p className="start-para">On this website you can write dialogues in form of a chat and publish them. You can use this app as follows:</p>
+        <Panel title="The structure of this app is as follows" id="start-panel-chat">            
             
             <br></br>
             <h2 className="start-para-tablet">History</h2>
