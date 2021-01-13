@@ -25,7 +25,7 @@
   border-width: thin;
   border-style: solid;
   border-radius: 0.6rem;
-  width: 100%;
+  width: 100vw;
   max-width: 50rem;
 }
 
