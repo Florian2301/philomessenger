@@ -26,11 +26,15 @@ export function FlexMain(props) {
           <Tabs defaultActiveKey="history" id="uncontrolled" style={{borderBottom: 0}}>
             
             <Tab eventKey="history" title="History">
-               <History />
+              <div className="table-border-color">
+                <History />
+              </div>
             </Tab>
             
             <Tab eventKey="userchats" title="Userchats">
-              <Userchats />
+              <div className="table-border-color">
+                <Userchats />
+              </div>
             </Tab>
           
           </Tabs>
