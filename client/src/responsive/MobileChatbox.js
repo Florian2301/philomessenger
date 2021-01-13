@@ -62,22 +62,30 @@ export function MobileChatbox(props) {
 
         {!props.user.loggedIn?
           <Tab eventKey="history" title="History">
-            <History/>
+            <div className="table-border-color-mobile">
+              <History/>
+            </div>
           </Tab>
         : props.user.key === "history"?
           <Tab eventKey="history" title="History">
-            <History/>
+            <div className="table-border-color-mobile">
+              <History/>
+            </div>
           </Tab>
         : null}
 
 
         {!props.user.loggedIn?
           <Tab eventKey="userchats" title="Userchats">
-            <Userchats />
+            <div className="table-border-color-mobile">
+              <Userchats />
+            </div>
           </Tab>
         : props.user.key === "userchats"?
           <Tab eventKey="userchats" title="Userchats">
-            <Userchats />
+            <div className="table-border-color-mobile">
+              <Userchats />
+            </div>
           </Tab>
         : null}
         
