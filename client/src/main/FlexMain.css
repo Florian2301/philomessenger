@@ -54,6 +54,10 @@
   background: midnightblue;
 }
 
+#uncontrolled-tab-history:focus {
+  border-color: dodgerblue;
+}
+
 #uncontrolled-tab-userchats {
   background-color: rgb(53, 53, 53);
   color: lightgray;
@@ -65,6 +69,10 @@
   background: midnightblue;
 }
 
+#uncontrolled-tab-userchats:focus {
+  border-color: dodgerblue;
+}
+
 /* Edit-Container */
 .container-fluid {
   border-width: thick;
@@ -72,7 +80,6 @@
   border-color: #999999;
   border-radius: 0.6rem;
   background-color: rgb(53, 53, 53);
-  margin: 5rem 0.5rem 0rem 0rem;
   padding-top: 1.5rem;
   padding-bottom: 1rem;
   width: 100%;
@@ -91,6 +98,10 @@
   background: midnightblue;
 }
 
+#uncontrolled-tab-sitemap:focus {
+  border-color: dodgerblue;
+}
+
 #uncontrolled-tab-login {
   background-color: rgb(53, 53, 53);
   color: lightgray;
@@ -102,6 +113,10 @@
   background: midnightblue;
 }
 
+#uncontrolled-tab-login:focus {
+  border-color: dodgerblue;
+}
+
 #uncontrolled-tab-about {
   background-color: rgb(53, 53, 53);
   color: lightgray;
@@ -111,6 +126,10 @@
 
 #uncontrolled-tab-about:hover {
   background: midnightblue;
+}
+
+#uncontrolled-tab-about:focus {
+  border-color: dodgerblue;
 }
 
 /* Tablet und Mobile */
@@ -125,6 +144,10 @@
   background: midnightblue;
 }
 
+#uncontrolled-tab-chat:hover {
+  border-color: dodgerblue;
+}
+
 /* Mobile */
 
 #uncontrolled-tab-publish {
@@ -134,9 +157,25 @@
   font-weight: bold;
 }
 
+#uncontrolled-tab-publish:hover {
+  background: midnightblue;
+}
+
+#uncontrolled-tab-publish:hover {
+  border-color: dodgerblue;
+}
+
 #uncontrolled-tab-drafts {
   background-color: rgb(53, 53, 53);
   color: lightgray;
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+#uncontrolled-tab-drafts:hover {
+  background: midnightblue;
+}
+
+#uncontrolled-tab-drafts:hover {
+  border-color: dodgerblue;
 }
