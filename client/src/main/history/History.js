@@ -30,7 +30,7 @@ class History extends Component {
   render() {
     const { adminTitle } = this.props.title
     return (
-      <div className="table-history" style={window.innerWidth <= 767? {marginBottom: 1.5+"rem"} : {marginBottom: 0+"rem"}}>
+      <div className="table-history">
             <div className="data-columns-history">
               <div className="thead-history-1">
                 No.
