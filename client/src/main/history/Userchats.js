@@ -30,7 +30,7 @@ class Userchats extends Component {
     const { userTitle } = this.props.title
     return (
      
-        <div className="table-userchats" style={window.innerWidth <= 767? {marginBottom: 1.5+"rem"} : {marginBottom: 0+"rem"}}>
+        <div className="table-userchats">
           <div className="data-columns-userchats">
               <div className="thead-userchats-1">
                 User
