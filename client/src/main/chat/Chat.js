@@ -124,6 +124,7 @@ class Chat extends Component {
 
     return (
       <div>
+        <div id="chat-border-color">
         <Container className="chatbox" id="chatbox">
           {!this.props.user.loggedIn?
             <ListGroup className="chatmessages">
@@ -177,6 +178,7 @@ class Chat extends Component {
             autofocus
           />
         </Container>
+        </div>
         
         <section className="flexContainer-chat">
           {this.props.chat.chatEditmode && window.innerWidth <= 767?
