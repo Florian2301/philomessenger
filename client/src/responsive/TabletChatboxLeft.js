@@ -21,11 +21,15 @@ export function TabletChatboxLeft(props) {
       <Tabs activeKey={props.user.key} id="uncontrolled" style={{borderBottom: 0}} onSelect={handleSelect}>
         
         <Tab eventKey="history" title="History">
+          <div className="table-border-color">
             <History/>
+          </div>
         </Tab>
         
         <Tab eventKey="userchats" title="Userchats">
+          <div className="table-border-color">
             <Userchats />
+          </div>
         </Tab>
         
         <Tab eventKey="chat" title="Chat">
