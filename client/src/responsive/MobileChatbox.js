@@ -35,6 +35,7 @@ export function MobileChatbox(props) {
 
   // ------------------------------ RETURN -----------------------------------------------------------------------------
   return (
+    <div className="responsive-border-mobile">
     <Container id="responsive-container-mobile">
         
       <SelectView auto={props.auto} desktop={props.desktop} tablet={props.tablet} mobile={props.mobile} id={props.id}/>
@@ -126,6 +127,7 @@ export function MobileChatbox(props) {
         
       </Tabs>
     </Container>
+    </div>
   )
 }
 
