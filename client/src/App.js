@@ -72,7 +72,9 @@ export default function App() {
           </Tablet>
           
           <Mobile>
+            <Container id="flexMobile">
               <MobileChatbox auto={viewAuto} desktop={viewDesktop} tablet={viewTablet} mobile={viewMobile} id="viewmobile"/>
+            </Container>
           </Mobile>
         </div>
         </Provider>
