@@ -54,7 +54,7 @@
   background: midnightblue;
 }
 
-#uncontrolled-tab-history:focus {
+#uncontrolled-tab-history[aria-selected = true] {
   border-color: dodgerblue;
 }
 
@@ -69,7 +69,7 @@
   background: midnightblue;
 }
 
-#uncontrolled-tab-userchats:focus {
+#uncontrolled-tab-userchats[aria-selected = true] {
   border-color: dodgerblue;
 }
 
@@ -98,7 +98,7 @@
   background: midnightblue;
 }
 
-#uncontrolled-tab-sitemap:focus {
+#uncontrolled-tab-sitemap[aria-selected = true] {
   border-color: dodgerblue;
 }
 
@@ -113,7 +113,7 @@
   background: midnightblue;
 }
 
-#uncontrolled-tab-login:focus {
+#uncontrolled-tab-login[aria-selected = true] {
   border-color: dodgerblue;
 }
 
@@ -128,7 +128,7 @@
   background: midnightblue;
 }
 
-#uncontrolled-tab-about:focus {
+#uncontrolled-tab-about[aria-selected = true] {
   border-color: dodgerblue;
 }
 
@@ -144,7 +144,7 @@
   background: midnightblue;
 }
 
-#uncontrolled-tab-chat:hover {
+#uncontrolled-tab-chat[aria-selected = true] {
   border-color: dodgerblue;
 }
 
@@ -161,7 +161,7 @@
   background: midnightblue;
 }
 
-#uncontrolled-tab-publish:hover {
+#uncontrolled-tab-publish[aria-selected = true] {
   border-color: dodgerblue;
 }
 
@@ -176,6 +176,6 @@
   background: midnightblue;
 }
 
-#uncontrolled-tab-drafts:hover {
+#uncontrolled-tab-drafts[aria-selected = true] {
   border-color: dodgerblue;
 }
