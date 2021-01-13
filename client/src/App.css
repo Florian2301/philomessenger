@@ -15,7 +15,18 @@
   border-color: #999999;
   border-radius: 0.6rem;
   background-color: rgb(53, 53, 53);
+  height: fit-content;
+  width: 100%;
   max-width: 50rem;
+}
+
+.responsive-border-mobile {
+  border-color: dodgerblue;
+  border-width: thin;
+  border-style: solid;
+  border-radius: 0.6rem;
+  width: 100vh;
+  max-width: 45vh;
 }
   
 /* Tabletchatbox */
@@ -23,6 +34,12 @@
   margin-top: 0rem;
   display: flex;
   max-height: 100%;
+}
+
+/* MobileChatbox */
+#flexMobile {
+  display: grid;
+  justify-content: center;
 }
 
 
