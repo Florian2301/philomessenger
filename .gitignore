@@ -5,3 +5,4 @@ route.rest
 package-lock.json
 .prettierrc
 desktop.ini
+.eslintrc.js
