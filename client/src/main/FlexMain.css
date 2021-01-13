@@ -8,6 +8,12 @@
 #item-1 {
   max-width: 20vw;
   min-width: 280px;
+  border-color: dodgerblue;
+  border-width: thin;
+  border-style: solid;
+  border-radius: 0.6rem;
+  height: fit-content;
+  margin-top: 5rem;
 }
 
 #item-2 {
@@ -20,6 +26,20 @@
   max-width: 25vw;
   min-width: 280px;
   justify-self: center;
+  border-color: dodgerblue;
+  border-width: thin;
+  border-style: solid;
+  border-radius: 0.6rem;
+  height: fit-content;
+  margin-top: 5rem;
+}
+
+/* color hitory and userchats */
+.table-border-color {
+  border-color: dodgerblue;
+  border-width: thin;
+  border-style: solid;
+  margin-top: 1.5rem;
 }
 
 /* History Container */
