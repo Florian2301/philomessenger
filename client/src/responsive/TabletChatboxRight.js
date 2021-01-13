@@ -15,6 +15,7 @@ import TabletSitemap from './TabletSitemap'
 export function TabletChatboxRight(props) {
 
   return (
+    <div id="responsive-border-tablet-right">
     <Container fluid id="responsive-container-tablet">
       <Tabs defaultActiveKey={"sitemap"} id="uncontrolled" style={{borderBottom: 0}}>
           
@@ -50,6 +51,7 @@ export function TabletChatboxRight(props) {
           
       </Tabs>
     </Container>
+    </div>
   )
 }
 
