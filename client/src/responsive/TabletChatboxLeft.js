@@ -16,6 +16,7 @@ export function TabletChatboxLeft(props) {
   } 
 
   return (
+    <div id="responsive-border-tablet-left">
     <Container fluid id="responsive-container-tablet">
       <Tabs activeKey={props.user.key} id="uncontrolled" style={{borderBottom: 0}} onSelect={handleSelect}>
         
@@ -38,6 +39,7 @@ export function TabletChatboxLeft(props) {
       
       </Tabs>
     </Container>
+    </div>
   )
 }
 
