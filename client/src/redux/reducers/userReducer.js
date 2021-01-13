@@ -11,7 +11,7 @@ let initialState = {
     update: false,
     delete: false,
     modus: "auto",
-    key: "about"
+    key: "history"
 }
 
 
