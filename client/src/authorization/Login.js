@@ -76,7 +76,7 @@ export function Login(props) {
                 </Form.Group>
                 
                 <div className="auth-actions">
-                    <Button button={true} disabled={loading} label="Log in" className="auth-btn" type="submit"></Button>
+                    <Button disabled={loading} label="Log in" className="auth-btn" type="submit"></Button>
                 </div>
                 
                 <div className="auth-actions">
