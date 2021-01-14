@@ -21,7 +21,7 @@ export function Start() {
             <p className="start-para">On <span className="start-para-inline">"Chat"</span> the published chats will be displayed. When you are logged in, you will 
             write your chats in this section as well.</p>
             
-            <h2 className="start-para-desktop">Login</h2>
+            <h2 className="start-para-desktop">Login/Logout</h2>
             <p className="start-para">If you like to have a look "inside" the text editor, to see how to use it, you can go to <span className="start-para-inline">"Login"</span> and 
              log in with the given testuser credentials. Feel free to write, edit and publish a chat for testing purposes.</p>
             <p className="start-para">The authorization is at the moment not a safe "https" process, a safe way to log in with your private email address will available in the future. 
