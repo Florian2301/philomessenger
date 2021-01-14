@@ -13,3 +13,18 @@
   font-size: 1.8rem;
   color: silver;
 }
+
+.start-para-desktop {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 1.8rem;
+  color: silver;
+}
+
+.start-para-inline {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 1.6rem;
+  color: silver;
+}
