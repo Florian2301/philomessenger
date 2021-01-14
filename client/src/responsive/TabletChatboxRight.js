@@ -9,6 +9,7 @@ import Name from '../main/drafts/Name'
 import SaveDraft from '../main/drafts/SaveDraft'
 import Drafts from '../main/drafts/Drafts'
 import TabletSitemap from './TabletSitemap'
+import About from '../main/About/About'
 // CSS in App.css/FlexMain
 
 
@@ -18,10 +19,6 @@ export function TabletChatboxRight(props) {
     <div id="responsive-border-tablet-right">
     <Container fluid id="responsive-container-tablet">
       <Tabs defaultActiveKey={"sitemap"} id="uncontrolled" style={{borderBottom: 0}}>
-          
-          <Tab eventKey="sitemap" title="Sitemap">
-            <TabletSitemap />
-          </Tab>
 
           {props.user.loggedIn?
           <Tab eventKey="drafts" title="Drafts">
@@ -38,6 +35,14 @@ export function TabletChatboxRight(props) {
               <ChatList />
           </Tab>
         : null}
+    
+        <Tab eventKey="sitemap" title="Sitemap">
+            <TabletSitemap />
+        </Tab>
+    
+        <Tab eventKey="about" title="About">
+          <About />
+        </Tab>
           
         {props.user.loggedIn?
         <Tab eventKey="login" title="Logout">
