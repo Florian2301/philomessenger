@@ -62,7 +62,6 @@ export function DraftList (props) {
       <Panel title="Prepare drafts to publish" id="panel-drafts">
         <section className="flexContainer-draftlist-publish">
         <Button
-              button="true"
               className="publish-draft"
               id="draft"
               label="Show drafts"
