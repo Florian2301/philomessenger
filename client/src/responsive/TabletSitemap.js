@@ -33,8 +33,6 @@ export function TabletSitemap() {
 
     return (
         <Panel title="The structure of this app is as follows" id="start-panel-chat">
-            <p className="start-para" id="menu-advice">(recommended view of this app is on a laptop/desktop screen)</p>
-
             <div>
                 <div className="menu-panel">    
                     <h2 className="start-para-tablet">About</h2>
