@@ -65,7 +65,7 @@ export default function App() {
 
           <Tablet >
              <div id="tablet-header">
-              <p className="start-para" id="menu-advice">- recommended view of this app is on a laptop/desktop screen -</p>
+              <p className="start-para" id="menu-advice">- recommended view is on a laptop/desktop screen -</p>
               <SelectView auto={viewAuto} desktop={viewDesktop} tablet={viewTablet} mobile={viewMobile} id="viewtablet"/>
              </div>
              <Container id="flexTablet">
