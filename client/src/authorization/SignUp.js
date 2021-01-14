@@ -120,7 +120,7 @@ export function SignUp(props) {
                 </Form.Group>
                 
                 <div className="auth-actions-signup">
-                    <Button button={true} disabled={loading} label="Sign up" className="auth-btn" type="submit"></Button>
+                    <Button disabled={loading} label="Sign up" className="auth-btn" type="submit"></Button>
                 </div>
                 
                 <div className="auth-actions" id="login-link">
