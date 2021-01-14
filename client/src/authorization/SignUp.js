@@ -87,7 +87,7 @@ export function SignUp(props) {
     return (
         <Panel id="auth" title="Sign up">
             <div className="text-center mb-4">
-                {error && <Alert variant="danger">{error}</Alert>}
+                {error && <Alert className="auth-alert" variant="danger">{error}</Alert>}
             </div>
             
             <Form onSubmit={handleSubmit}>
