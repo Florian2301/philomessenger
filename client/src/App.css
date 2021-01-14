@@ -151,3 +151,27 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+.tablet-menu-points {
+  margin-top: 1rem;
+}
+
+.tablet-menu-points-top {
+  margin-top: 1.5rem;
+}
+
+.tablet-menu-points-end {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.para-tablet {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.para-tablet-last {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+}
