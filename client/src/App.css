@@ -143,6 +143,10 @@
   margin-top: 0.5rem;
 }
 
+#menu-advice-mobile {
+  font-size: 1.2rem;
+}
+
 #tablet-header {
   display: grid;
   grid-template-columns: 1fr 1fr;
