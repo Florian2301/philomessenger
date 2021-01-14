@@ -4,7 +4,7 @@ import './Sitemap.css'
 
 export function Start() {    
     return (
-        <Panel title="The structure of this app is as follows" id="start-panel-chat">            
+        <Panel title="Your guide of this app" id="start-panel-chat">            
             
             <h2 className="start-para-desktop">History</h2>
             <p className="start-para">Under <span className="start-para-inline">"History"</span> you will find an introduction about how to use this
