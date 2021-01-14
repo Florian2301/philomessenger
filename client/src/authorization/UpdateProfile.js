@@ -151,8 +151,8 @@ export function UpdateProfile(props) {
                 </Form.Group>
                 
                 <div className="auth-actions">
-                    <Button button={true} disabled={loading} label="Update Profile" className="auth-btn" type="submit"></Button>
-                    <Button button={true} disabled={loading} label="Delete Profile" className="auth-btn" handleClick={deleteProfile}></Button>
+                    <Button disabled={loading} label="Update Profile" className="auth-btn" type="submit"></Button>
+                    <Button disabled={loading} label="Delete Profile" className="auth-btn" handleClick={deleteProfile}></Button>
                 </div>
                 
                 <div className="auth-actions" id="cancel">
