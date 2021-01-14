@@ -9,7 +9,7 @@
   
   .data-columns-userchats {
     display: grid;
-    grid-template-columns: 25% 12% 33% 30% ; 
+    grid-template-columns: 25% 13% 34% 28% ; 
   }
 
   .thead-userchats-1 {
@@ -46,7 +46,7 @@
 
   .data-rows-userchats {
     display: grid;
-    grid-template-columns: 25% 12% 33% 30% ;
+    grid-template-columns: 25% 13% 34% 28% ;
   }
   
   .userchats-column-1 {
