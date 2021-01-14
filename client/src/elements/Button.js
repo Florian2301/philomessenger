@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function Button (props) {
-    if (props.button) {
       return (
         <button
           className={props.className}
@@ -11,8 +10,5 @@ export default function Button (props) {
           {props.label}
         </button>
       )
-    } else {
-      return null
-    }
 }
 
