@@ -89,7 +89,7 @@ export function Dashboard(props) {
             </div>
             
             <div className="auth-actions" id="auth-actions-logout">
-                <Button button={true} handleClick={handleLogout} className="auth-btn" label="Log out"></Button>
+                <Button handleClick={handleLogout} className="auth-btn" label="Log out"></Button>
             </div>
             
             <div className="auth-actions" id="update-link">
