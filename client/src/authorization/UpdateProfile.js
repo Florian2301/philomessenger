@@ -152,7 +152,10 @@ export function UpdateProfile(props) {
                 
                 <div className="auth-actions">
                     <Button disabled={loading} label="Update Profile" className="auth-btn" type="submit"></Button>
-                    <Button disabled={loading} label="Delete Profile" className="auth-btn" handleClick={deleteProfile}></Button>
+                </div>
+        
+                <div className="auth-actions" id="cancel">
+                    <Link className="auth-link" id="auth-link" to="/login" onClick={deleteProfile} disabled={loading}>Delete profile</Link>
                 </div>
                 
                 <div className="auth-actions" id="cancel">
