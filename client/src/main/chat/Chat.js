@@ -20,7 +20,8 @@ class Chat extends Component {
     this.state = {
       messages: [],
       number: 0,
-      save: false
+      save: false,
+      textarea: false
     }
   }
 
@@ -168,6 +169,7 @@ class Chat extends Component {
             }
           </ul>
           }
+          {this.state.textarea?
             <Textarea
             writer={this.state.writer}
             placeholder={this.state.placeholder}
@@ -176,7 +178,8 @@ class Chat extends Component {
             onChange={this.inputChange}
             onKeyDown={this.textareaKeyEvent}
             autofocus
-          />
+            />
+           : null }
         </Container>
         </div>
         
