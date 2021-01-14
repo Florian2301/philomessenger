@@ -4,7 +4,6 @@ import { Container, Tab, Tabs}  from 'react-bootstrap'
 import History from '../main/history/History'
 import Userchats from '../main/history/Userchats'
 import Chat from '../main/chat/Chat'
-import About from '../main/About/About'
 import { setKey } from '../redux/actions/user'
 // CSS in App.css/FlexMain
 
@@ -36,11 +35,6 @@ export function TabletChatboxLeft(props) {
             <Chat />
         </Tab>
 
-        <Tab eventKey="about" title="About">
-          <About />
-        </Tab>
-
-      
       </Tabs>
     </Container>
     </div>
