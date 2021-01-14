@@ -138,4 +138,12 @@
 
 #menu-advice {
   font-size: 1.2rem;
+  text-align: right;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+#tablet-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
