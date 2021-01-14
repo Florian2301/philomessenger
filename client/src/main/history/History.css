@@ -57,7 +57,7 @@
 }
 
 .history-column-2:hover {
-  color: dodgerblue;
+  text-decoration: underline;
   cursor: pointer;
 }
 
