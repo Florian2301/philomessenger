@@ -198,7 +198,6 @@ class Chat extends Component {
                 <Button
                   className="button-chat-Phil"
                   key={uuidv4()}
-                  button={true}
                   id={phil.id}
                   label={phil.name}
                   phil={phil.name}
