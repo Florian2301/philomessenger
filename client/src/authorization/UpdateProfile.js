@@ -118,7 +118,7 @@ export function UpdateProfile(props) {
     return (
         <Panel id="auth" title="Update your profile">
             <div className="text-center mb-4">
-                {error && <Alert variant="danger">{error}</Alert>}
+                {error && <Alert className="auth-alert" variant="danger">{error}</Alert>}
             </div>
             
             <Form onSubmit={handleSubmit}>
