@@ -131,6 +131,10 @@ export function MobileChatbox(props) {
           <Tab eventKey="login" title={props.user.loggedIn? "Logout" : "Login"}>
             <Authorization />
           </Tab>
+        : props.user.loggedIn?
+          <Tab eventKey="login" title={props.user.loggedIn? "Logout" : "Login"}>
+            <Authorization />
+          </Tab>
         : null}
         
       </Tabs>
