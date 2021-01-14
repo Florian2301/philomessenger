@@ -4,7 +4,6 @@ import React from 'react'
  * textarea for writing the message in chat
  */
 export default function Textarea (props) {
-    if (props.textarea) {
       return (
         <div >
           <p id="writer">{props.writer}</p>
@@ -17,7 +16,4 @@ export default function Textarea (props) {
         ></textarea>
         </div>
       )
-    } else {
-      return null
-    }
 }
