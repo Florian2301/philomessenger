@@ -173,7 +173,6 @@ class Chat extends Component {
             <Textarea
             writer={this.state.writer}
             placeholder={this.state.placeholder}
-            textarea={this.state.textarea}
             value={this.state.value}
             onChange={this.inputChange}
             onKeyDown={this.textareaKeyEvent}
