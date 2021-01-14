@@ -30,8 +30,8 @@ export default function ForgotPassword() {
     return (
         <Panel id="auth" title="Reset your password">
             <div className="text-center mb-4">
-                {error && <Alert variant="danger">{error}</Alert>}
-                {message && <Alert variant="success">{message}</Alert>}
+                {error && <Alert className="auth-alert" variant="danger">{error}</Alert>}
+                {message && <Alert className="auth-alert" variant="success">{message}</Alert>}
             </div>
             <Form onSubmit={handleSubmit}>
                 <Form.Group id="email" as={Row}>
