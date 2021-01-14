@@ -32,7 +32,7 @@ export function TabletSitemap() {
 // -------------------------- RETURN -------------------------------------------------------------
 
     return (
-        <Panel title="The structure of this app is as follows" id="start-panel-chat">
+        <Panel title="Your guide of this app" id="start-panel-chat">
             <div className="tablet-menu-points-top">
                 <div className="menu-panel">
                     <h2 className="start-para-tablet">History</h2>
