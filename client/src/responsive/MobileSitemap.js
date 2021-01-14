@@ -39,7 +39,7 @@ export function MobileSitemap(props) {
     
     return (
         <Panel title="The structure of this app is as follows" id="start-panel">            
-            <p className="start-para" id="menu-advice">(recommended view is on a laptop/desktop screen)</p>
+            <p className="start-para" id="menu-advice-mobile">(recommended view is on a laptop/desktop screen)</p>
 
             <div>
               <div className="menu-panel">
