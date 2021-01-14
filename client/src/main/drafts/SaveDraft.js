@@ -118,9 +118,9 @@ export function SaveDraft(props) {
                 </div>
                 
                 <div className="save-actions">
-                    <Button button={true} label="New chat" id="save-btn" type="submit"></Button>
-                    <Button button={true} label="Save changes" id="save-btn" type="submit" handleClick={() => setUpdate(true)}></Button>
-                    <Button button={true} label="Clear" id="save-btn-reset" type="submit" handleClick={() => setReset(true)}></Button>
+                    <Button label="New chat" id="save-btn" type="submit"></Button>
+                    <Button label="Save changes" id="save-btn" type="submit" handleClick={() => setUpdate(true)}></Button>
+                    <Button label="Clear" id="save-btn-reset" type="submit" handleClick={() => setReset(true)}></Button>
                 </div>    
 
             </Form>
