@@ -75,9 +75,9 @@ export function Dashboard(props) {
     return (
         <Panel id="auth" title="Your profile">
             <div className="text-center mb-4">
-                {error && <Alert variant="danger">{error}</Alert>}
-                {welcome && props.user.welcome? <Alert variant="success">{welcomeMessage}</Alert> : null}
-                {updateProfile && props.user.update? <Alert variant="success">{update}</Alert> : null}
+                {error && <Alert className="auth-alert" variant="danger">{error}</Alert>}
+                {welcome && props.user.welcome? <Alert className="auth-alert" variant="success">{welcomeMessage}</Alert> : null}
+                {updateProfile && props.user.update? <Alert className="auth-alert" variant="success">{update}</Alert> : null}
             </div>
             
             <div className="auth-user">
