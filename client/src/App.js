@@ -64,11 +64,14 @@ export default function App() {
           </Desktop>
 
           <Tablet >
+             <div id="tablet-header">
+              <p className="start-para" id="menu-advice">- recommended view of this app is on a laptop/desktop screen -</p>
               <SelectView auto={viewAuto} desktop={viewDesktop} tablet={viewTablet} mobile={viewMobile} id="viewtablet"/>
-              <Container id="flexTablet">
-                <TabletChatboxLeft/>
-                <TabletChatboxRight />
-              </Container>
+             </div>
+             <Container id="flexTablet">
+               <TabletChatboxLeft/>
+               <TabletChatboxRight />
+             </Container>
           </Tablet>
           
           <Mobile>
