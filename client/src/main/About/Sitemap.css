@@ -15,7 +15,7 @@
 }
 
 .start-para-desktop {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   margin-left: 1rem;
   margin-right: 1rem;
   font-size: 1.8rem;
@@ -24,8 +24,5 @@
 }
 
 .start-para-inline {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  font-size: 1.6rem;
   color: silver;
 }
