@@ -52,7 +52,6 @@ export function Drafts (props) {
       <Panel title="Your saved drafts" id="panel-drafts">
         <section className="flexContainer-draftlist">
         <Button
-              button="true"
               className="save-draft"
               id="draft"
               label="Show drafts"
