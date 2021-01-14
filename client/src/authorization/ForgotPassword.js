@@ -41,7 +41,7 @@ export default function ForgotPassword() {
                     </Col>
                 </Form.Group>
                 <div className="auth-actions">
-                    <Button button={true} disabled={loading} label="Reset Password" className="auth-btn" id="auth-btn-reset" type="submit"></Button>
+                    <Button disabled={loading} label="Reset Password" className="auth-btn" id="auth-btn-reset" type="submit"></Button>
                 </div>
                 <div className="auth-actions">
                     <Link className="auth-link" to="/login">Log in</Link>
