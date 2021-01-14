@@ -40,7 +40,7 @@ export function Start() {
             
             <h2 className="start-para-desktop">About</h2>
             <p className="start-para">On <span className="start-para-inline">"About"</span> you will find a short explanation
-            about why i created this app, get more technical informations about it and see the code behind (on github).</p>
+            about why i created this app, get more technical informations about it and see the code behind on <a id="git" href="https://github.com/Florian2301/philomessenger">Github</a>.</p>
             <br></br>
 
         </Panel>
