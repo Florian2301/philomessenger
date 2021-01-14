@@ -77,7 +77,7 @@ export function TabletSitemap() {
             
             <div className="tablet-menu-points">
                 <div className="menu-panel">
-                    <h2 className="start-para-tablet">Login</h2>
+                    <h2 className="start-para-tablet">Login/Logout</h2>
                     <p className="menu-link" onClick={() => toggleDetails("login")} aria-controls="example-collapse-text" aria-expanded={login}>{!login? "more..." : "less..."}</p>
                 </div>
                 <Collapse in={login}>
