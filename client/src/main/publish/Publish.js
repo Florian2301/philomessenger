@@ -122,9 +122,9 @@ export function Publish(props) {
                 </div>
                 
                 <div className="publish-actions">
-                    <Button button={true} label="Publish chat" id="publish-btn" type="submit"></Button>
-                    <Button button={true} label="Save changes" id="publish-btn" type="submit" handleClick={() => setUpdate(true)}></Button>
-                    <Button button={true} label="Clear" id="publish-btn-reset" type="submit" handleClick={() => setReset(true)}></Button>
+                    <Button label="Publish chat" id="publish-btn" type="submit"></Button>
+                    <Button label="Save changes" id="publish-btn" type="submit" handleClick={() => setUpdate(true)}></Button>
+                    <Button label="Clear" id="publish-btn-reset" type="submit" handleClick={() => setReset(true)}></Button>
                 </div>    
             </Form>
         </Panel>
