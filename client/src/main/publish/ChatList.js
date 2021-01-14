@@ -108,7 +108,6 @@ export function Chats (props) {
       <Panel title="Your published chats" id="panel-drafts">
         <section className="flexContainer-chatlist-publish">
         <Button
-              button="true"
               className="publish-chat"
               id="draft"
               label="Show chats"
