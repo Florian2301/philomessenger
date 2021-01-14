@@ -26,6 +26,7 @@ export function Name(props) {
         }, 1000)
     }
 
+ // -------------------- RETURN ----------------------------------------------------
     
     return (
         <Panel id="start" title="Add names to your chat">
@@ -43,6 +44,7 @@ export function Name(props) {
     )
 }
 
+// --------------------- REDUX -------------------------------------------------
 
 const mapStateToProps = state => ({
     draft: state.draft,
