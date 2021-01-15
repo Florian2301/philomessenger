@@ -29,12 +29,16 @@ export function Name(props) {
  // -------------------- RETURN ----------------------------------------------------
     
     return (
-        <Panel id="start" title="Add names to your chat">
+        <Panel id="start" title="Add participants to your chat">
             <Form onSubmit={handleSubmit}>
+                <p className="info" id="info">1. Add participants to your chat</p>
+                <p className="info">2. Set a title for your chat</p>
+                <p className="info">3. Click "New chat" to start writing</p>
+                <p className="info">4. Click "save" or "Save changes" when you finished writing</
                 <Form.Group id="startname" as={Row}>
                     <Form.Label id="start-name">Name:*</Form.Label>
                     <Col>
-                        <Form.Control id="start-input" type="name" ref={nameRef} placeholder="Add a name"/>
+                        <Form.Control id="start-input" type="name" ref={nameRef} placeholder="Add participants"/>
                     </Col>
                     {addName && <p id="addname">{addName} added...</p>}
                 </Form.Group>
