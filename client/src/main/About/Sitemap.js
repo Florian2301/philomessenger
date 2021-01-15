@@ -28,7 +28,7 @@ export function Start() {
             <h2 className="start-para-desktop">Drafts</h2>
             <p className="start-para">if you log in you can start writing a chat in the <span className="start-para-inline">"Drafts"</span> section.</p>
             <p className="start-para">First add names (your participants), set a title and click "New chat". Afterwards you can start writing your own chat.</p>
-            <p className="start-para">While you are writung you should click "save" from time to time, so your text won't get lost. Same when you edit the draft of your chat.</p>
+            <p className="start-para">While you are writing you should click "save" from time to time, so your text won't get lost. Same when you edit the draft of your chat.</p>
             
             
             <h2 className="start-para-desktop">Publish</h2>
