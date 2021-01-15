@@ -18,6 +18,12 @@ Form {
     max-width: 15rem
 }
 
+#addname {
+    font-size: 1.2rem;
+    text-align: right;
+    font-style: italic;
+}
+
 .info {
     font-size: 1.2rem;
 }
