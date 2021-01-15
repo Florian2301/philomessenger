@@ -49,7 +49,7 @@ export function MobileSitemap(props) {
               <Collapse in={history}>
                 <div className="menu-details" id="example-collapse-text">
                   <p className="start-para-details">Under <span className="menu-inside" onClick={() => handleKey("history")}>"History" </span>
-                  you will find an introduction about how to use this text editor. In this section i will also post my own chats in the future.</p>
+                  you will find an introduction about how to use this chat editor. In this section i will also post my own chats in the future.</p>
                   <p className="start-para-details">After you clicked the title, the "date" will change to a download link where you can download the chat as a PDF document.</p>
                 </div>
               </Collapse>
@@ -62,7 +62,7 @@ export function MobileSitemap(props) {
               </div>
               <Collapse in={userchats}>
                 <div className="menu-details" id="example-collapse-text">
-                  <p className="start-para-details">Under <span className="menu-inside" onClick={() => handleKey("userchats")}>"Userchats" </span> you can publish your own chats after registration. 
+                  <p className="start-para-details">Under <span className="menu-inside" onClick={() => handleKey("userchats")}>"Userchats" </span> you can publish your own chats. 
                   At the moment you can see example dialogues i quoted from the great Plato, to see how your chat could look like.</p>
                 </div>
               </Collapse>
@@ -88,7 +88,7 @@ export function MobileSitemap(props) {
               </div>
               <Collapse in={login}>
                 <div className="menu-details" id="example-collapse-text">
-                  <p className="start-para-details">If you like to have a look "inside" the text editor, to see how to use it, you can go to <span className="menu-inside" onClick={() => handleKey("login")}>"Login" </span> and 
+                  <p className="start-para-details">If you like to have a look "inside" the chat editor, to see how to use it, you can go to <span className="menu-inside" onClick={() => handleKey("login")}>"Login" </span> and 
                   log in with the given testuser credentials. Feel free to write, edit and publish a chat for testing purposes.</p>
                 </div>
               </Collapse>
@@ -102,7 +102,7 @@ export function MobileSitemap(props) {
               <Collapse in={drafts}>
                 <div className="menu-details" id="example-collapse-text">
                   <p className="start-para-details">if you log in you can start writing a chat in the <span className="menu-inside" onClick={() => handleKey("drafts")}> "Drafts" </span> section.</p>
-                  <p className="start-para-details">First add names (your participants), set a title and click "New chat". Afterwards you can start writing your own chat.</p>
+                  <p className="start-para-details">First add names (your participants), set a title and click "new chat". Afterwards you can start writing your own chat.</p>
                   <p className="start-para-details">While you are writing you should click "save" from time to time, so your text won't get lost. Same when you edit the draft of your chat.</p>
                 </div>
               </Collapse>
@@ -116,8 +116,8 @@ export function MobileSitemap(props) {
               <Collapse in={publish}>
                 <div className="menu-details" id="example-collapse-text">
                   <p className="start-para-details">Once you are ready to publish your chat you go to <span className="menu-inside" onClick={() => handleKey("publish")}>"Publish" </span> and 
-                  set a "chatnumber" and a "date", then click on "Publish chat".</p>
-                  <p className="start-para-details">You can also change the "chatnumber" "title", "date", "tags" and "description" of a published chat when you click on "Save changes" after you you made your changes.</p>
+                  set a "chatnumber" and a "date", then click on "publish chat".</p>
+                  <p className="start-para-details">You can also change the "chatnumber" "title", "date", "tags" and "description" of a published chat when you click on "save changes" after you you made your changes.</p>
                 </div>
               </Collapse>
             </div>
