@@ -84,8 +84,6 @@ export function TabletSitemap() {
                     <div className="menu-details" id="example-collapse-text">
                         <p className="para-tablet">If you like to have a look "inside" the text editor, to see how to use it, you can go to <span className="start-para-inline">"Login"</span> and 
                         log in with the given testuser credentials. Feel free to write, edit and publish a chat for testing purposes.</p>
-                        <p className="para-tablet-last">The authorization is at the moment not a safe "https" process, a safe way to log in with your private email address will available in the future. 
-                        This app is only for demonstration hosted at "heroku.com".</p>
                     </div>
                 </Collapse>
             </div>
@@ -99,8 +97,7 @@ export function TabletSitemap() {
                     <div className="menu-details" id="example-collapse-text">
                         <p className="para-tablet">if you log in you can start writing a chat in the <span className="start-para-inline">"Drafts"</span> section.</p>
                         <p className="para-tablet">First add names (your participants), set a title and click "New chat". Afterwards you can start writing your own chat.</p>
-                        <p className="para-tablet">If you like to edit the draft of your chat you can click "Save changes" when you are done editing, changes will be saved.</p>
-                        <p className="para-tablet-last">"Tags" and "Description" are the parts which will appear on the <span className="start-para-inline">"Userchats"</span> section when you published your chat.</p>
+                        <p className="para-tablet">While you are writung you should click "save" from time to time, so your text won't get lost. Same when you edit the draft of your chat.</p>
                     </div>
                 </Collapse>
             </div>
@@ -112,9 +109,8 @@ export function TabletSitemap() {
                 </div>
                 <Collapse in={publish}>
                     <div className="menu-details" id="example-collapse-text">
-                        <p className="para-tablet">Once you are ready to publish your chat you go to <span className="start-para-inline">"Publish"</span>, 
-                        there you have to set a "chatnumber" and a "date", then click on "Publish chat", it will be displayed in <span className="start-para-inline">"Userchats"</span>.</p>
-                        <p className="para-tablet-last">You can also change the "chatnumber" "title", "date", "tags" and "description" of a published chat when you click on "Save changes" after you you made your changes.</p>
+                        <p className="para-tablet">Once you are ready to publish your chat you go to <span className="start-para-inline">"Publish"</span> and 
+                        set a "chatnumber" and a "date", then click on "Publish chat", it will be displayed in <span className="start-para-inline">"Userchats"</span>.</p>
                     </div>
                 </Collapse>
             </div>
@@ -127,7 +123,7 @@ export function TabletSitemap() {
                 <Collapse in={about}>
                     <div className="menu-details" id="example-collapse-text">
                         <p className="para-tablet-last">On <span className="start-para-inline">"About"</span> you will find a short explanation
-                        about why i created this app, get more technical informations about it and see the code behind on <a id="git" href="https://github.com/Florian2301/philomessenger">Github</a>.</p>
+                        about why i created this app, get more technical informations about it and find a link to my github repository to see the code.</p>
                     </div>
                 </Collapse>
             </div>
