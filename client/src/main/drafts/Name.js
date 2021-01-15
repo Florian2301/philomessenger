@@ -34,7 +34,7 @@ export function Name(props) {
                 <p className="info" id="info">1. Add participants to your chat</p>
                 <p className="info">2. Set a title for your chat</p>
                 <p className="info">3. Click "New chat" to start writing</p>
-                <p className="info">4. Click "save" or "Save changes" when you finished writing</
+                <p className="info">4. Click "save" or "Save changes" when you finished writing</p>
                 <Form.Group id="startname" as={Row}>
                     <Form.Label id="start-name">Name:*</Form.Label>
                     <Col>
