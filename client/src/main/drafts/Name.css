@@ -18,3 +18,10 @@ Form {
     max-width: 15rem
 }
 
+.info {
+    font-size: 1.2rem;
+}
+
+#info {
+    margin-top: 1rem;
+}
