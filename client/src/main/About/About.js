@@ -10,15 +10,15 @@ export default function About (props) {
         
             <br></br>
         
-            <p>This is a demoversion for a free online text editor for writing texts/dialogues in form of a chat and same time a platform to publish those texts. I always wanted to write down my own philosophical ideas, 
+            <p>This is a demoversion for a free online chat editor for writing texts/dialogues in form of a chat and same time a platform to publish those texts. I always wanted to write down my own philosophical ideas, 
                 but couldn't find the right way to bring them on paper. Finally in 2019 I thought about writing in form of dialogues to express my thoughts. 
-                So I decided to create my own online text editor. This app is also a plattform to publish the chats.
+                So I decided to create my own online chat editor.
             </p>
 
             <br></br>
 
             <p>At the beginning of 2020 I started to teach myself programming to become a web developer. This MERN stack single page application 
-                is my first project I have launched and it represents my current knowledge of web developing. I am using this one as a part of my job applications.</p>
+                is my first project I have launched. I am using this one as a part of my job applications.</p>
             
             <br></br>
 
