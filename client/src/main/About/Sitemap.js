@@ -32,8 +32,8 @@ export function Start() {
             
             
             <h2 className="start-para-desktop">Publish</h2>
-            <p className="start-para">Once you are ready to publish your chat you go to <span className="start-para-inline">"Publish"</span> and 
-            set a "chatnumber" and a "date", then click on "Publish chat", it will be displayed in <span className="start-para-inline">"Userchats"</span>.</p>
+            <p className="start-para">Once you are ready to publish you go to <span className="start-para-inline">"Publish"</span> and 
+            set a "chatnumber" and a "date", then click on "Publish chat", your chat will be displayed in <span className="start-para-inline">"Userchats"</span>.</p>
             
             
             <h2 className="start-para-desktop">About</h2>
