@@ -41,10 +41,9 @@ export function TabletSitemap() {
                 <Collapse in={history}>
                     <div className="menu-details" id="example-collapse-text">
                         <p className="para-tablet">Under <span className="start-para-inline">"History"</span> you will find an introduction about how to use this
-                        text editor. In this section i will also post my own chats in the future</p>
+                        chat editor. In this section i will also post my own chats in the future</p>
                         <p className="para-tablet">If you click on the title of a chat it will be displayed in <span className="start-para-inline">"Chat"</span>.</p>
                         <p className="para-tablet">After you clicked the title, the "date" will change to a download link where you can download the chat as a PDF document.</p>
-                        <p className="para-tablet-last">If you only hover over the title additional informations about the chat will appear: Tags and a brief description of the chat.</p>
                     </div>
                 </Collapse>
             </div>
@@ -82,7 +81,7 @@ export function TabletSitemap() {
                 </div>
                 <Collapse in={login}>
                     <div className="menu-details" id="example-collapse-text">
-                        <p className="para-tablet">If you like to have a look "inside" the text editor, to see how to use it, you can go to <span className="start-para-inline">"Login"</span> and 
+                        <p className="para-tablet">If you like to have a look "inside" the chat editor, to see how to use it, you can go to <span className="start-para-inline">"Login"</span> and 
                         log in with the given testuser credentials. Feel free to write, edit and publish a chat for testing purposes.</p>
                     </div>
                 </Collapse>
@@ -96,7 +95,7 @@ export function TabletSitemap() {
                 <Collapse in={drafts}>
                     <div className="menu-details" id="example-collapse-text">
                         <p className="para-tablet">if you log in you can start writing a chat in the <span className="start-para-inline">"Drafts"</span> section.</p>
-                        <p className="para-tablet">First add names (your participants), set a title and click "New chat". Afterwards you can start writing your own chat.</p>
+                        <p className="para-tablet">First add names (your participants), set a title and click "new chat". Afterwards you can start writing your own chat.</p>
                         <p className="para-tablet">While you are writing you should click "save" from time to time, so your text won't get lost. Same when you edit the draft of your chat.</p>
                     </div>
                 </Collapse>
@@ -110,7 +109,7 @@ export function TabletSitemap() {
                 <Collapse in={publish}>
                     <div className="menu-details" id="example-collapse-text">
                         <p className="para-tablet">Once you are ready to publish your chat you go to <span className="start-para-inline">"Publish"</span> and 
-                        set a "chatnumber" and a "date", then click on "Publish chat", it will be displayed in <span className="start-para-inline">"Userchats"</span>.</p>
+                        set a "chatnumber" and a "date", then click on "publish chat", it will be displayed in <span className="start-para-inline">"Userchats"</span>.</p>
                     </div>
                 </Collapse>
             </div>
