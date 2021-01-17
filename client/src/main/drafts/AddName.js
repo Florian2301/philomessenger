@@ -1,14 +1,15 @@
 import React, { useState, useRef } from 'react'
 import { connect } from 'react-redux'
-import './Name.css'
-import { Form, Col, Row } from 'react-bootstrap'
+import './AddName.css'
+import { Form, Col, Row, Collapse } from 'react-bootstrap'
 import Panel from '../../elements/Panel'
 import { startChat } from '../../redux/actions/draft'
 
 
-export function Name(props) {
+export function AddName(props) {
     const nameRef = useRef()
     const [addName, setAddName] = useState('')
+    const [info, setInfo] = useState(false)
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -30,12 +31,16 @@ export function Name(props) {
     
     return (
         <Panel id="start" title="Add participants to your chat">
-            <Form onSubmit={handleSubmit}>
-                <p className="info" id="info">1. Add participants to your chat</p>
-                <p className="info">2. Set a title for your chat</p>
-                <p className="info">3. Click "new chat" to start writing</p>
-                <p className="info">4. Click "save" or "save changes" when you finished writing</p>
-                <Form.Group id="startname" as={Row}>
+                <p className="info-link" onClick={() => setInfo(!info)} aria-controls="example-collapse-text" aria-expanded={info}>{!info? "click for more..." : "less..."}</p>
+                <Collapse in={info}>
+                <div className="info-details" id="example-collapse-text">
+                    <p className="info">1. Add participants to your chat</p>
+                    <p className="info">2. Set a title for your chat</p>
+                    <p className="info">3. Click "new chat" to start writing</p>
+                    <p className="info">4. Click "save" or "save changes" when you finished writing</p>
+                </div>
+                </Collapse>
+                <Form onSubmit={handleSubmit}>
                     <Form.Label id="start-name">Name:*</Form.Label>
                     <Col>
                         <Form.Control id="start-input" type="name" ref={nameRef} placeholder="Add participants"/>
@@ -43,7 +48,6 @@ export function Name(props) {
                     {addName && <p id="addname">{addName} added...</p>}
                 </Form.Group>
             </Form>
-           
         </Panel>
     )
 }
@@ -58,5 +62,5 @@ const mapActionsToProps = {
     startChat: startChat
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(Name)
+export default connect(mapStateToProps, mapActionsToProps)(AddName)
 
