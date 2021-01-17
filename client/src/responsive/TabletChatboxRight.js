@@ -5,7 +5,7 @@ import Authorization from '../authorization/Authorization'
 import Publish from '../main/publish/Publish'
 import DraftList from '../main/publish/DraftList'
 import ChatList from '../main/publish/ChatList'
-import Name from '../main/drafts/Name'
+import AddName from '../main/drafts/AddName'
 import SaveDraft from '../main/drafts/SaveDraft'
 import Drafts from '../main/drafts/Drafts'
 import TabletSitemap from './TabletSitemap'
@@ -22,7 +22,7 @@ export function TabletChatboxRight(props) {
 
           {props.user.loggedIn?
           <Tab eventKey="drafts" title="Drafts">
-             <Name />
+             <AddName />
              <SaveDraft />
              <Drafts />
           </Tab>
