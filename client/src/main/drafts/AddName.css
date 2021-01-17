@@ -28,6 +28,13 @@ Form {
     font-size: 1.2rem;
 }
 
-#info {
+.info-link {
+    font-size: 1.2rem;
     margin-top: 1rem;
+    margin-left: 1rem;
+    text-decoration: underline;
+}
+
+.info-details {
+    margin-left: 1rem;
 }
