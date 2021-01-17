@@ -6,7 +6,7 @@ import Chat from './chat/Chat'
 import History from './history/History'
 import Title from './chat/Title'
 import Userchats from './history/Userchats'
-import Name from './drafts/Name'
+import AddName from './drafts/AddName'
 import SaveDraft from './drafts/SaveDraft'
 import Drafts from './drafts/Drafts'
 import Publish from './publish/Publish'
@@ -52,7 +52,7 @@ export function FlexMain(props) {
             
             {props.user.loggedIn?
               <Tab eventKey="drafts" title="Drafts">
-                <Name />
+                <AddName />
                 <SaveDraft />
                 <Drafts />
               </Tab>
