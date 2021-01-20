@@ -28,7 +28,7 @@ export default function About (props) {
             <br></br>
                 
             <a id="git" href="https://github.com/Florian2301/philomessenger">See code on Github</a>
-            <p id="about-update">Last update: 2021-01-15</p>
+            <p id="about-update">Last update: 2021-01-20</p>
             
             <br></br>
 
