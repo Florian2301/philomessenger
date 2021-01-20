@@ -39,7 +39,7 @@
 
 .flexContainer-chat {
   display: grid;
-  grid-template-columns: 1fr 12rem;
+  grid-template-columns: 1fr 6rem;
   margin-bottom: 1rem;
 }
 
@@ -56,11 +56,6 @@
   text-decoration: underline;
   cursor: pointer;
   color: dodgerblue;
-}
-
-#save-clear-chat {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 
 #link-clear {
