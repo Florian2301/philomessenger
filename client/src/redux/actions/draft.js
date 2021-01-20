@@ -8,10 +8,6 @@ export function removeName(name) {
   return {type: "REMOVE_NAME", name}
 }
 
-export function addMessages(messages) {
-  return { type: 'ADD_Messages', messages }
-}
-
 // save draft
 export const saveDraft = (userId, user, title, date, tags, description, philosopher, messages, admin) => dispatch => {
   if(admin) {
