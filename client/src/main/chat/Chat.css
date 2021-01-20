@@ -39,7 +39,7 @@
 
 .flexContainer-chat {
   display: grid;
-  grid-template-columns: 1fr 6rem;
+  grid-template-columns: 1fr 8rem;
   margin-bottom: 1rem;
 }
 
@@ -55,17 +55,16 @@
 #link-back-chat:hover {
   text-decoration: underline;
   cursor: pointer;
-  color: dodgerblue;
 }
 
 #link-clear {
   margin: 1rem;
+  text-align: right;
 }
 
 #link-clear:hover {
   text-decoration: underline;
   cursor: pointer;
-  color: dodgerblue;
 }
 
 .button-chat-Phil {
