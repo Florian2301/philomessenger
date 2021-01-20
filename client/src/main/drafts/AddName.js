@@ -4,6 +4,8 @@ import './AddName.css'
 import { Form, Col, Row, Collapse } from 'react-bootstrap'
 import Panel from '../../elements/Panel'
 import { startChat } from '../../redux/actions/draft'
+import { CSSTransition, TransitionGroup } from 'react-transition-group' //CSS in Chat.css
+import { v4 as uuidv4 } from 'uuid'
 
 
 export function AddName(props) {
@@ -31,15 +33,21 @@ export function AddName(props) {
     
     return (
         <Panel id="start" title="Add participants to your chat">
-            <p className="info-link" onClick={() => setInfo(!info)} aria-controls="example-collapse-text" aria-expanded={info}>{!info? "click for more..." : "less..."}</p>
-            <Collapse in={info}>
-                <div className="info-details" id="example-collapse-text">
-                    <p className="info">1. Add participants to your chat</p>
-                    <p className="info">2. Set a title for your chat</p>
-                    <p className="info">3. Click "new chat" to start writing</p>
-                    <p className="info">4. Click "save" or "save changes" when you finished writing</p>
-                </div>
-            </Collapse>
+            <p className="info-link" onClick={() => setInfo(!info)} aria-controls="example-collapse-text" aria-expanded={info}>{!info? "click for more..." : "less info..."}</p>
+            
+            <TransitionGroup>
+                <CSSTransition key={uuidv4()} timeout={100} classNames="transition-message">
+                    <Collapse in={info}>
+                        <div className="info-details" id="example-collapse-text">
+                            <p className="info">1. Add participants to your chat</p>
+                            <p className="info">2. Set a title for your chat</p>
+                            <p className="info">3. Click "new chat" to start writing</p>
+                            <p className="info">4. Click "save" or "save changes" when you finished writing</p>
+                        </div>
+                    </Collapse>
+                </CSSTransition>
+            </TransitionGroup>
+            
             <Form onSubmit={handleSubmit}>
                 <Form.Group id="startname" as={Row}>
                     <Form.Label id="start-name">Name:*</Form.Label>
