@@ -3,12 +3,12 @@ import Textarea from '../../elements/Textarea'
 import Button from '../../elements/Button'
 import Message from './Message'
 import { connect } from 'react-redux'
-import { addMessages, updateDraft } from '../../redux/actions/draft'
+import { updateDraft } from '../../redux/actions/draft'
 import { clearDisplay, setKey } from '../../redux/actions/user'
 import './Chat.css'
-import { v4 as uuidv4 } from 'uuid';
-import { Container, ListGroup, Spinner } from 'react-bootstrap';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { v4 as uuidv4 } from 'uuid'
+import { Container, ListGroup } from 'react-bootstrap'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 const KEY_ENTER = 13
 const KEY_ESC = 27
@@ -20,7 +20,6 @@ class Chat extends Component {
     this.state = {
       messages: [],
       number: 0,
-      save: false,
       textarea: false
     }
   }
@@ -72,15 +71,12 @@ class Chat extends Component {
         text: message,
         color: indexOfName
       })
-      this.props.addMessages(storeMessName)
+      this.saveMessageAndPhil()
     }
   }
 
-  
   // save new messages and philosophers to draft
   saveMessageAndPhil = () => {
-    this.setState({ save: true})
-    setTimeout(() => { this.setState({ save: false}) }, 500)
     const admin = this.props.user.admin
     const draftId = this.props.draft.draftId
     const title = this.props.draft.title
@@ -210,18 +206,10 @@ class Chat extends Component {
           </div>
           }
 
-          <div id="save-clear-chat">
-            <div>
-              {this.props.draft.draftEditmode? <p id="link-clear" onClick={this.saveMessageAndPhil}>
-                {this.state.save? <Spinner animation="border" role="status" ></Spinner> : "save"}</p> 
-              : <p id="link-clear"></p>} 
-            </div>
-
-            <div>
-              <p id="link-clear" onClick={this.clear}>clear</p>
-            </div>
+          <div>
+            <p id="link-clear" onClick={this.clear}>clear</p>
           </div>
-
+         
         </section>
       </div>
     )
@@ -240,7 +228,6 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = {
   clearDisplay: clearDisplay,
-  addMessages: addMessages,
   updateDraft: updateDraft,
   setKey: setKey
 }
