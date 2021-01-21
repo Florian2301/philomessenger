@@ -43,7 +43,7 @@ export function TabletSitemap() {
                     <p className="menu-link" onClick={() => toggleDetails("history")} aria-controls="example-collapse-text" aria-expanded={history}>{!history? "more..." : "less..."}</p>
                 </div>
                 <TransitionGroup>
-                    <CSSTransition key={uuidv4()} timeout={1000} classNames="transition-sitemap">
+                    <CSSTransition key={uuidv4()} timeout={10} classNames="transition-sitemap">
                         <Collapse in={history}>
                             <div className="menu-details" id="example-collapse-text">
                                 <p className="para-tablet">Under <span className="start-para-inline">"History"</span> you will find an introduction about how to use this
@@ -62,7 +62,7 @@ export function TabletSitemap() {
                     <p className="menu-link" onClick={() => toggleDetails("userchats")} aria-controls="example-collapse-text" aria-expanded={userchats}>{!userchats? "more..." : "less..."}</p>
                 </div>
                 <TransitionGroup>
-                    <CSSTransition key={uuidv4()} timeout={1000} classNames="transition-sitemap">
+                    <CSSTransition key={uuidv4()} timeout={10} classNames="transition-sitemap">
                         <Collapse in={userchats}>
                             <div className="menu-details" id="example-collapse-text">
                                 <p className="para-tablet-last">Under <span className="start-para-inline">"Userchats"</span> you can publish your own chats after registration. 
@@ -79,7 +79,7 @@ export function TabletSitemap() {
                     <p className="menu-link" onClick={() => toggleDetails("chat")} aria-controls="example-collapse-text" aria-expanded={chat}>{!chat? "more..." : "less..."}</p>
                 </div>
                 <TransitionGroup>
-                    <CSSTransition key={uuidv4()} timeout={1000} classNames="transition-sitemap">
+                    <CSSTransition key={uuidv4()} timeout={10} classNames="transition-sitemap">
                         <Collapse in={chat}>
                             <div className="menu-details" id="example-collapse-text">
                                 <p className="para-tablet-last">On <span className="start-para-inline">"Chat"</span> the published chats will be displayed. When you are logged in, you will 
@@ -96,7 +96,7 @@ export function TabletSitemap() {
                     <p className="menu-link" onClick={() => toggleDetails("login")} aria-controls="example-collapse-text" aria-expanded={login}>{!login? "more..." : "less..."}</p>
                 </div>
                 <TransitionGroup>
-                    <CSSTransition key={uuidv4()} timeout={1000} classNames="transition-sitemap">
+                    <CSSTransition key={uuidv4()} timeout={10} classNames="transition-sitemap">
                         <Collapse in={login}>
                             <div className="menu-details" id="example-collapse-text">
                                 <p className="para-tablet">If you like to have a look "inside" the chat editor, to see how to use it, you can go to <span className="start-para-inline">"Login"</span> and 
@@ -113,7 +113,7 @@ export function TabletSitemap() {
                     <p className="menu-link" onClick={() => toggleDetails("drafts")} aria-controls="example-collapse-text" aria-expanded={drafts}>{!drafts? "more..." : "less..."}</p>
                 </div>
                 <TransitionGroup>
-                    <CSSTransition key={uuidv4()} timeout={1000} classNames="transition-sitemap">
+                    <CSSTransition key={uuidv4()} timeout={10} classNames="transition-sitemap">
                         <Collapse in={drafts}>
                             <div className="menu-details" id="example-collapse-text">
                                 <p className="para-tablet">if you log in you can start writing a chat in the <span className="start-para-inline">"Drafts"</span> section.</p>
@@ -131,7 +131,7 @@ export function TabletSitemap() {
                     <p className="menu-link" onClick={() => toggleDetails("publish")} aria-controls="example-collapse-text" aria-expanded={publish}>{!publish? "more..." : "less..."}</p>
                 </div>
                 <TransitionGroup>
-                    <CSSTransition key={uuidv4()} timeout={1000} classNames="transition-sitemap">
+                    <CSSTransition key={uuidv4()} timeout={10} classNames="transition-sitemap">
                         <Collapse in={publish}>
                             <div className="menu-details" id="example-collapse-text">
                                 <p className="para-tablet">Once you are ready to publish your chat you go to <span className="start-para-inline">"Publish"</span> and 
@@ -148,7 +148,7 @@ export function TabletSitemap() {
                     <p className="menu-link" onClick={() => toggleDetails("about")} aria-controls="example-collapse-text" aria-expanded={about}>{!about? "more..." : "less..."}</p>
                 </div>
                 <TransitionGroup>
-                    <CSSTransition key={uuidv4()} timeout={1000} classNames="transition-sitemap">
+                    <CSSTransition key={uuidv4()} timeout={10} classNames="transition-sitemap">
                         <Collapse in={about}>
                             <div className="menu-details" id="example-collapse-text">
                                 <p className="para-tablet-last">On <span className="start-para-inline">"About"</span> you will find a short explanation
