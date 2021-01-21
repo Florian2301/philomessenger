@@ -28,7 +28,7 @@ const PDF = (props) => {
         <View style={styles.title}>
           <Text>{props.title}</Text>
           <Text style={styles.user}>written by {props.user}</Text>
-          <Text style={styles.user}>- {props.date} -</Text>
+          <Text style={styles.user}>{props.date}</Text>
         </View>
 
         {props.data.map((d) => {
