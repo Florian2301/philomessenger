@@ -128,7 +128,7 @@ class Chat extends Component {
               <TransitionGroup>
               {messages.map(({_id, color, name, messagenumber, text}) => {
                 return (
-                <CSSTransition key={uuidv4()} timeout={100} classNames="transition-message">
+                <CSSTransition key={uuidv4()} timeout={10} classNames="transition-message">
                   <ListGroup.Item className="listgroup-message">
                   <Message
                     color={'color-' + color}
