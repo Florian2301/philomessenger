@@ -9,9 +9,10 @@ import { v4 as uuidv4 } from 'uuid';
 const styles = StyleSheet.create({
   page: { backgroundColor: 'lightgrey', paddingTop: 35, paddingBottom: 65, paddingHorizontal: 35 },
   header: { fontSize: 8, marginBottom: 20, textAlign: 'center'},
-  title: { fontSize: 20, textAlign: 'center', marginBottom: 30 },
-  user: { fontSize: 10, marginTop: 5, color: 'grey'},
-  philosopher: { fontSize: 10, marginTop: 5},
+  title: { fontSize: 20 ,textAlign: 'center', marginBottom: 30 },
+  user: { fontSize: 10, marginTop: 5, color: 'grey' },
+  date: { fontSize: 8, marginTop: 5, color: 'grey' },
+  philosopher: { fontSize: 10, marginTop: 5, marginBottom: 5 },
   text: { fontSize: 15, marginBottom: 5 },
   pageNumber: { position: 'absolute', fontSize: 12, bottom: 30, left: 0, right: 0, textAlign: 'center', color: 'grey' }
 })
@@ -27,10 +28,10 @@ const PDF = (props) => {
       <Page size="A4" style={styles.page}>
         <Text style={styles.header} fixed><Link src={'http://philomessenger.herokuapp.com'}> ~ philomessenger.herokuapp.com ~ </Link></Text>
         
-        <View style={styles.header}>
+        <View style={styles.title}>
           <Text>{props.title}</Text>
           <Text style={styles.user}>written by {props.user}</Text>
-          <Text style={styles.user}>{props.date}</Text>
+          <Text style={styles.user}>- {props.date} -</Text>
         </View>
 
         {props.data.map((d) => {
