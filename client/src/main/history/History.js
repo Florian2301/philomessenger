@@ -53,7 +53,7 @@ class History extends Component {
                       {chatnumber === this.props.chat.chatnumber && user === this.props.chat.user && !this.props.user.loggedIn? 
                         <PDFDownloadLink
                           document={
-                            <PDF title={title} data={this.props.chat.messages} />
+                            <PDF title={title} data={this.props.chat.messages} user={user} date={date} tags={tags} description={description}/>
                           }
                           fileName={chatnumber + ". " + title + '.pdf'}
                           className="link-download-dbChat"
