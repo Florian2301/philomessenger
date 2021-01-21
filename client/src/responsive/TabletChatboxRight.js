@@ -10,7 +10,7 @@ import SaveDraft from '../main/drafts/SaveDraft'
 import Drafts from '../main/drafts/Drafts'
 import TabletSitemap from './TabletSitemap'
 import About from '../main/About/About'
-// CSS in App.css/FlexMain
+import './Responsive.css'
 
 
 export function TabletChatboxRight(props) {
