@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   user: { fontSize: 10, marginTop: 5, color: 'grey' },
   date: { fontSize: 8, marginTop: 5, color: 'grey' },
   philosopher: { fontSize: 10, marginTop: 5, marginBottom: 5 },
-  text: { fontSize: 15, marginBottom: 5 },
+  text: { fontSize: 15, marginBottom: 10, marginLeft: 10 },
   pageNumber: { position: 'absolute', fontSize: 12, bottom: 30, left: 0, right: 0, textAlign: 'center', color: 'grey' }
 })
 
