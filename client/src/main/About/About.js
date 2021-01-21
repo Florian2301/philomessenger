@@ -5,7 +5,7 @@ import Panel from '../../elements/Panel'
 
 export default function About (props) {
     return (
-      <Panel title="Demo-Version 1.4.6" id="about">
+      <Panel title="Demo-Version" id="about">
         <div className="about">
         
             <br></br>
@@ -28,7 +28,7 @@ export default function About (props) {
             <br></br>
                 
             <a id="git" href="https://github.com/Florian2301/philomessenger">See code on Github</a>
-            <p id="about-update">Last update: 2021-01-20</p>
+            <p id="about-update">Last update: 2021-01-21</p>
             
             <br></br>
 
