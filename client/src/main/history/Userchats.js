@@ -57,7 +57,7 @@ class Userchats extends Component {
                       {chatnumber === this.props.chat.chatnumber && userId === this.props.chat.userId && !this.props.user.loggedIn? 
                         <PDFDownloadLink
                           document={
-                            <PDF title={title} data={this.props.chat.messages} user={user} date={date} tags={tags} description={description}/>
+                            <PDF title={title} data={this.props.chat.messages} user={user} date={date}/>
                           }
                           fileName={chatnumber + ". " + title + '.pdf'}
                           className="link-download-userchat"
