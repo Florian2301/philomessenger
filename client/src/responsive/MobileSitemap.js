@@ -50,7 +50,7 @@ export function MobileSitemap(props) {
                 <p className="menu-link" onClick={() => toggleDetails("history")} aria-controls="example-collapse-text" aria-expanded={history}>{!history? "more..." : "less..."}</p>
               </div>
               <TransitionGroup>
-                <CSSTransition key={uuidv4()} timeout={1000} classNames="transition-menu">
+                <CSSTransition key={uuidv4()} timeout={1} classNames="transition-menu">
                   <Collapse in={history}>
                     <div className="menu-details" id="example-collapse-text">
                       <p className="start-para-details">Under <span className="menu-inside" onClick={() => handleKey("history")}>"History" </span>
@@ -68,7 +68,7 @@ export function MobileSitemap(props) {
                 <p className="menu-link" onClick={() => toggleDetails("userchats")} aria-controls="example-collapse-text" aria-expanded={userchats}>{!userchats? "more..." : "less..."}</p>
               </div>
               <TransitionGroup>
-                <CSSTransition key={uuidv4()} timeout={10} classNames="transition-menu">
+                <CSSTransition key={uuidv4()} timeout={1} classNames="transition-menu">
                   <Collapse in={userchats}>
                     <div className="menu-details" id="example-collapse-text">
                       <p className="start-para-details">Under <span className="menu-inside" onClick={() => handleKey("userchats")}>"Userchats" </span> you can publish your own chats. 
@@ -85,7 +85,7 @@ export function MobileSitemap(props) {
                 <p className="menu-link" onClick={() => toggleDetails("chat")} aria-controls="example-collapse-text" aria-expanded={chat}>{!chat? "more..." : "less..."}</p>
               </div>
               <TransitionGroup>
-                <CSSTransition key={uuidv4()} timeout={10} classNames="transition-menu">
+                <CSSTransition key={uuidv4()} timeout={1} classNames="transition-menu">
                   <Collapse in={chat}>
                     <div className="menu-details" id="example-collapse-text">
                       <p className="start-para-details">On <span className="menu-inside" onClick={() => handleKey("chat")}>"Chat" </span> the published chats will be displayed. When you are logged in, you will 
@@ -102,7 +102,7 @@ export function MobileSitemap(props) {
                 <p className="menu-link" onClick={() => toggleDetails("login")} aria-controls="example-collapse-text" aria-expanded={login}>{!login? "more..." : "less..."}</p>
               </div>
               <TransitionGroup>
-                <CSSTransition key={uuidv4()} timeout={10} classNames="transition-menu">
+                <CSSTransition key={uuidv4()} timeout={1} classNames="transition-menu">
                   <Collapse in={login}>
                     <div className="menu-details" id="example-collapse-text">
                       <p className="start-para-details">If you like to have a look "inside" the chat editor, to see how to use it, you can go to <span className="menu-inside" onClick={() => handleKey("login")}>"Login" </span> and 
@@ -119,7 +119,7 @@ export function MobileSitemap(props) {
             <p className="menu-link" onClick={() => toggleDetails("drafts")} aria-controls="example-collapse-text" aria-expanded={drafts}>{!drafts? "more..." : "less..."}</p>
               </div>
               <TransitionGroup>
-                <CSSTransition key={uuidv4()} timeout={10} classNames="transition-menu">
+                <CSSTransition key={uuidv4()} timeout={1} classNames="transition-menu">
                   <Collapse in={drafts}>
                     <div className="menu-details" id="example-collapse-text">
                       <p className="start-para-details">if you log in you can start writing a chat in the <span className="menu-inside" onClick={() => handleKey("drafts")}> "Drafts" </span> section.</p>
@@ -137,7 +137,7 @@ export function MobileSitemap(props) {
                 <p className="menu-link" onClick={() => toggleDetails("publish")} aria-controls="example-collapse-text" aria-expanded={publish}>{!publish? "more..." : "less..."}</p>
               </div>
               <TransitionGroup>
-                <CSSTransition key={uuidv4()} timeout={10} classNames="transition-menu">
+                <CSSTransition key={uuidv4()} timeout={1} classNames="transition-menu">
                   <Collapse in={publish}>
                     <div className="menu-details" id="example-collapse-text">
                       <p className="start-para-details">Once you are ready to publish your chat you go to <span className="menu-inside" onClick={() => handleKey("publish")}>"Publish" </span> and 
@@ -155,7 +155,7 @@ export function MobileSitemap(props) {
                 <p className="menu-link" onClick={() => toggleDetails("about")} aria-controls="example-collapse-text" aria-expanded={about}>{!about? "more..." : "less..."}</p>
               </div>
               <TransitionGroup>
-                <CSSTransition key={uuidv4()} timeout={10} classNames="transition-menu">
+                <CSSTransition key={uuidv4()} timeout={1} classNames="transition-menu">
                   <Collapse in={about}>
                     <div className="menu-details" id="example-collapse-text">
                       <p className="start-para-details">On <span className="menu-inside" onClick={() => handleKey("about")}>"About" </span> you will find a short explanation  
