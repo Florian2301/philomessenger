@@ -33,7 +33,7 @@ export function AddName(props) {
     
     return (
         <Panel id="start" title="Add participants to your chat">
-            <p className="info-link" onClick={() => setInfo(!info)} aria-controls="example-collapse-text" aria-expanded={info}>{!info? "click for more..." : "less info..."}</p>
+            <p className="info-link" onClick={() => setInfo(!info)} aria-controls="example-collapse-text" aria-expanded={info}>{!info? "click for info" : "less info"}</p>
             
             <TransitionGroup>
                 <CSSTransition key={uuidv4()} timeout={100} classNames="transition-message">
@@ -42,7 +42,6 @@ export function AddName(props) {
                             <p className="info">1. Add participants to your chat</p>
                             <p className="info">2. Set a title for your chat</p>
                             <p className="info">3. Click "new chat" to start writing</p>
-                            <p className="info">4. Click "save" or "save changes" when you finished writing</p>
                         </div>
                     </Collapse>
                 </CSSTransition>
