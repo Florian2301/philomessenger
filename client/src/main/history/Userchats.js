@@ -59,7 +59,7 @@ class Userchats extends Component {
                           document={
                             <PDF title={title} data={this.props.chat.messages} />
                           }
-                          fileName={title + '.pdf'}
+                          fileName={chatnumber + ". " + title + '.pdf'}
                           className="link-download-userchat"
                          >
                          download
