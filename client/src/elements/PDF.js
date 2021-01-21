@@ -1,5 +1,5 @@
 import React from 'react'
-import { Document, Page, View, Text, StyleSheet } from '@react-pdf/renderer'
+import { Document, Page, View, Text, StyleSheet, Link } from '@react-pdf/renderer'
 import { v4 as uuidv4 } from 'uuid';
 
 /**
@@ -7,13 +7,13 @@ import { v4 as uuidv4 } from 'uuid';
  * -> muss noch ausgearbeitet werden
  */
 const styles = StyleSheet.create({
-  page: { backgroundColor: 'lightgrey' },
-  header: { fontSize: 20, textAlign: 'center', margin: 30 },
-  user: { fontSize: 10, marginTop: 5},
-  info: { fontSize: 10, marginBottom: 30, textAlign: 'center', marginTop: 30 },
-  infotext: { marginBottom: 5, marginTop: 5},
-  philosopher: { fontSize: 10, marginTop: 5, marginLeft: 30 },
-  text: { fontSize: 15, marginBottom: 5, marginLeft: 30 },
+  page: { backgroundColor: 'lightgrey', paddingTop: 35, paddingBottom: 65, paddingHorizontal: 35 },
+  header: { fontSize: 8, marginBottom: 20, textAlign: 'center'},
+  title: { fontSize: 20, textAlign: 'center', marginBottom: 30 },
+  user: { fontSize: 10, marginTop: 5, color: 'grey'},
+  philosopher: { fontSize: 10, marginTop: 5},
+  text: { fontSize: 15, marginBottom: 5 },
+  pageNumber: { position: 'absolute', fontSize: 12, bottom: 30, left: 0, right: 0, textAlign: 'center', color: 'grey' }
 })
 
 // Create PDF document
@@ -25,10 +25,12 @@ const PDF = (props) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-    
+        <Text style={styles.header} fixed><Link src={'http://philomessenger.herokuapp.com'}> ~ philomessenger.herokuapp.com ~ </Link></Text>
+        
         <View style={styles.header}>
           <Text>{props.title}</Text>
           <Text style={styles.user}>written by {props.user}</Text>
+          <Text style={styles.user}>{props.date}</Text>
         </View>
 
         {props.data.map((d) => {
@@ -37,16 +39,16 @@ const PDF = (props) => {
           key = uuidv4()
 
           return (
-            <View key={key}>
+            <View key={key} wrap={false}>
               <Text style={styles.philosopher}>{philosopher}:</Text>
               <Text style={styles.text}>{text}</Text>
             </View>
           )
         })}
 
-        <View style={styles.info}>
-          <Text style={styles.infotext}>Chat published: {props.date} on philomessenger.herokuapp.com</Text>
-        </View>
+        <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
+        `${pageNumber} / ${totalPages}`
+        )} fixed />
 
       </Page>
     </Document>
