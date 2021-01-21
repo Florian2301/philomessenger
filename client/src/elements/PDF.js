@@ -37,7 +37,7 @@ const PDF = (props) => {
           key = uuidv4()
 
           return (
-            <View key={key} color={color}>
+            <View key={key}>
               <Text style={styles.philosopher}>{philosopher}:</Text>
               <Text style={styles.text}>{text}</Text>
             </View>
