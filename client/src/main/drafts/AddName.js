@@ -49,7 +49,7 @@ export function AddName(props) {
             
             <Form onSubmit={handleSubmit}>
                 <Form.Group id="startname" as={Row}>
-                    <Form.Label id="start-name">Name:*</Form.Label>
+                    <Form.Label id="start-name">Participant:*</Form.Label>
                     <Col>
                         <Form.Control id="start-input" type="name" ref={nameRef} placeholder="Add participants"/>
                     </Col>
