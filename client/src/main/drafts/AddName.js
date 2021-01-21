@@ -51,7 +51,7 @@ export function AddName(props) {
                 <Form.Group id="startname" as={Row}>
                     <Form.Label id="start-name">Participant:*</Form.Label>
                     <Col>
-                        <Form.Control id="start-input" type="name" ref={nameRef} placeholder="Add participants"/>
+                        <Form.Control id="start-input" type="name" ref={nameRef} placeholder="Add name"/>
                     </Col>
                     {addName && <p id="addname">{addName} added...</p>}
                 </Form.Group>
