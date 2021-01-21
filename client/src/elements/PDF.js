@@ -2,10 +2,7 @@ import React from 'react'
 import { Document, Page, View, Text, StyleSheet, Link } from '@react-pdf/renderer'
 import { v4 as uuidv4 } from 'uuid';
 
-/**
- * Style des PDFs
- * -> muss noch ausgearbeitet werden
- */
+
 const styles = StyleSheet.create({
   page: { backgroundColor: 'lightgrey', paddingTop: 35, paddingBottom: 65, paddingHorizontal: 35 },
   header: { fontSize: 8, marginBottom: 20, textAlign: 'center'},
