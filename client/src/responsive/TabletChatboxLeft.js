@@ -5,7 +5,7 @@ import History from '../main/history/History'
 import Userchats from '../main/history/Userchats'
 import Chat from '../main/chat/Chat'
 import { setKey } from '../redux/actions/user'
-// CSS in App.css/FlexMain
+import './Responsive.css'
 
 
 export function TabletChatboxLeft(props) {
