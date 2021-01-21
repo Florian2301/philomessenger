@@ -79,14 +79,14 @@
 }
 .transition-message-enter-active {
   opacity: 1;
-  transition: opacity 1000ms ease-in;
+  transition: opacity 500ms ease-in;
 }
 .transition-message-exit {
   opacity: 1;
 }
 .transition-message-exit-active {
   opacity: 0;
-  transition: opacity 1000ms ease-in;
+  transition: opacity 500ms ease-in;
 }
 
 .listgroup-message {
