@@ -17,7 +17,7 @@ import MobileSitemap from './MobileSitemap'
 import SelectView from '../header/SelectView'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-// CSS MobileStart & SelectView in App.css/ CSS Nav in FlexMain.css
+import './Responsive.css'
 
 
 // mobile version
