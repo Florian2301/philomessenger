@@ -1,0 +1,186 @@
+/* -------------- Tablet and Mobile ------------------ */
+
+#start-panel {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.menu-details {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.start-para-details {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.menu-panel {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+}
+
+.menu-link {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  font-style: italic;
+  cursor: pointer;
+}
+
+/* ---------------- Tablet --------------------------- */
+
+#responsive-container-tablet {
+  border-width: thick;
+  border-style: groove;
+  border-color: #999999;
+  border-radius: 0.6rem;
+  background-color: rgb(53, 53, 53);
+  max-width: 50rem;
+  margin-top: 0rem;
+}
+
+#responsive-border-tablet-left {
+  border-color: dodgerblue;
+  border-width: thin;
+  border-style: solid;
+  border-radius: 0.6rem;
+  height: fit-content;
+  width: 100%;
+  max-width: 50rem;
+  margin-right: 0.5rem;
+}
+
+#responsive-border-tablet-right {
+  border-color: dodgerblue;
+  border-width: thin;
+  border-style: solid;
+  border-radius: 0.6rem;
+  height: fit-content;
+  width: 100%;
+  max-width: 50rem;
+  margin-left: 0.5rem;
+}
+
+.tablet-menu-points {
+  margin-top: 1rem;
+}
+
+.tablet-menu-points-top {
+  margin-top: 1.5rem;
+}
+
+.tablet-menu-points-end {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.para-tablet {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.para-tablet-last {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Transition */
+.transition-sitemap-enter {
+  opacity: 0;
+}
+.transition-sitemap-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+.transition-sitemap-exit {
+  opacity: 1;
+}
+.transition-sitemap-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-in;
+}
+
+/* ---------------- Mobile --------------------------- */
+
+#responsive-container-mobile {
+  border-width: thick;
+  border-style: groove;
+  border-color: #999999;
+  border-radius: 0.6rem;
+  background-color: rgb(53, 53, 53);
+  height: fit-content;
+  width: 100%;
+  max-width: 50rem;
+}
+
+.responsive-border-mobile {
+  border-color: dodgerblue;
+  border-width: thin;
+  border-style: solid;
+  border-radius: 0.6rem;
+  width: 100vw;
+  max-width: 50rem;
+}
+
+/* color hitory and userchats */
+.table-border-color-mobile {
+  border-color: dodgerblue;
+  border-width: thin;
+  border-style: solid;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* menu */
+.menu {
+  text-decoration: underline;
+  color: dodgerblue;
+  cursor: pointer;
+}
+
+.menu-inside {
+  color: dodgerblue;
+  cursor: pointer;
+}
+
+.menu-inside:hover {
+  text-decoration: underline;
+}
+
+#menu-advice-mobile {
+  font-size: 1.2rem;
+}
+
+/* MobileChatbox */
+.mobile-notlogged {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Transition */
+.transition-menu-enter {
+  opacity: 0;
+}
+.transition-menu-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+.transition-menu-exit {
+  opacity: 1;
+}
+.transition-menu-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-in;
+}
+
+/* MobileChatbox Menu für später */
+/*#dropdown { 
+  color: black;
+  background-color: darkgray;
+  border: none;
+  position: relative;
+  float: inline-end;
+}*/
