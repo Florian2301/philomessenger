@@ -118,7 +118,6 @@ export function TabletSitemap() {
                             <div className="menu-details" id="example-collapse-text">
                                 <p className="para-tablet">if you log in you can start writing a chat in the <span className="start-para-inline">"Drafts"</span> section.</p>
                                 <p className="para-tablet">First add names (your participants), set a title and click "new chat". Afterwards you can start writing your own chat.</p>
-                                <p className="para-tablet">While you are writing you should click "save" from time to time, so your text won't get lost. Same when you edit the draft of your chat.</p>
                             </div>
                         </Collapse>
                     </CSSTransition>
