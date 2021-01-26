@@ -124,7 +124,6 @@ export function MobileSitemap(props) {
                     <div className="menu-details" id="example-collapse-text">
                       <p className="start-para-details">if you log in you can start writing a chat in the <span className="menu-inside" onClick={() => handleKey("drafts")}> "Drafts" </span> section.</p>
                       <p className="start-para-details">First add names (your participants), set a title and click "New chat". Afterwards you can start writing your own chat.</p>
-                      <p className="start-para-details">While you are writing you should click "save" from time to time, so your text won't get lost. Same when you edit the draft of your chat.</p>
                     </div>
                   </Collapse>
                 </CSSTransition>
